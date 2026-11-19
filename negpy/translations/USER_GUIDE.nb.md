@@ -132,14 +132,14 @@ Korrigerer fargen i kopien, slik fargefiltrene i et forstørrelsesapparat i mør
 *   **Fjerning av fargestikk**: fjerner et fargestikk som er ulikt i de mørke og lyse delene av bildet. Den starter på 0,5 (halvparten) for fargenegativer og på 0 for dias. Blader, himmel og vann regnes ikke som grått, så de beholder fargen.
 *   **Filter**: et farget filter, som på kameraobjektivet for svart-hvitt-film. Det vises bare for et fargenegativ eller fargedias i S/H, og erstatter kontrollene ovenfor. Hvert filter gjør fargene motsatt av sin egen mørkere. Gul #8, Dyp gul #15, Oransje #21 og Rød #25 gjør en blå himmel mørkere, trinn for trinn. Rød gjør også blader mørke og hud blek. Gulgrønn #11 og Grønn #58 gjør blader lysere og hud mørkere. Ingen gir utseendet til en vanlig svart-hvitt-film.
 
-<!-- panel:tone src:c29af454 -->
+<!-- panel:tone src:4cf78932 -->
 ### 5.2 Tone: lyshet og kontrast
 
 Hvor lys eller mørk kopien er, og hvor mye kontrast den har.
 
 *   **Kopitetthet**: hvor lys eller mørk kopien er (eksponeringstiden i mørkerommet). Lavere er lysere.
 *   **ISO-R-gradering**: kontrast (papirgraderingen i mørkerommet). Et lavere tall gir mer kontrast; omtrent 110 er normalt.
-*   **Auto** (tryllestaven, også på linjen i fanen Eksponering): **Autotetthet** og **Autogradering** angir lyshet og kontrast for hvert bilde, så en rull kopieres jevnt. En glidebryter viser da den automatiske verdien: flytt den for å justere, og dobbeltklikk den for å gå tilbake. Høyreklikk tryllestaven for å slå begge på eller av. Auto-menyen har også:
+*   **Auto** (tryllestaven, også på linjen i fanen Tone): **Autotetthet** og **Autogradering** angir lyshet og kontrast for hvert bilde, så en rull kopieres jevnt. En glidebryter viser da den automatiske verdien: flytt den for å justere, og dobbeltklikk den for å gå tilbake. Høyreklikk tryllestaven for å slå begge på eller av. Auto-menyen har også:
     *   **Angi mål…**: lysheten og kontrasten Auto sikter mot.
     *   **Bak inn autotetthet/-gradering**: beholder de automatiske verdiene for dette bildet og slår av Auto for det.
     *   **Hold svart**: når du gjør skyggene lysere, forblir de dypeste svarttonene svarte.
@@ -154,14 +154,14 @@ Hvor lys eller mørk kopien er, og hvor mye kontrast den har.
 
 **Hvitpunkt** og **Svartpunkt** er på kortet **Lysmåling** i fanen Rull ([§10.3](#103-metering-negative--positive)).
 
-<!-- panel:paper src:1e3bc30a -->
+<!-- panel:paper src:eb1bce00 -->
 ### 5.3 Papirrespons: papiret
 
 Papiret bildet kopieres på, og hvordan det gjør lys om til toner fra svart til hvitt.
 
 *   **Kopipapir**: papiret. Et ekte papir angir kontrastkurven og fargene ut fra produsentens data. **Digital (Adobe RGB)**, standarden, er et ideelt papir. **Digital (Pakon)** har fargene til en Pakon-laboratorieskanner. **Digital (Frontier)** har fargene og kontrastkurven til en laboratorieskanning fra Fujifilm Frontier. **Digital (Nikon Scan)** har dem fra Nikon Scan, programvaren til Nikon Coolscan-filmskannerne.
 *   **Prøvestripe for papir** (den stripete knappen): kopierer bildet på hvert papir. Klikk et papir for å se det stort, bla med piltastene, og trykk **Behold** for å bruke det.
-*   **Fargestoffseparasjon**: fargestyrke i kopien. 1 er uendret. **Separasjonsdemping** legger mer av endringen på matte farger og mindre på sterke. **Kroma** i fanen Utseende endrer i stedet alle farger likt.
+*   **Fargestoffseparasjon**: fargestyrke i kopien. 1 er uendret. **Separasjonsdemping** legger mer av endringen på matte farger og mindre på sterke. **Kroma** i fanen Etterarbeid endrer i stedet alle farger likt.
 *   **Papirhvitt**: viser hvitfargen til ekte papir, litt mørkere enn rent hvitt.
 *   **Papirsvart**: viser svarttonen til ekte papir, litt lysere enn rent svart.
 *   **Kurveform** (fold):
@@ -169,23 +169,6 @@ Papiret bildet kopieres på, og hvordan det gjør lys om til toner fra svart til
     *   **Tå**: former hvordan skyggene går over i svart. Positiv gjør overgangen mykere og åpner skyggene, negativ gjør den hardere. Svart flytter seg ikke.
     *   **Skulder**: former hvordan høylysene går over i hvitt. Positiv gjør overgangen mykere, negativ gjør den hardere og kan miste detaljer. Hvitt flytter seg ikke.
 *   **Global / R / G / B**: R, G eller B bruker kurvekontrollene på ett fargelag.
-
-<!-- panel:local src:7d85677b -->
-### 5.4 Skygging og etterbelysning: gjør områder lysere eller mørkere
-
-Tegn en form, og gjør så bare det området lysere (skygging) eller mørkere (etterbelysning). Et dias bruker ikke dette kortet, men maskene blir stående.
-
-*   **Tegn**: klikk for å plassere punkter. Dobbeltklikk, trykk Enter eller klikk nær starten for å lukke formen. Dra et punkt for å flytte det, klikk en "+" på en kant for å legge til et, og høyreklikk et punkt for å slette det.
-*   **Oval**: dra ut en oval. Håndtakene flytter, strekker og dreier den.
-*   **Kort**: en etterbelysning som toner ut, som et kort som flyttes over papiret. Dra fra kanten med full styrke (heltrukket linje) til der den slutter (stiplet linje).
-*   **Maskeliste**: klikk en maske for å velge den. Ikonene slår den på eller av, inverterer den (virker overalt unntatt innenfor den), viser omrisset eller sletter den. Glidebryterne nedenfor endrer den valgte masken.
-*   **Etterbelysning**: positiv gjør området mørkere, negativ gjør det lysere. Enheten er blendertrinn: +1 dobler lyset.
-*   **Mykning**: hvor myk kanten er.
-*   **Gradering**: kontrast innenfor masken. Negativ gir mer kontrast.
-*   **Forbelysning**: henter tilbake detaljer i lyse områder innenfor masken, som Forbelysning på kortet Tone.
-*   **Tonegrense**: **Høylys** eller **Skygger** får masken til å virke bare på toner lysere eller mørkere enn **Tonesone** (0 er svart, V mellomgrå, X hvit). En etterbelysning av himmelen stopper da ved horisonten. **Tonemykhet** angir hvor gradvis den starter.
-
-**Kopieringsnotater** (`Shift+N`) markerer maskene på bildet med numre og verdier, slik notatene til en kopist gjør.
 
 <!-- panel:lab src:e8e4a89c -->
 ### 6.1 Lab: farge og detaljer
@@ -201,8 +184,35 @@ Justeringene en laboratorieskanner gjør etter kopien.
 *   **Glød** (folden Effekter): en myk glød rundt lyse områder, som den myke fokusen i en minilab-skanner.
 *   **Halasjon** (folden Effekter): en rød glød rundt lyse områder, slik noen filmer gir.
 
+<!-- panel:toning src:8aa1a282 -->
+### 6.2 Toning
+
+Tonere er kjemiske bad som endrer fargen på en S/H-kopi. Delt toning legger farge til enhver kopi.
+
+**Kjemisk toning** (S/H-negativer og S/H-dias) virker i rekkefølgen som vises:
+
+*   **Selen**: dypere, kaldere svarttoner.
+*   **Sepia**: varm brun, fra høylysene og nedover.
+*   **Gull**: blåsvart. Over sepia gir den oransjerøde høylys.
+*   **Jernblå**: blå skygger og marineblå svarttoner.
+*   **Kobber**: rosa til teglrødt. Svarttonene blir svakere.
+*   **Vanadium**: grønne mellomtoner og høylys. Svarttonene forblir svarte.
+
+På en lith-kopi virker bare Selen og Gull. På en cyanotypi virker ingen toner.
+
+**Delt toning** (alle kopier): **Skyggestyrke** og **Høylysstyrke** legger farge til skyggene og høylysene. **Skyggetone** og **Høylystone** velger fargen, og vises når styrken er over 0.
+
+<!-- panel:finish src:0e98fdde -->
+### 6.3 Etterbehandling: vignett, negativholder, kant
+
+Hvordan kopien presenteres. De andre glidebryterne for hver effekt vises når den første glidebryteren ikke er 0.
+
+*   **Vignett**: **Etterbelysning** gjør kantene mørkere (positiv) eller lysere (negativ). **Størrelse** angir hvor langt den når. **Rundhet** går fra rund (0) til formen på kopien (1).
+*   **Filet negativholder**: **Bredde** tegner en grov svart ramme rundt bildet, slik en negativholder i mørkerommet som er filt bredere, gjør. **Ruhet**, **Lysspredning** (en grå glød utenfor rammen) og **Hjørner** former den.
+*   **Kant**: **Bredde** legger et passepartout rundt kopien. **Vekt nederst** gjør den nedre kanten bredere, som på et passepartout til innramming. **Farge**: **Papirhvitt** tilpasser seg papiret, **Egendefinert** bruker en farge du velger.
+
 <!-- panel:altproc src:1b810792 -->
-### 6.2 Alternative prosesser
+### 6.4 Alternative prosesser
 
 Historiske kopieringsprosesser for S/H-negativer. Velg **Ingen**, **Lith**, **Cyanotypi** eller **Sabattier**, så vises bare kontrollene for den prosessen.
 
@@ -232,32 +242,14 @@ Et lysglimt under fremkallingen. De lyse tonene snus mot grått, og tynne lyse l
 *   **Ny eksponering**: hvor reverseringen starter. Mørkere toner blir som de er.
 *   **Agitasjon**: mindre agitasjon gir bredere Mackie-linjer.
 
-<!-- panel:toning src:8aa1a282 -->
-### 6.3 Toning
-
-Tonere er kjemiske bad som endrer fargen på en S/H-kopi. Delt toning legger farge til enhver kopi.
-
-**Kjemisk toning** (S/H-negativer og S/H-dias) virker i rekkefølgen som vises:
-
-*   **Selen**: dypere, kaldere svarttoner.
-*   **Sepia**: varm brun, fra høylysene og nedover.
-*   **Gull**: blåsvart. Over sepia gir den oransjerøde høylys.
-*   **Jernblå**: blå skygger og marineblå svarttoner.
-*   **Kobber**: rosa til teglrødt. Svarttonene blir svakere.
-*   **Vanadium**: grønne mellomtoner og høylys. Svarttonene forblir svarte.
-
-På en lith-kopi virker bare Selen og Gull. På en cyanotypi virker ingen toner.
-
-**Delt toning** (alle kopier): **Skyggestyrke** og **Høylysstyrke** legger farge til skyggene og høylysene. **Skyggetone** og **Høylystone** velger fargen, og vises når styrken er over 0.
-
-<!-- panel:retouch src:85e58a6a -->
+<!-- panel:retouch src:1d3ffadd -->
 ### 7.1 Retusj: støv, hår, riper
 
 Fjerner støv, hår og riper. Hver reparasjon bygges opp fra den rene filmen rundt den.
 
 *   **Overlegg**: **Merket** viser hva støvfjerningen fant, **IR** skanningens infrarøde kanal.
-*   **Optisk fjerning** (også på linjen i fanen Etterarbeid): finner støv og hår selv. **Flekkterskel** og **Hårterskel**: lavere finner flere, men kan fjerne ekte detaljer; 1 er av. **Størrelse**: det største støvet som fjernes. For å beskytte et område høyredrar du over det eller høyreklikker et merke; pekerknappen hopper over høyreklikkmenyen.
-*   **IR-fjerning** (skanninger med en infrarød kanal, også på linjen i fanen Etterarbeid): finner støv i infrarødt, der bildet ikke vises. **IR-terskel**: lavere finner flere. S/H og Kodachrome hoppes over: bildet vises også i infrarødt. Kanalen kommer fra TIFF- og DNG-skanninger med fire kanaler eller en `_IR.tif`-fil ved siden av skanningen.
+*   **Optisk fjerning** (også på linjen i fanen Retusj): finner støv og hår selv. **Flekkterskel** og **Hårterskel**: lavere finner flere, men kan fjerne ekte detaljer; 1 er av. **Størrelse**: det største støvet som fjernes. For å beskytte et område høyredrar du over det eller høyreklikker et merke; pekerknappen hopper over høyreklikkmenyen.
+*   **IR-fjerning** (skanninger med en infrarød kanal, også på linjen i fanen Retusj): finner støv i infrarødt, der bildet ikke vises. **IR-terskel**: lavere finner flere. S/H og Kodachrome hoppes over: bildet vises også i infrarødt. Kanalen kommer fra TIFF- og DNG-skanninger med fire kanaler eller en `_IR.tif`-fil ved siden av skanningen.
 *   **Lege**: klikk på et merke for å reparere det. Et klikk reparerer alltid. Mal over et område for å reparere bare merker som skiller seg ut, så mal romslig.
 *   **Ripe**: klikk punkter langs en ripe eller et hår, og trykk så Enter.
 *   **Linje**: klikk én gang på en lang, rett ripe, så finner og reparerer NegPy hele linjen. **Linjefølsomhet**: lavere finner svakere linjer.
@@ -265,14 +257,22 @@ Fjerner støv, hår og riper. Hver reparasjon bygges opp fra den rene filmen run
 *   **Klon**: kopierer film fra et annet område over en feil som Lege ikke kan rette. Det første klikket (eller `Alt`-klikk) velger kilden; mal så. **Angi kilde** velger en ny. **Tilpass tone** henter lysheten og fargen rundt feilen. **Styrke** angir hvor mye den dekker, **Mykning** hvor myk kanten er.
 *   **Angre siste** og **Fjern alle** fjerner manuelle reparasjoner; høyreklikk en på bildet for å slette den.
 
-<!-- panel:finish src:0e98fdde -->
-### 7.2 Etterbehandling: vignett, negativholder, kant
+<!-- panel:local src:7d85677b -->
+### 7.2 Skygging og etterbelysning: gjør områder lysere eller mørkere
 
-Hvordan kopien presenteres. De andre glidebryterne for hver effekt vises når den første glidebryteren ikke er 0.
+Tegn en form, og gjør så bare det området lysere (skygging) eller mørkere (etterbelysning). Et dias bruker ikke dette kortet, men maskene blir stående.
 
-*   **Vignett**: **Etterbelysning** gjør kantene mørkere (positiv) eller lysere (negativ). **Størrelse** angir hvor langt den når. **Rundhet** går fra rund (0) til formen på kopien (1).
-*   **Filet negativholder**: **Bredde** tegner en grov svart ramme rundt bildet, slik en negativholder i mørkerommet som er filt bredere, gjør. **Ruhet**, **Lysspredning** (en grå glød utenfor rammen) og **Hjørner** former den.
-*   **Kant**: **Bredde** legger et passepartout rundt kopien. **Vekt nederst** gjør den nedre kanten bredere, som på et passepartout til innramming. **Farge**: **Papirhvitt** tilpasser seg papiret, **Egendefinert** bruker en farge du velger.
+*   **Tegn**: klikk for å plassere punkter. Dobbeltklikk, trykk Enter eller klikk nær starten for å lukke formen. Dra et punkt for å flytte det, klikk en "+" på en kant for å legge til et, og høyreklikk et punkt for å slette det.
+*   **Oval**: dra ut en oval. Håndtakene flytter, strekker og dreier den.
+*   **Kort**: en etterbelysning som toner ut, som et kort som flyttes over papiret. Dra fra kanten med full styrke (heltrukket linje) til der den slutter (stiplet linje).
+*   **Maskeliste**: klikk en maske for å velge den. Ikonene slår den på eller av, inverterer den (virker overalt unntatt innenfor den), viser omrisset eller sletter den. Glidebryterne nedenfor endrer den valgte masken.
+*   **Etterbelysning**: positiv gjør området mørkere, negativ gjør det lysere. Enheten er blendertrinn: +1 dobler lyset.
+*   **Mykning**: hvor myk kanten er.
+*   **Gradering**: kontrast innenfor masken. Negativ gir mer kontrast.
+*   **Forbelysning**: henter tilbake detaljer i lyse områder innenfor masken, som Forbelysning på kortet Tone.
+*   **Tonegrense**: **Høylys** eller **Skygger** får masken til å virke bare på toner lysere eller mørkere enn **Tonesone** (0 er svart, V mellomgrå, X hvit). En etterbelysning av himmelen stopper da ved horisonten. **Tonemykhet** angir hvor gradvis den starter.
+
+**Kopieringsnotater** (`Shift+N`) markerer maskene på bildet med numre og verdier, slik notatene til en kopist gjør.
 
 <!-- panel:presets src:32c2813a -->
 ### Forhåndsinnstillinger

@@ -132,14 +132,14 @@ Korrigiert die Farbe des Abzugs, wie die Farbfilter eines Vergrößerers in der 
 *   **Farbstichentfernung**: entfernt einen Farbstich, der in den dunklen und hellen Teilen des Bildes unterschiedlich ist. Der Start liegt bei 0,5 (halb) bei Farbnegativen und bei 0 bei Dias. Blätter, Himmel und Wasser gelten nicht als grau und behalten ihre Farbe.
 *   **Filter**: ein Farbfilter, wie er bei Schwarzweißfilm vor dem Kameraobjektiv sitzt. Er erscheint nur bei einem Farbnegativ oder Farbdia in S/W, und ersetzt die Regler darüber. Jeder Filter dunkelt die Farben ab, die seiner eigenen gegenüberliegen. Gelb #8, Tiefgelb #15, Orange #21 und Rot #25 machen einen blauen Himmel Schritt für Schritt dunkler. Rot macht außerdem Blätter dunkel und Haut blass. Gelbgrün #11 und Grün #58 machen Blätter heller und Haut dunkler. Keiner gibt den Look eines normalen Schwarzweißfilms.
 
-<!-- panel:tone src:c29af454 -->
+<!-- panel:tone src:4cf78932 -->
 ### 5.2 Tonwerte: Helligkeit und Kontrast
 
 Wie hell oder dunkel der Abzug ist und wie viel Kontrast er hat.
 
 *   **Abzugsdichte**: wie hell oder dunkel der Abzug ist (die Belichtungszeit in der Dunkelkammer). Niedriger ist heller.
 *   **ISO-R-Gradation**: Kontrast (die Papiergradation in der Dunkelkammer). Eine niedrigere Zahl gibt mehr Kontrast. Etwa 110 ist normal.
-*   **Auto** (der Zauberstab, auch in der Leiste des Tabs Belichtung): **Auto-Dichte** und **Auto-Gradation** stellen Helligkeit und Kontrast für jedes Bild ein, damit eine Rolle gleichmäßig abgezogen wird. Ein Regler zeigt dann den automatischen Wert: Bewege ihn zum Anpassen, doppelklicke darauf für den Rückweg. Ein Rechtsklick auf den Zauberstab schaltet beide ein oder aus. Das Auto-Menü enthält außerdem:
+*   **Auto** (der Zauberstab, auch in der Leiste des Tabs Ton): **Auto-Dichte** und **Auto-Gradation** stellen Helligkeit und Kontrast für jedes Bild ein, damit eine Rolle gleichmäßig abgezogen wird. Ein Regler zeigt dann den automatischen Wert: Bewege ihn zum Anpassen, doppelklicke darauf für den Rückweg. Ein Rechtsklick auf den Zauberstab schaltet beide ein oder aus. Das Auto-Menü enthält außerdem:
     *   **Zielwerte festlegen…**: die Helligkeit und den Kontrast, die Auto anstrebt.
     *   **Auto-Dichte/Gradation fixieren**: behält die automatischen Werte dieses Bildes und schaltet Auto dafür aus.
     *   **Schwarz halten**: Wenn du die Schatten aufhellst, bleiben die tiefsten Schwarztöne schwarz.
@@ -154,14 +154,14 @@ Wie hell oder dunkel der Abzug ist und wie viel Kontrast er hat.
 
 **Weißpunkt** und **Schwarzpunkt** findest du auf der Karte **Messung** im Tab Rolle ([§10.3](#103-metering-negative--positive)).
 
-<!-- panel:paper src:1e3bc30a -->
+<!-- panel:paper src:eb1bce00 -->
 ### 5.3 Papierverhalten: das Papier
 
 Das Papier, auf das das Bild abgezogen wird, und wie es Licht in Tonwerte von Schwarz bis Weiß umsetzt.
 
 *   **Papier**: das Abzugspapier. Ein echtes Papier legt Kontrastkurve und Farben nach den Daten seines Herstellers fest. **Digital (Adobe RGB)**, der Standard, ist ein ideales Papier. **Digital (Pakon)** hat die Farben eines Pakon-Laborscanners. **Digital (Frontier)** hat die Farben und die Kontrastkurve eines Fujifilm-Frontier-Laborscans. **Digital (Nikon Scan)** hat die von Nikon Scan, der Software der Nikon-Coolscan-Filmscanner.
 *   **Papier-Probestreifen** (die gestreifte Schaltfläche): zieht das Bild auf jedem Papier ab. Klicke auf ein Papier für die große Ansicht, wechsle mit den Pfeiltasten und drücke **Behalten**, um es zu nutzen.
-*   **Farbstofftrennung**: Farbstärke im Abzug. 1 ist unverändert. **Trennungsdämpfung** legt mehr von der Änderung auf matte Farben und weniger auf kräftige. **Chroma** im Tab Look ändert stattdessen alle Farben gleichmäßig.
+*   **Farbstofftrennung**: Farbstärke im Abzug. 1 ist unverändert. **Trennungsdämpfung** legt mehr von der Änderung auf matte Farben und weniger auf kräftige. **Chroma** im Tab Finish ändert stattdessen alle Farben gleichmäßig.
 *   **Papierweiß**: zeigt das Weiß von echtem Papier, etwas dunkler als reines Weiß.
 *   **Papierschwarz**: zeigt das Schwarz von echtem Papier, etwas heller als reines Schwarz.
 *   **Kurvenform** (Falte):
@@ -169,23 +169,6 @@ Das Papier, auf das das Bild abgezogen wird, und wie es Licht in Tonwerte von Sc
     *   **Fuß**: formt, wie die Schatten ins Schwarz übergehen. Positiv macht den Übergang weicher und öffnet die Schatten, negativ macht ihn härter. Schwarz bleibt, wo es ist.
     *   **Schulter**: formt, wie die Lichter ins Weiß übergehen. Positiv macht den Übergang weicher, negativ macht ihn härter, wobei Details verloren gehen können. Weiß bleibt, wo es ist.
 *   **Global / R / G / B**: R, G oder B wendet die Kurvenregler auf eine Farbschicht an.
-
-<!-- panel:local src:7d85677b -->
-### 5.4 Abwedeln & Nachbelichten: Bereiche aufhellen oder abdunkeln
-
-Zeichne eine Form. Nur dieser Bereich wird dann heller (Abwedeln) oder dunkler (Nachbelichten). Ein Dia nutzt diese Karte nicht, aber seine Masken bleiben erhalten.
-
-*   **Zeichnen**: Klicke, um Punkte zu setzen. Schließe die Form mit Doppelklick, `Enter` oder einem Klick nahe am Startpunkt. Ziehe einen Punkt, um ihn zu verschieben. Klicke auf ein "+" an einer Kante, um einen Punkt hinzuzufügen. Klicke mit der rechten Maustaste auf einen Punkt, um ihn zu löschen.
-*   **Oval**: Ziehe ein Oval auf. Mit seinen Griffen verschiebst, streckst und drehst du es.
-*   **Abdeckkarte**: eine Nachbelichtung, die ausläuft, wie eine Karte, die über das Papier bewegt wird. Ziehe von der Kante mit voller Stärke (durchgezogene Linie) bis dorthin, wo sie endet (gestrichelte Linie).
-*   **Maskenliste**: Klicke auf eine Maske, um sie auszuwählen. Mit den Symbolen schaltest du sie ein oder aus, kehrst sie um (wirkt überall außer innerhalb), zeigst ihren Umriss oder löschst sie. Die Regler darunter ändern die ausgewählte Maske.
-*   **Nachbelichten**: Positiv dunkelt den Bereich ab, negativ hellt ihn auf. Die Einheit sind Blenden: +1 verdoppelt das Licht.
-*   **Kantenweichheit**: wie weich die Kante ist.
-*   **Gradation**: Kontrast innerhalb der Maske. Negativ gibt mehr Kontrast.
-*   **Vorbelichtung**: holt Zeichnung in hellen Bereichen innerhalb der Maske zurück, wie ein Preflash.
-*   **Tonwertgrenze**: **Lichter** oder **Schatten** lässt die Maske nur auf Töne wirken, die heller oder dunkler sind als der **Tonwertbereich** (0 ist Schwarz, V mittleres Grau, X Weiß). Eine Himmelsnachbelichtung endet dann an der Horizontlinie. **Tonwertübergang** legt fest, wie allmählich sie einsetzt.
-
-**Abzugsnotizen** (`Shift+N`) markieren die Masken mit ihren Nummern und Werten im Bild, wie Notizen eines Druckers im Labor.
 
 <!-- panel:lab src:e8e4a89c -->
 ### 6.1 Lab: Farbe und Detail
@@ -201,8 +184,35 @@ Die Anpassungen, die ein Lab-Scanner nach dem Abzug vornimmt.
 *   **Glühen** (Falte Effekte): ein weiches Glühen um helle Bereiche, wie der Weichzeichner eines Minilab-Scanners.
 *   **Lichthof** (Falte Effekte): ein rotes Glühen um helle Bereiche, wie es manche Filme zeigen.
 
+<!-- panel:toning src:8aa1a282 -->
+### 6.2 Tonung
+
+Toner sind chemische Bäder, die die Farbe eines S/W-Abzugs ändern. Die Splittonung gibt jedem Abzug Farbe.
+
+**Chemische Tonung** (S/W-Negative und S/W-Dias) wirkt in der gezeigten Reihenfolge:
+
+*   **Selen**: tiefere, kühlere Schwärzen.
+*   **Sepia**: warmes Braun, von den Lichtern abwärts.
+*   **Gold**: Blauschwarz. Über Sepia gibt es orangerote Lichter.
+*   **Eisenblau**: blaue Schatten und marineblaue Schwärzen.
+*   **Kupfer**: Rosa bis Ziegelrot. Die Schwärzen werden schwächer.
+*   **Vanadium**: grüne Mitteltöne und Lichter. Die Schwärzen bleiben schwarz.
+
+Auf einem Lith-Abzug wirken nur Selen und Gold. Auf einer Cyanotypie wirkt kein Toner.
+
+**Splittonung** (alle Abzüge): **Schattenstärke** und **Lichterstärke** geben den Schatten und den Lichtern Farbe. **Schattenfarbton** und **Lichterfarbton** wählen die Farbe und erscheinen, sobald die Stärke über 0 liegt.
+
+<!-- panel:finish src:0e98fdde -->
+### 6.3 Finish: Vignette, Bildbühne, Rand
+
+Wie der Abzug präsentiert wird. Die übrigen Regler jedes Effekts erscheinen, sobald sein erster Regler nicht 0 ist.
+
+*   **Vignette**: **Nachbelichten** dunkelt die Ränder ab (positiv) oder hellt sie auf (negativ). **Größe** legt fest, wie weit sie reicht. **Rundung** reicht von rund (0) bis zur Form des Abzugs (1).
+*   **Ausgefeilte Bildbühne**: **Breite** zeichnet einen rauen schwarzen Rahmen um das Bild, wie eine im Labor breiter gefeilte Negativbühne. **Rauheit**, **Streulicht** (ein graues Glühen außerhalb des Rahmens) und **Ecken** formen ihn.
+*   **Rand**: **Breite** legt ein Passepartout um den Abzug. **Unteres Gewicht** macht den unteren Rand breiter, wie bei einem Bilderrahmen. **Farbe**: **Papierweiß** passt zum Papier, **Benutzerdefiniert** nutzt eine Farbe, die du wählst.
+
 <!-- panel:altproc src:1b810792 -->
-### 6.2 Alternative Verfahren
+### 6.4 Alternative Verfahren
 
 Historische Abzugsverfahren für S/W-Negative. Wähle **Ohne**, **Lith**, **Cyanotypie** oder **Sabattier-Effekt**. Es erscheinen nur die Regler dieses Verfahrens.
 
@@ -232,32 +242,14 @@ Ein Lichtblitz während der Entwicklung. Die hellen Töne kehren sich zu Grau um
 *   **Zweitbelichtung**: wo die Umkehrung beginnt. Dunklere Töne bleiben, wie sie sind.
 *   **Bewegung**: weniger Bewegung gibt breitere Mackie-Linien.
 
-<!-- panel:toning src:8aa1a282 -->
-### 6.3 Tonung
-
-Toner sind chemische Bäder, die die Farbe eines S/W-Abzugs ändern. Die Splittonung gibt jedem Abzug Farbe.
-
-**Chemische Tonung** (S/W-Negative und S/W-Dias) wirkt in der gezeigten Reihenfolge:
-
-*   **Selen**: tiefere, kühlere Schwärzen.
-*   **Sepia**: warmes Braun, von den Lichtern abwärts.
-*   **Gold**: Blauschwarz. Über Sepia gibt es orangerote Lichter.
-*   **Eisenblau**: blaue Schatten und marineblaue Schwärzen.
-*   **Kupfer**: Rosa bis Ziegelrot. Die Schwärzen werden schwächer.
-*   **Vanadium**: grüne Mitteltöne und Lichter. Die Schwärzen bleiben schwarz.
-
-Auf einem Lith-Abzug wirken nur Selen und Gold. Auf einer Cyanotypie wirkt kein Toner.
-
-**Splittonung** (alle Abzüge): **Schattenstärke** und **Lichterstärke** geben den Schatten und den Lichtern Farbe. **Schattenfarbton** und **Lichterfarbton** wählen die Farbe und erscheinen, sobald die Stärke über 0 liegt.
-
-<!-- panel:retouch src:85e58a6a -->
+<!-- panel:retouch src:1d3ffadd -->
 ### 7.1 Retusche: Staub, Haare, Kratzer
 
 Entfernt Staub, Haare und Kratzer. Jede Reparatur wird aus dem sauberen Film darum herum aufgebaut.
 
 *   **Überlagerung**: **Markiert** zeigt, was die Staubentfernung gefunden hat, **IR** den Infrarotkanal des Scans.
-*   **Optische Entfernung** (auch in der Leiste des Tabs Finish): findet Staub und Haare selbst. **Flecken-Schwelle** und **Haar-Schwelle**: niedriger findet mehr, kann aber echte Details entfernen; 1 ist aus. **Größe**: der größte Staub, der entfernt wird. Um einen Bereich zu schützen, ziehe mit der rechten Maustaste darüber oder klicke mit der rechten Maustaste auf eine Markierung. Die Cursor-Schaltfläche überspringt das Rechtsklick-Menü.
-*   **IR-Entfernung** (Scans mit Infrarotkanal, auch in der Leiste des Tabs Finish): findet Staub im Infrarot, wo ihn das Bild nicht zeigt. **IR-Schwelle**: niedriger findet mehr. S/W und Kodachrome werden übersprungen, weil ihr Bild auch im Infrarot sichtbar ist. Der Kanal stammt aus 4-Kanal-TIFF- und DNG-Scans oder aus einer `_IR.tif`-Datei neben dem Scan.
+*   **Optische Entfernung** (auch in der Leiste des Tabs Retusche): findet Staub und Haare selbst. **Flecken-Schwelle** und **Haar-Schwelle**: niedriger findet mehr, kann aber echte Details entfernen; 1 ist aus. **Größe**: der größte Staub, der entfernt wird. Um einen Bereich zu schützen, ziehe mit der rechten Maustaste darüber oder klicke mit der rechten Maustaste auf eine Markierung. Die Cursor-Schaltfläche überspringt das Rechtsklick-Menü.
+*   **IR-Entfernung** (Scans mit Infrarotkanal, auch in der Leiste des Tabs Retusche): findet Staub im Infrarot, wo ihn das Bild nicht zeigt. **IR-Schwelle**: niedriger findet mehr. S/W und Kodachrome werden übersprungen, weil ihr Bild auch im Infrarot sichtbar ist. Der Kanal stammt aus 4-Kanal-TIFF- und DNG-Scans oder aus einer `_IR.tif`-Datei neben dem Scan.
 *   **Heilen**: klicke auf eine Markierung, um sie zu reparieren. Ein Klick repariert immer. Male über einen Bereich, um nur auffällige Markierungen zu reparieren, also male großzügig.
 *   **Kratzer**: klicke Punkte entlang eines Kratzers oder Haars und drücke dann `Enter`.
 *   **Linie**: klicke einmal auf einen langen, geraden Kratzer. NegPy findet und repariert dann die ganze Linie. **Linienempfindlichkeit**: niedriger findet schwächere Linien.
@@ -265,14 +257,22 @@ Entfernt Staub, Haare und Kratzer. Jede Reparatur wird aus dem sauberen Film dar
 *   **Klonen**: kopiert Film aus einem anderen Bereich über einen Defekt, den Heilen nicht beheben kann. Der erste Klick (oder `Alt`-Klick) wählt die Quelle, danach malst du. **Quelle setzen** wählt eine neue. **Ton anpassen** übernimmt Helligkeit und Farbe um den Defekt. **Stärke** legt fest, wie stark er deckt, **Kantenweichheit**, wie weich seine Kante ist.
 *   **Letzte rückgängig** und **Alle entfernen** entfernen manuelle Reparaturen. Klicke mit der rechten Maustaste auf eine im Bild, um sie zu löschen.
 
-<!-- panel:finish src:0e98fdde -->
-### 7.2 Finish: Vignette, Bildbühne, Rand
+<!-- panel:local src:7d85677b -->
+### 7.2 Abwedeln & Nachbelichten: Bereiche aufhellen oder abdunkeln
 
-Wie der Abzug präsentiert wird. Die übrigen Regler jedes Effekts erscheinen, sobald sein erster Regler nicht 0 ist.
+Zeichne eine Form. Nur dieser Bereich wird dann heller (Abwedeln) oder dunkler (Nachbelichten). Ein Dia nutzt diese Karte nicht, aber seine Masken bleiben erhalten.
 
-*   **Vignette**: **Nachbelichten** dunkelt die Ränder ab (positiv) oder hellt sie auf (negativ). **Größe** legt fest, wie weit sie reicht. **Rundung** reicht von rund (0) bis zur Form des Abzugs (1).
-*   **Ausgefeilte Bildbühne**: **Breite** zeichnet einen rauen schwarzen Rahmen um das Bild, wie eine im Labor breiter gefeilte Negativbühne. **Rauheit**, **Streulicht** (ein graues Glühen außerhalb des Rahmens) und **Ecken** formen ihn.
-*   **Rand**: **Breite** legt ein Passepartout um den Abzug. **Unteres Gewicht** macht den unteren Rand breiter, wie bei einem Bilderrahmen. **Farbe**: **Papierweiß** passt zum Papier, **Benutzerdefiniert** nutzt eine Farbe, die du wählst.
+*   **Zeichnen**: Klicke, um Punkte zu setzen. Schließe die Form mit Doppelklick, `Enter` oder einem Klick nahe am Startpunkt. Ziehe einen Punkt, um ihn zu verschieben. Klicke auf ein "+" an einer Kante, um einen Punkt hinzuzufügen. Klicke mit der rechten Maustaste auf einen Punkt, um ihn zu löschen.
+*   **Oval**: Ziehe ein Oval auf. Mit seinen Griffen verschiebst, streckst und drehst du es.
+*   **Abdeckkarte**: eine Nachbelichtung, die ausläuft, wie eine Karte, die über das Papier bewegt wird. Ziehe von der Kante mit voller Stärke (durchgezogene Linie) bis dorthin, wo sie endet (gestrichelte Linie).
+*   **Maskenliste**: Klicke auf eine Maske, um sie auszuwählen. Mit den Symbolen schaltest du sie ein oder aus, kehrst sie um (wirkt überall außer innerhalb), zeigst ihren Umriss oder löschst sie. Die Regler darunter ändern die ausgewählte Maske.
+*   **Nachbelichten**: Positiv dunkelt den Bereich ab, negativ hellt ihn auf. Die Einheit sind Blenden: +1 verdoppelt das Licht.
+*   **Kantenweichheit**: wie weich die Kante ist.
+*   **Gradation**: Kontrast innerhalb der Maske. Negativ gibt mehr Kontrast.
+*   **Vorbelichtung**: holt Zeichnung in hellen Bereichen innerhalb der Maske zurück, wie ein Preflash.
+*   **Tonwertgrenze**: **Lichter** oder **Schatten** lässt die Maske nur auf Töne wirken, die heller oder dunkler sind als der **Tonwertbereich** (0 ist Schwarz, V mittleres Grau, X Weiß). Eine Himmelsnachbelichtung endet dann an der Horizontlinie. **Tonwertübergang** legt fest, wie allmählich sie einsetzt.
+
+**Abzugsnotizen** (`Shift+N`) markieren die Masken mit ihren Nummern und Werten im Bild, wie Notizen eines Druckers im Labor.
 
 <!-- panel:presets src:32c2813a -->
 ### Vorgaben

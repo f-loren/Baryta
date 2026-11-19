@@ -679,6 +679,7 @@ class ShortcutManager:
             "tab_tone": lambda: right.show_tab_by_key("tone"),
             "tab_color": lambda: right.show_tab_by_key("color"),
             "tab_finish": lambda: right.show_tab_by_key("finish"),
+            "tab_retouch": lambda: right.show_tab_by_key("retouch"),
             "tab_export": lambda: right.show_tab_by_key("export"),
             "tab_metadata": lambda: right.show_tab_by_key("metadata"),
             "tab_history": lambda: right.show_tab_by_key("history"),
