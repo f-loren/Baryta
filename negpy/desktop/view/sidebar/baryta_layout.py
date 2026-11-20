@@ -6,8 +6,10 @@ and the saved tab resolve by key.
 """
 
 from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QHBoxLayout, QWidget
 
-from negpy.desktop.view.styles.templates import section_subheader
+from negpy.desktop.view.styles.templates import labeled_toggle, section_subheader
+from negpy.desktop.view.styles.theme import THEME
 from negpy.kernel.system.i18n import tr
 
 
@@ -85,7 +87,25 @@ def apply_mode(panel) -> None:
         header.setVisible(any(not getattr(panel, a).isHidden() for a in RIG_CARDS))
 
 
+def advanced_footer(panel) -> QWidget:
+    """The Show Advanced toggle, pinned under the panel's tabs."""
+    panel.advanced_btn = labeled_toggle(
+        "fa5s.sliders-h", tr("Show Advanced"), panel.advanced_mode, tr("Show every card, not only the ones most rolls need")
+    )
+    panel.advanced_btn.toggled.connect(lambda on: set_advanced_mode(panel, on))
+    footer = QWidget()
+    row = QHBoxLayout(footer)
+    row.setContentsMargins(THEME.space_sm, THEME.space_sm, THEME.space_sm, THEME.space_sm)
+    row.addWidget(panel.advanced_btn)
+    row.addStretch(1)
+    return footer
+
+
 def set_advanced_mode(panel, on: bool) -> None:
     panel.advanced_mode = on
+    if btn := getattr(panel, "advanced_btn", None):
+        btn.blockSignals(True)
+        btn.setChecked(on)
+        btn.blockSignals(False)
     panel.controller.session.repo.save_global_setting(ADVANCED_SETTING, on)
     apply_mode(panel)

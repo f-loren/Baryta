@@ -58,7 +58,7 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 
 ### Base and Advanced
 
-The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit.
+The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit. **Show Advanced**, under the Roll and Frame tabs, switches between the two.
 
 ### Using the controls
 

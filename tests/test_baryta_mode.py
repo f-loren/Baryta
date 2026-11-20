@@ -35,3 +35,13 @@ def test_the_scanner_setup_header_shows_only_over_a_visible_rig_card(qapp) -> No
     panel.optics_section.setVisible(True)
     panel.modified_synced.emit()
     assert not panel.rig_header.isHidden()
+
+
+def test_show_advanced_switches_the_mode_and_follows_the_shortcut(qapp) -> None:
+    from negpy.desktop.view.sidebar.right_panel import RightPanel
+
+    panel = RightPanel(FakeController(FakeRepo(**{ADVANCED_SETTING: False}))).controls_panel
+    panel.advanced_btn.setChecked(True)
+    assert panel.advanced_mode and not panel.toning_section.isHidden()
+    set_advanced_mode(panel, False)
+    assert not panel.advanced_btn.isChecked() and panel.toning_section.isHidden()

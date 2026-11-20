@@ -58,7 +58,7 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 
 ### Base e Avanzata
 
-L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica.
+L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica. **Mostra avanzate**, sotto le schede Rullino e Fotogramma, passa da una modalità all'altra.
 
 ### Usare i controlli
 
