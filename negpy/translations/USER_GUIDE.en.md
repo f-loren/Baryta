@@ -39,16 +39,17 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 1.  On the **Library** tab, import a folder as a roll and open it.
 2.  On the **Roll** tab, check **Setup** (film type and scanner).
 3.  On **Frame › Geometry**, crop and straighten. Then run **Roll Analysis** on the Roll tab, so the frames match.
-4.  On the other **Frame** tabs, set brightness, contrast and color (**Exposure**), the look (**Look**), and remove dust (**Finish**).
+4.  On the other **Frame** tabs, set brightness, contrast and color (**Color**, **Tone**), the look (**Finish**), and remove dust (**Retouch**).
 5.  Export on the **Export** tab.
 
 | Tab | Cards |
 |---|---|
 | **Roll** | Setup · Raw Decode · Optics · Calibration · Metering · Roll Analysis · Frame Assembly |
 | **Frame › Geometry** | Crop · Straighten |
-| **Frame › Exposure** | Filtration · Tone · Paper Response · Dodge & Burn |
-| **Frame › Look** | Lab · Alternative Processes · Toning |
-| **Frame › Finish** | Retouch · Finishing |
+| **Frame › Color** | Filtration |
+| **Frame › Tone** | Tone · Paper Response |
+| **Frame › Finish** | Lab · Toning · Finishing · Alternative Processes |
+| **Frame › Retouch** | Retouch · Dodge & Burn |
 | **Frame › Favorites** (star) | Your chosen sliders · Presets |
 | **Frame › History** (clock) | Work prints · Edit history |
 | **Metadata** | Metadata Preview · Shot · Process · Presets · My Gear |
@@ -93,7 +94,7 @@ A new frame gets the roll's film type, and the crop, print stock and Lab setting
 
 ### Pick Better
 
-**Pick Better** (the balance scale on the Exposure tab's bar) helps when you are not sure which slider to move. It shows your edit in the middle with two versions beside it. Click the better one, or the middle to skip. Each round tunes one control, and later rounds repeat in finer steps. **Difference** sets how far apart the two versions are, and **Custom Routing** sets the order of the controls. **OK** or `Esc` ends it and keeps your picks.
+**Pick Better** (the balance scale on the Tone tab's bar) helps when you are not sure which slider to move. It shows your edit in the middle with two versions beside it. Click the better one, or the middle to skip. Each round tunes one control, and later rounds repeat in finer steps. **Difference** sets how far apart the two versions are, and **Custom Routing** sets the order of the controls. **OK** or `Esc` ends it and keeps your picks.
 
 ### The tour
 
@@ -288,9 +289,9 @@ Crop before a large Tilt or Swing, or the film border can come into view and dar
 
 ---
 
-## 5. Exposure tab
+## 5. Color and Tone tabs
 
-These four cards set the brightness, contrast and color of the print.
+The **Color** tab holds Filtration. The **Tone** tab holds Tone and Paper Response. Together they set the brightness, contrast and color of the print.
 
 <!-- panel:color -->
 ### 5.1 Filtration: color balance
@@ -311,7 +312,7 @@ How light or dark the print is, and how much contrast it has.
 
 *   **Print Density**: how light or dark the print is (the darkroom's exposure time). Lower is lighter.
 *   **ISO-R Grade**: contrast (the darkroom's paper grade). A lower number gives more contrast; about 110 is normal.
-*   **Auto** (the wand, also on the Exposure tab's bar): **Auto Density** and **Auto Grade** set brightness and contrast for each frame, so a roll prints evenly. A slider then shows the automatic value: move it to adjust, double-click it to go back. Right-click the wand to turn both on or off. The Auto menu also has:
+*   **Auto** (the wand, also on the Tone tab's bar): **Auto Density** and **Auto Grade** set brightness and contrast for each frame, so a roll prints evenly. A slider then shows the automatic value: move it to adjust, double-click it to go back. Right-click the wand to turn both on or off. The Auto menu also has:
     *   **Set Targets…**: the brightness and contrast Auto aims for.
     *   **Bake Auto Density/Grade**: keeps this frame's automatic values and turns Auto off for it.
     *   **Hold Black**: when you lighten the shadows, the deepest blacks stay black.
@@ -333,7 +334,7 @@ The paper the picture prints on, and how it turns light into tones from black to
 
 *   **Print stock**: the paper. A real paper sets the contrast curve and the colors from its maker's data. **Digital (Adobe RGB)**, the default, is an ideal paper. **Digital (Pakon)** has the colors of a Pakon lab scanner. **Digital (Frontier)** has the colors and the contrast curve of a Fujifilm Frontier lab scan. **Digital (Nikon Scan)** has those of Nikon Scan, the software of the Nikon Coolscan film scanners.
 *   **Paper Test Strip** (the striped button): prints the frame on every paper. Click a paper to see it large, step with the arrow keys, and press **Keep** to use it.
-*   **Dye Separation**: color strength in the print. 1 is unchanged. **Separation Damping** puts more of the change on dull colors and less on strong ones. **Chroma** on the Look tab changes all colors evenly instead.
+*   **Dye Separation**: color strength in the print. 1 is unchanged. **Separation Damping** puts more of the change on dull colors and less on strong ones. **Chroma** on the Finish tab changes all colors evenly instead.
 *   **Paper White**: shows the white of real paper, a little darker than pure white.
 *   **Paper Black**: shows the black of real paper, a little lighter than pure black.
 *   **Curve Shape** (fold):
@@ -342,26 +343,9 @@ The paper the picture prints on, and how it turns light into tones from black to
     *   **Shoulder**: shapes how the highlights reach white. Positive makes the change softer, negative makes it harder and can lose detail. White does not move.
 *   **Global / R / G / B**: R, G or B applies the curve controls to one color layer.
 
-<!-- panel:local -->
-### 5.4 Dodge & Burn: lighten or darken areas
-
-Draw a shape, then make only that area lighter (dodge) or darker (burn). A slide does not use this card, but its masks stay.
-
-*   **Draw**: click to place points. Double-click, press Enter or click near the start to close the shape. Drag a point to move it, click a "+" on an edge to add one, and right-click a point to delete it.
-*   **Oval**: drag out an oval. Its handles move, stretch and turn it.
-*   **Card**: a burn that fades out, like a card moved over the paper. Drag from the full-strength edge (solid line) to where it ends (dashed line).
-*   **Mask list**: click a mask to select it. Its icons turn it on or off, invert it (act everywhere except inside it), show its outline or delete it. The sliders below change the selected mask.
-*   **Burn**: positive darkens the area, negative lightens it. The unit is stops: +1 doubles the light.
-*   **Feather**: how soft the edge is.
-*   **Grade**: contrast inside the mask. Negative gives more contrast.
-*   **Flash**: brings back detail in bright areas inside the mask, like Preflash.
-*   **Tone Limit**: **Highlights** or **Shadows** makes the mask act only on tones lighter or darker than **Tone Zone** (0 is black, V middle gray, X white). A sky burn then stops at the skyline. **Tone Softness** sets how gradually it starts.
-
-**Printing Notes** (`Shift+N`) marks the masks on the picture with their numbers and values, as a printer's notes do.
-
 ---
 
-## 6. Look tab
+## 6. Finish tab
 
 <!-- panel:lab -->
 ### 6.1 Lab: color and detail
@@ -377,8 +361,35 @@ The adjustments a lab scanner makes after the print.
 *   **Glow** (Effects fold): a soft glow around bright areas, like the soft focus of a minilab scanner.
 *   **Halation** (Effects fold): a red glow around bright areas, as some films give.
 
+<!-- panel:toning -->
+### 6.2 Toning
+
+Toners are chemical baths that change the color of a B&W print. Split Toning adds color to any print.
+
+**Chemical Toning** (B&W negatives and B&W slides) acts in the order shown:
+
+*   **Selenium**: deeper, cooler blacks.
+*   **Sepia**: warm brown, from the highlights down.
+*   **Gold**: blue-black. Over sepia, it gives orange-red highlights.
+*   **Iron Blue**: blue shadows and navy blacks.
+*   **Copper**: pink to brick red. Blacks get weaker.
+*   **Vanadium**: green midtones and highlights. Blacks stay black.
+
+On a lith print only Selenium and Gold work. On a cyanotype no toner works.
+
+**Split Toning** (all prints): **Shadow Strength** and **Highlight Strength** add color to the shadows and the highlights. **Shadow Hue** and **Highlight Hue** pick the color, and show once the strength is above 0.
+
+<!-- panel:finish -->
+### 6.3 Finishing: vignette, carrier, border
+
+How the print is presented. The other sliders of each effect show once its first slider is not 0.
+
+*   **Vignette**: **Burn** darkens (positive) or lightens (negative) the edges. **Size** sets how far it reaches. **Roundness** goes from round (0) to the shape of the print (1).
+*   **Filed Carrier**: **Width** draws a rough black frame around the picture, as a darkroom negative carrier that was filed wider does. **Roughness**, **Flare** (a gray glow outside the frame) and **Corners** shape it.
+*   **Border**: **Width** puts a mat around the print. **Bottom Weight** makes the bottom wider, as on a framing mat. **Color**: **Paper White** matches the paper, **Custom** uses a color you pick.
+
 <!-- panel:altproc -->
-### 6.2 Alternative Processes
+### 6.4 Alternative Processes
 
 Historic print processes for B&W negatives. Pick **None**, **Lith**, **Cyanotype** or **Sabattier**, and only that process's controls show.
 
@@ -410,27 +421,7 @@ A flash of light during development. The light tones reverse toward gray, and th
 
 ---
 
-<!-- panel:toning -->
-### 6.3 Toning
-
-Toners are chemical baths that change the color of a B&W print. Split Toning adds color to any print.
-
-**Chemical Toning** (B&W negatives and B&W slides) acts in the order shown:
-
-*   **Selenium**: deeper, cooler blacks.
-*   **Sepia**: warm brown, from the highlights down.
-*   **Gold**: blue-black. Over sepia, it gives orange-red highlights.
-*   **Iron Blue**: blue shadows and navy blacks.
-*   **Copper**: pink to brick red. Blacks get weaker.
-*   **Vanadium**: green midtones and highlights. Blacks stay black.
-
-On a lith print only Selenium and Gold work. On a cyanotype no toner works.
-
-**Split Toning** (all prints): **Shadow Strength** and **Highlight Strength** add color to the shadows and the highlights. **Shadow Hue** and **Highlight Hue** pick the color, and show once the strength is above 0.
-
----
-
-## 7. Finish tab
+## 7. Retouch tab
 
 <!-- panel:retouch -->
 ### 7.1 Retouch: dust, hairs, scratches
@@ -438,8 +429,8 @@ On a lith print only Selenium and Gold work. On a cyanotype no toner works.
 Removes dust, hairs and scratches. Each repair is rebuilt from the clean film around it.
 
 *   **Overlay**: **Marked** shows what dust removal found, **IR** the scan's infrared channel.
-*   **Optical Removal** (also on the Finish tab's bar): finds dust and hairs by itself. **Spot Threshold** and **Hair Threshold**: lower finds more but can remove real detail; 1 is off. **Size**: the largest dust to remove. To protect an area, right-drag over it or right-click a mark; the cursor button skips the right-click menu.
-*   **IR Removal** (scans with an infrared channel, also on the Finish tab's bar): finds dust in infrared, where the picture does not show. **IR Threshold**: lower finds more. B&W and Kodachrome are skipped: their picture shows in infrared too. The channel comes from 4-channel TIFF and DNG scans or an `_IR.tif` file beside the scan.
+*   **Optical Removal** (also on the Retouch tab's bar): finds dust and hairs by itself. **Spot Threshold** and **Hair Threshold**: lower finds more but can remove real detail; 1 is off. **Size**: the largest dust to remove. To protect an area, right-drag over it or right-click a mark; the cursor button skips the right-click menu.
+*   **IR Removal** (scans with an infrared channel, also on the Retouch tab's bar): finds dust in infrared, where the picture does not show. **IR Threshold**: lower finds more. B&W and Kodachrome are skipped: their picture shows in infrared too. The channel comes from 4-channel TIFF and DNG scans or an `_IR.tif` file beside the scan.
 *   **Heal**: click a mark to repair it; a click always repairs. Paint over an area to repair only the marks that stand out, so paint generously.
 *   **Scratch**: click points along a scratch or hair, then press Enter.
 *   **Line**: click once on a long straight scratch, and NegPy finds and repairs the whole line. **Line Sensitivity**: lower finds fainter lines.
@@ -447,14 +438,22 @@ Removes dust, hairs and scratches. Each repair is rebuilt from the clean film ar
 *   **Clone**: copies film from another area over a defect Heal cannot fix. The first click (or `Alt`-click) picks the source; then paint. **Set Source** picks a new one. **Match Tone** takes the brightness and color around the defect. **Strength** sets how much it covers, **Feather** how soft its edge is.
 *   **Undo Last** and **Clear All** remove manual repairs; right-click one on the picture to delete it.
 
-<!-- panel:finish -->
-### 7.2 Finishing: vignette, carrier, border
+<!-- panel:local -->
+### 7.2 Dodge & Burn: lighten or darken areas
 
-How the print is presented. The other sliders of each effect show once its first slider is not 0.
+Draw a shape, then make only that area lighter (dodge) or darker (burn). A slide does not use this card, but its masks stay.
 
-*   **Vignette**: **Burn** darkens (positive) or lightens (negative) the edges. **Size** sets how far it reaches. **Roundness** goes from round (0) to the shape of the print (1).
-*   **Filed Carrier**: **Width** draws a rough black frame around the picture, as a darkroom negative carrier that was filed wider does. **Roughness**, **Flare** (a gray glow outside the frame) and **Corners** shape it.
-*   **Border**: **Width** puts a mat around the print. **Bottom Weight** makes the bottom wider, as on a framing mat. **Color**: **Paper White** matches the paper, **Custom** uses a color you pick.
+*   **Draw**: click to place points. Double-click, press Enter or click near the start to close the shape. Drag a point to move it, click a "+" on an edge to add one, and right-click a point to delete it.
+*   **Oval**: drag out an oval. Its handles move, stretch and turn it.
+*   **Card**: a burn that fades out, like a card moved over the paper. Drag from the full-strength edge (solid line) to where it ends (dashed line).
+*   **Mask list**: click a mask to select it. Its icons turn it on or off, invert it (act everywhere except inside it), show its outline or delete it. The sliders below change the selected mask.
+*   **Burn**: positive darkens the area, negative lightens it. The unit is stops: +1 doubles the light.
+*   **Feather**: how soft the edge is.
+*   **Grade**: contrast inside the mask. Negative gives more contrast.
+*   **Flash**: brings back detail in bright areas inside the mask, like Preflash.
+*   **Tone Limit**: **Highlights** or **Shadows** makes the mask act only on tones lighter or darker than **Tone Zone** (0 is black, V middle gray, X white). A sky burn then stops at the skyline. **Tone Softness** sets how gradually it starts.
+
+**Printing Notes** (`Shift+N`) marks the masks on the picture with their numbers and values, as a printer's notes do.
 
 ---
 

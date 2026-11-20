@@ -39,16 +39,17 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 1.  Nella scheda **Libreria**, importa una cartella come rullino e aprila.
 2.  Nella scheda **Rullino**, controlla **Configurazione** (tipo di pellicola e scanner).
 3.  In **Fotogramma › Geometria**, ritaglia e raddrizza. Poi esegui l'**Analisi del rullino** nella scheda Rullino, così i fotogrammi si uniformano.
-4.  Nelle altre schede di **Fotogramma**, imposta luminosità, contrasto e colore (**Esposizione**), l'aspetto (**Aspetto**) e rimuovi la polvere (**Finitura**).
+4.  Nelle altre schede di **Fotogramma**, imposta luminosità, contrasto e colore (**Colore**, **Tono**), l'aspetto (**Finitura**) e rimuovi la polvere (**Ritocco**).
 5.  Esporta nella scheda **Esporta**.
 
 | Scheda | Riquadri |
 |---|---|
 | **Rullino** | Configurazione · Decodifica RAW · Ottica · Calibrazione · Misurazione · Analisi del rullino · Composizione del fotogramma |
 | **Fotogramma › Geometria** | Ritaglio · Raddrizza |
-| **Fotogramma › Esposizione** | Filtratura · Tono · Risposta della carta · Schermatura e bruciatura |
-| **Fotogramma › Aspetto** | Lab · Processi alternativi · Viraggio |
-| **Fotogramma › Finitura** | Ritocco · Rifinitura |
+| **Fotogramma › Colore** | Filtratura |
+| **Fotogramma › Tono** | Tono · Risposta della carta |
+| **Fotogramma › Finitura** | Lab · Viraggio · Rifinitura · Processi alternativi |
+| **Fotogramma › Ritocco** | Ritocco · Schermatura e bruciatura |
 | **Fotogramma › Preferiti** (stella) | I cursori che hai scelto · Preimpostazioni |
 | **Fotogramma › Cronologia** (orologio) | Stampe di lavoro · Cronologia delle modifiche |
 | **Metadati** | Anteprima dei metadati · Scatto · Processo · Preimpostazioni · La mia attrezzatura |
@@ -93,7 +94,7 @@ Un nuovo fotogramma riceve il tipo di pellicola del rullino, e il ritaglio, il s
 
 ### Scegli il migliore
 
-**Scegli il migliore** (la bilancia sulla barra della scheda Esposizione) aiuta quando non sei sicuro di quale cursore muovere. Mostra la tua modifica al centro con due versioni ai lati. Fai clic su quella migliore, oppure su quella centrale per saltare. Ogni turno regola un controllo, e i turni successivi si ripetono con passi più fini. **Differenza** stabilisce quanto sono distanti le due versioni, e **Instradamento personalizzato** stabilisce l'ordine dei controlli. **OK** o `Esc` termina e mantiene le tue scelte.
+**Scegli il migliore** (la bilancia sulla barra della scheda Tono) aiuta quando non sei sicuro di quale cursore muovere. Mostra la tua modifica al centro con due versioni ai lati. Fai clic su quella migliore, oppure su quella centrale per saltare. Ogni turno regola un controllo, e i turni successivi si ripetono con passi più fini. **Differenza** stabilisce quanto sono distanti le due versioni, e **Instradamento personalizzato** stabilisce l'ordine dei controlli. **OK** o `Esc` termina e mantiene le tue scelte.
 
 ### La visita guidata
 
@@ -288,9 +289,9 @@ Ritaglia prima di un Basculaggio o Brandeggio ampio, altrimenti il bordo della p
 
 ---
 
-## 5. Scheda Esposizione
+## 5. Schede Colore e Tono
 
-Questi quattro riquadri impostano luminosità, contrasto e colore della stampa.
+La scheda **Colore** contiene la Filtratura. La scheda **Tono** contiene Tono e Risposta della carta. Insieme impostano luminosità, contrasto e colore della stampa.
 
 <!-- panel:color src:23d03265 -->
 ### 5.1 Filtratura: bilanciamento del colore
@@ -304,14 +305,14 @@ Corregge il colore della stampa, come fanno i filtri colorati di un ingranditore
 *   **Rimozione della dominante**: rimuove una dominante di colore diversa tra le parti scure e chiare dell'immagine. Parte da 0,5 (metà) sui negativi a colori e da 0 sulle diapositive. Foglie, cielo e acqua non contano come grigio, quindi mantengono il loro colore.
 *   **Filtro**: un filtro colorato, come sull'obiettivo della fotocamera per la pellicola in bianco e nero. Compare solo su un negativo a colori o una diapositiva a colori in B/N, e sostituisce i controlli precedenti. Ogni filtro scurisce i colori opposti al proprio. Giallo n. 8, Giallo intenso n. 15, Arancione n. 21 e Rosso n. 25 scuriscono un cielo blu, passo dopo passo. Il rosso rende anche scure le foglie e pallida la pelle. Giallo-verde n. 11 e Verde n. 58 schiariscono le foglie e scuriscono la pelle. Nessuno dà l'aspetto di una normale pellicola in bianco e nero.
 
-<!-- panel:tone src:c29af454 -->
+<!-- panel:tone src:4cf78932 -->
 ### 5.2 Tono: luminosità e contrasto
 
 Quanto è chiara o scura la stampa, e quanto contrasto ha.
 
 *   **Densità di stampa**: quanto è chiara o scura la stampa (il tempo di esposizione della camera oscura). Più basso è più chiaro.
 *   **Gradazione ISO-R**: contrasto (la gradazione della carta in camera oscura). Un numero più basso dà più contrasto; circa 110 è normale.
-*   **Auto** (la bacchetta, anche sulla barra della scheda Esposizione): **Densità automatica** e **Gradazione automatica** impostano luminosità e contrasto per ogni fotogramma, così un rullino stampa in modo uniforme. Un cursore mostra poi il valore automatico: spostalo per regolarlo, fai doppio clic per tornare indietro. Fai clic destro sulla bacchetta per attivarle o disattivarle entrambe. Il menu Auto contiene anche:
+*   **Auto** (la bacchetta, anche sulla barra della scheda Tono): **Densità automatica** e **Gradazione automatica** impostano luminosità e contrasto per ogni fotogramma, così un rullino stampa in modo uniforme. Un cursore mostra poi il valore automatico: spostalo per regolarlo, fai doppio clic per tornare indietro. Fai clic destro sulla bacchetta per attivarle o disattivarle entrambe. Il menu Auto contiene anche:
     *   **Imposta obiettivi…**: la luminosità e il contrasto a cui punta Auto.
     *   **Fissa densità/gradazione automatiche**: mantiene i valori automatici di questo fotogramma e disattiva Auto per esso.
     *   **Mantieni il nero**: quando schiarisci le ombre, i neri più profondi restano neri.
@@ -326,14 +327,14 @@ Quanto è chiara o scura la stampa, e quanto contrasto ha.
 
 **Punto del bianco** e **Punto del nero** si trovano nel riquadro **Misurazione** della scheda Rullino ([§10.3](#103-misurazione-negativo--positivo)).
 
-<!-- panel:paper src:1e3bc30a -->
+<!-- panel:paper src:eb1bce00 -->
 ### 5.3 Risposta della carta: la carta
 
 La carta su cui viene stampata l'immagine, e il modo in cui trasforma la luce in toni dal nero al bianco.
 
 *   **Supporto di stampa**: la carta. Una carta reale stabilisce la curva di contrasto e i colori in base ai dati del produttore. **Digitale (Adobe RGB)**, quella predefinita, è una carta ideale. **Digitale (Pakon)** ha i colori di uno scanner da laboratorio Pakon. **Digitale (Frontier)** ha i colori e la curva di contrasto di una scansione da laboratorio Fujifilm Frontier. **Digitale (Nikon Scan)** ha quelli di Nikon Scan, il software degli scanner per pellicola Nikon Coolscan.
 *   **Striscia di prova della carta** (il pulsante a righe): stampa il fotogramma su ogni carta. Fai clic su una carta per vederla in grande, scorri con i tasti freccia e premi **Tieni** per usarla.
-*   **Separazione dei coloranti**: intensità del colore nella stampa. 1 è invariato. **Smorzamento della separazione** applica più modifica ai colori spenti e meno a quelli intensi. **Croma** nella scheda Aspetto cambia invece tutti i colori in modo uniforme.
+*   **Separazione dei coloranti**: intensità del colore nella stampa. 1 è invariato. **Smorzamento della separazione** applica più modifica ai colori spenti e meno a quelli intensi. **Croma** nella scheda Finitura cambia invece tutti i colori in modo uniforme.
 *   **Bianco carta**: mostra il bianco di una carta reale, un po' più scuro del bianco puro.
 *   **Nero carta**: mostra il nero di una carta reale, un po' più chiaro del nero puro.
 *   **Forma della curva** (sezione ripiegabile):
@@ -342,26 +343,9 @@ La carta su cui viene stampata l'immagine, e il modo in cui trasforma la luce in
     *   **Spalla**: modella il passaggio delle alte luci al bianco. Positivo lo ammorbidisce, negativo lo rende più duro e può perdere dettaglio. Il bianco non si sposta.
 *   **Globale / R / G / B**: R, G o B applica i controlli della curva a un solo strato di colore.
 
-<!-- panel:local src:7d85677b -->
-### 5.4 Schermatura e bruciatura: schiarire o scurire alcune aree
-
-Disegna una forma, poi rendi solo quell'area più chiara (schermatura) o più scura (bruciatura). Una diapositiva non usa questo riquadro, ma le sue maschere restano.
-
-*   **Disegna**: fai clic per collocare i punti. Fai doppio clic, premi Invio o fai clic vicino al punto iniziale per chiudere la forma. Trascina un punto per spostarlo, fai clic su un "+" di un lato per aggiungerne uno, e clic destro su un punto per eliminarlo.
-*   **Ovale**: trascina un ovale. Le sue maniglie lo spostano, lo allungano e lo ruotano.
-*   **Cartoncino**: una bruciatura che sfuma, come un cartoncino mosso sopra la carta. Trascina dal bordo a piena intensità (linea continua) fino al punto in cui finisce (linea tratteggiata).
-*   **Elenco delle maschere**: fai clic su una maschera per selezionarla. Le sue icone la attivano o disattivano, la invertono (agisce ovunque tranne al suo interno), ne mostrano il contorno o la eliminano. I cursori sotto modificano la maschera selezionata.
-*   **Bruciatura**: positivo scurisce l'area, negativo la schiarisce. L'unità è lo stop: +1 raddoppia la luce.
-*   **Sfumatura**: quanto è morbido il bordo.
-*   **Gradazione**: contrasto all'interno della maschera. Negativo dà più contrasto.
-*   **Lampo**: recupera il dettaglio nelle zone chiare all'interno della maschera, come la Prelampeggiatura.
-*   **Limite tonale**: **Alte luci** o **Ombre** fa agire la maschera solo sui toni più chiari o più scuri di **Zona tonale** (0 è il nero, V il grigio medio, X il bianco). Una bruciatura del cielo si ferma così alla linea dell'orizzonte. **Morbidezza tonale** stabilisce quanto gradualmente inizia.
-
-**Note di stampa** (`Maiusc+N`) segna le maschere sull'immagine con i loro numeri e valori, come fanno gli appunti di uno stampatore.
-
 ---
 
-## 6. Scheda Aspetto
+## 6. Scheda Finitura
 
 <!-- panel:lab src:e8e4a89c -->
 ### 6.1 Lab: colore e dettaglio
@@ -377,8 +361,35 @@ Le regolazioni che uno scanner da laboratorio fa dopo la stampa.
 *   **Bagliore** (sezione Effetti): un alone morbido attorno alle zone luminose, come la messa a fuoco morbida di uno scanner da minilab.
 *   **Alonatura** (sezione Effetti): un alone rosso attorno alle zone luminose, come danno alcune pellicole.
 
+<!-- panel:toning src:8aa1a282 -->
+### 6.2 Viraggio
+
+I viraggi sono bagni chimici che cambiano il colore di una stampa B/N. Il Viraggio diviso aggiunge colore a qualsiasi stampa.
+
+**Viraggio chimico** (negativi B/N e diapositive B/N) agisce nell'ordine mostrato:
+
+*   **Selenio**: neri più profondi e più freddi.
+*   **Seppia**: bruno caldo, a partire dalle alte luci.
+*   **Oro**: nero-bluastro. Sopra il seppia, dà alte luci rosso-arancio.
+*   **Blu di ferro**: ombre blu e neri blu notte.
+*   **Rame**: dal rosa al rosso mattone. I neri si indeboliscono.
+*   **Vanadio**: mezzitoni e alte luci verdi. I neri restano neri.
+
+Su una stampa lith funzionano solo Selenio e Oro. Su una cianotipia non funziona alcun viraggio.
+
+**Viraggio diviso** (tutte le stampe): **Intensità delle ombre** e **Intensità delle alte luci** aggiungono colore alle ombre e alle alte luci. **Tinta delle ombre** e **Tinta delle alte luci** scelgono il colore, e compaiono quando l'intensità è sopra 0.
+
+<!-- panel:finish src:0e98fdde -->
+### 6.3 Rifinitura: vignettatura, portanegativi, bordo
+
+Come viene presentata la stampa. Gli altri cursori di ogni effetto compaiono quando il suo primo cursore non è a 0.
+
+*   **Vignettatura**: **Bruciatura** scurisce (positivo) o schiarisce (negativo) i bordi. **Dimensioni** stabilisce fin dove si estende. **Arrotondamento** va dalla forma rotonda (0) alla forma della stampa (1).
+*   **Portanegativi limato**: **Larghezza** disegna una cornice nera irregolare attorno all'immagine, come fa un portanegativi da camera oscura limato per allargarlo. **Ruvidità**, **Riflesso** (un alone grigio fuori dalla cornice) e **Angoli** la modellano.
+*   **Bordo**: **Larghezza** mette un passe-partout attorno alla stampa. **Peso inferiore** rende più largo il lato inferiore, come in un passe-partout da cornice. **Colore**: **Bianco carta** si adegua alla carta, **Personalizzato** usa un colore che scegli.
+
 <!-- panel:altproc src:1b810792 -->
-### 6.2 Processi alternativi
+### 6.4 Processi alternativi
 
 Processi di stampa storici per i negativi B/N. Scegli **Nessuno**, **Lith**, **Cianotipia** o **Sabattier**, e compaiono solo i controlli di quel processo.
 
@@ -410,36 +421,16 @@ Un lampo di luce durante lo sviluppo. I toni chiari si invertono verso il grigio
 
 ---
 
-<!-- panel:toning src:8aa1a282 -->
-### 6.3 Viraggio
+## 7. Scheda Ritocco
 
-I viraggi sono bagni chimici che cambiano il colore di una stampa B/N. Il Viraggio diviso aggiunge colore a qualsiasi stampa.
-
-**Viraggio chimico** (negativi B/N e diapositive B/N) agisce nell'ordine mostrato:
-
-*   **Selenio**: neri più profondi e più freddi.
-*   **Seppia**: bruno caldo, a partire dalle alte luci.
-*   **Oro**: nero-bluastro. Sopra il seppia, dà alte luci rosso-arancio.
-*   **Blu di ferro**: ombre blu e neri blu notte.
-*   **Rame**: dal rosa al rosso mattone. I neri si indeboliscono.
-*   **Vanadio**: mezzitoni e alte luci verdi. I neri restano neri.
-
-Su una stampa lith funzionano solo Selenio e Oro. Su una cianotipia non funziona alcun viraggio.
-
-**Viraggio diviso** (tutte le stampe): **Intensità delle ombre** e **Intensità delle alte luci** aggiungono colore alle ombre e alle alte luci. **Tinta delle ombre** e **Tinta delle alte luci** scelgono il colore, e compaiono quando l'intensità è sopra 0.
-
----
-
-## 7. Scheda Finitura
-
-<!-- panel:retouch src:85e58a6a -->
+<!-- panel:retouch src:1d3ffadd -->
 ### 7.1 Ritocco: polvere, peli, graffi
 
 Rimuove polvere, peli e graffi. Ogni riparazione viene ricostruita dalla pellicola pulita circostante.
 
 *   **Sovrapposizione**: **Contrassegnati** mostra cosa ha trovato la rimozione della polvere, **IR** il canale infrarosso della scansione.
-*   **Rimozione ottica** (anche sulla barra della scheda Finitura): trova da sola polvere e peli. **Soglia delle macchie** e **Soglia dei peli**: più basso ne trova di più ma può rimuovere dettagli reali; 1 è disattivato. **Dimensioni**: la polvere più grande da rimuovere. Per proteggere un'area, trascina con il tasto destro sopra di essa o fai clic destro su un segno; il pulsante del cursore salta il menu del clic destro.
-*   **Rimozione IR** (scansioni con un canale infrarosso, anche sulla barra della scheda Finitura): trova la polvere nell'infrarosso, dove l'immagine non compare. **Soglia IR**: più basso ne trova di più. B/N e Kodachrome vengono saltate: la loro immagine compare anche nell'infrarosso. Il canale proviene da scansioni TIFF e DNG a 4 canali oppure da un file `_IR.tif` accanto alla scansione.
+*   **Rimozione ottica** (anche sulla barra della scheda Ritocco): trova da sola polvere e peli. **Soglia delle macchie** e **Soglia dei peli**: più basso ne trova di più ma può rimuovere dettagli reali; 1 è disattivato. **Dimensioni**: la polvere più grande da rimuovere. Per proteggere un'area, trascina con il tasto destro sopra di essa o fai clic destro su un segno; il pulsante del cursore salta il menu del clic destro.
+*   **Rimozione IR** (scansioni con un canale infrarosso, anche sulla barra della scheda Ritocco): trova la polvere nell'infrarosso, dove l'immagine non compare. **Soglia IR**: più basso ne trova di più. B/N e Kodachrome vengono saltate: la loro immagine compare anche nell'infrarosso. Il canale proviene da scansioni TIFF e DNG a 4 canali oppure da un file `_IR.tif` accanto alla scansione.
 *   **Correttivo**: fai clic su un segno per ripararlo; un clic ripara sempre. Dipingi sopra un'area per riparare solo i segni che risaltano, quindi dipingi con generosità.
 *   **Graffio**: fai clic su alcuni punti lungo un graffio o un pelo, poi premi Invio.
 *   **Linea**: fai clic una volta su un graffio lungo e dritto, e NegPy trova e ripara l'intera linea. **Sensibilità della linea**: più basso trova linee più deboli.
@@ -447,14 +438,22 @@ Rimuove polvere, peli e graffi. Ogni riparazione viene ricostruita dalla pellico
 *   **Clona**: copia la pellicola da un'altra area sopra un difetto che il Correttivo non può riparare. Il primo clic (o `Alt`+clic) sceglie la sorgente; poi dipingi. **Imposta sorgente** ne sceglie una nuova. **Adegua il tono** prende la luminosità e il colore attorno al difetto. **Intensità** stabilisce quanto copre, **Sfumatura** quanto è morbido il suo bordo.
 *   **Annulla l'ultimo** e **Cancella tutto** rimuovono le riparazioni manuali; fai clic destro su una di esse sull'immagine per eliminarla.
 
-<!-- panel:finish src:0e98fdde -->
-### 7.2 Rifinitura: vignettatura, portanegativi, bordo
+<!-- panel:local src:7d85677b -->
+### 7.2 Schermatura e bruciatura: schiarire o scurire alcune aree
 
-Come viene presentata la stampa. Gli altri cursori di ogni effetto compaiono quando il suo primo cursore non è a 0.
+Disegna una forma, poi rendi solo quell'area più chiara (schermatura) o più scura (bruciatura). Una diapositiva non usa questo riquadro, ma le sue maschere restano.
 
-*   **Vignettatura**: **Bruciatura** scurisce (positivo) o schiarisce (negativo) i bordi. **Dimensioni** stabilisce fin dove si estende. **Arrotondamento** va dalla forma rotonda (0) alla forma della stampa (1).
-*   **Portanegativi limato**: **Larghezza** disegna una cornice nera irregolare attorno all'immagine, come fa un portanegativi da camera oscura limato per allargarlo. **Ruvidità**, **Riflesso** (un alone grigio fuori dalla cornice) e **Angoli** la modellano.
-*   **Bordo**: **Larghezza** mette un passe-partout attorno alla stampa. **Peso inferiore** rende più largo il lato inferiore, come in un passe-partout da cornice. **Colore**: **Bianco carta** si adegua alla carta, **Personalizzato** usa un colore che scegli.
+*   **Disegna**: fai clic per collocare i punti. Fai doppio clic, premi Invio o fai clic vicino al punto iniziale per chiudere la forma. Trascina un punto per spostarlo, fai clic su un "+" di un lato per aggiungerne uno, e clic destro su un punto per eliminarlo.
+*   **Ovale**: trascina un ovale. Le sue maniglie lo spostano, lo allungano e lo ruotano.
+*   **Cartoncino**: una bruciatura che sfuma, come un cartoncino mosso sopra la carta. Trascina dal bordo a piena intensità (linea continua) fino al punto in cui finisce (linea tratteggiata).
+*   **Elenco delle maschere**: fai clic su una maschera per selezionarla. Le sue icone la attivano o disattivano, la invertono (agisce ovunque tranne al suo interno), ne mostrano il contorno o la eliminano. I cursori sotto modificano la maschera selezionata.
+*   **Bruciatura**: positivo scurisce l'area, negativo la schiarisce. L'unità è lo stop: +1 raddoppia la luce.
+*   **Sfumatura**: quanto è morbido il bordo.
+*   **Gradazione**: contrasto all'interno della maschera. Negativo dà più contrasto.
+*   **Lampo**: recupera il dettaglio nelle zone chiare all'interno della maschera, come la Prelampeggiatura.
+*   **Limite tonale**: **Alte luci** o **Ombre** fa agire la maschera solo sui toni più chiari o più scuri di **Zona tonale** (0 è il nero, V il grigio medio, X il bianco). Una bruciatura del cielo si ferma così alla linea dell'orizzonte. **Morbidezza tonale** stabilisce quanto gradualmente inizia.
+
+**Note di stampa** (`Maiusc+N`) segna le maschere sull'immagine con i loro numeri e valori, come fanno gli appunti di uno stampatore.
 
 ---
 

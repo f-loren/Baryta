@@ -42,6 +42,7 @@ from negpy.desktop.view.widgets.tab_header import TabHeader
 
 # Sidebar Components
 from negpy.desktop.view.sidebar.presets import PresetsSidebar
+from negpy.desktop.view.sidebar.baryta_layout import frame_tabs
 from negpy.desktop.view.sidebar.flatfield import FlatFieldSidebar
 from negpy.desktop.view.sidebar.process import ProcessSidebar
 from negpy.desktop.view.sidebar.roll import RollAnalysisSidebar
@@ -396,40 +397,8 @@ class ControlsPanel(QWidget):
             icon_name="fa5s.paint-brush",
         )
 
-        # Group the sections into workflow pages (each becomes a tab in RightPanel). Calibration,
-        # Demosaic, Roll Analysis and Normalization are roll-wide facts, not per-frame edits --
-        # RightPanel builds them into its own top-level Roll tab instead of a page here, and
-        # places Presets on its Favorites tab.
-        groups = [
-            (
-                "geometry",
-                tr("Geometry"),
-                tr("Geometry"),
-                [self.autocrop_section, self.geometry_section],
-                ["autocrop_section", "geometry_section"],
-            ),
-            (
-                "tone",
-                tr("Exposure: Filtration, Tone, Paper Response, Dodge & Burn"),
-                tr("Exposure"),
-                [self.color_section, self.tone_section, self.paper_section, self.local_section],
-                ["color_section", "tone_section", "paper_section", "local_section"],
-            ),
-            (
-                "color",
-                tr("Look: Lab, Alternative Processes, Toning"),
-                tr("Look"),
-                [self.lab_section, self.altproc_section, self.toning_section],
-                ["lab_section", "altproc_section", "toning_section"],
-            ),
-            (
-                "finish",
-                tr("Finish: Retouch, Finishing"),
-                tr("Finish"),
-                [self.retouch_section, self.finish_section],
-                ["retouch_section", "finish_section"],
-            ),
-        ]
+        # The Frame tabs. Roll-wide cards live on RightPanel's Roll tab, Presets on Favorites.
+        groups = [(key, title, title, [getattr(self, a) for a in attrs], attrs) for key, title, attrs in frame_tabs()]
 
         self.pages = []
         self.tab_headers: list[TabHeader] = []
@@ -444,18 +413,20 @@ class ControlsPanel(QWidget):
             )
             if header is not None:
                 page_layout.addWidget(header)
-                if key == "tone":
+                # Each card's header mirror follows its card, whichever tab holds it.
+                if "tone_section" in section_attrs:
                     self._add_pick_better(header)
                     self._add_auto_mirror(header)
-                elif key == "geometry":
+                if "autocrop_section" in section_attrs:
                     self.auto_crop_mirror_btn = header.add_mirror(self.autocrop_sidebar.auto_frame_btn)
+                if "geometry_section" in section_attrs:
                     self.square_to_film_mirror_btn = header.add_mirror(
                         self.geometry_sidebar.auto_skew_btn,
                         qta.icon("fa5s.ruler-combined", color=THEME.text_hint, color_disabled=THEME.text_muted),
                     )
-                elif key == "color":
+                if "lab_section" in section_attrs:
                     self.auto_masking_mirror_btn = header.add_mirror(self.lab_sidebar.auto_masking_btn)
-                elif key == "finish":
+                if "retouch_section" in section_attrs:
                     self.optical_removal_mirror_btn = header.add_mirror(self.retouch_sidebar.auto_dust_btn)
                     self.ir_removal_mirror_btn = header.add_mirror(self.retouch_sidebar.ir_dust_btn)
             for section in sections:

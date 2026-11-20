@@ -73,6 +73,7 @@ _TAB_ICONS = {
     "tone": "mdi6.brightness-6",
     "color": "mdi6.palette-outline",
     "finish": "mdi6.auto-fix",
+    "retouch": "mdi6.bandage",
     "favourites": "mdi6.star-outline",
     "history": "mdi6.history",
 }
