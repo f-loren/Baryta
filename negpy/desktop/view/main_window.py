@@ -39,6 +39,7 @@ from negpy.desktop.view.sidebar.files import FileBrowser, table_color
 from negpy.desktop.view.update_notice import UpdateNotice
 from negpy.desktop.view.styles.templates import choice_label, hint_label, labeled_action
 from negpy.desktop.view.styles.theme import THEME
+from negpy.desktop.view.widgets.baryta_top_bar import BarytaTopBar
 from negpy.desktop.view.widgets.collapsible import fit_pane
 from negpy.desktop.view.widgets.command_palette import CommandPalette, FindField
 from negpy.desktop.view.widgets.loading_overlay import LoadingOverlay
@@ -432,6 +433,8 @@ class MainWindow(QMainWindow):
         self.file_browser.setVisible(expanded)
         self.toolbar.set_strip_expanded(expanded)
         self._apply_strip_constraints(expanded)
+        # Above the canvas and the docked panel alike, so it spans the window.
+        self.setMenuWidget(BarytaTopBar(self))
 
     TOOL_LABELS: dict[ToolMode, str] = {
         ToolMode.WB_PICK: tr("WB Picker"),

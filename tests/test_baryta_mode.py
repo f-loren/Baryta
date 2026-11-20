@@ -35,3 +35,42 @@ def test_the_scanner_setup_header_shows_only_over_a_visible_rig_card(qapp) -> No
     panel.optics_section.setVisible(True)
     panel.modified_synced.emit()
     assert not panel.rig_header.isHidden()
+
+
+def test_show_advanced_switches_the_mode_and_follows_the_shortcut(qapp) -> None:
+    from negpy.desktop.view.sidebar.right_panel import RightPanel
+
+    panel = RightPanel(FakeController(FakeRepo(**{ADVANCED_SETTING: False}))).controls_panel
+    panel.advanced_btn.setChecked(True)
+    assert panel.advanced_mode and not panel.toning_section.isHidden()
+    set_advanced_mode(panel, False)
+    assert not panel.advanced_btn.isChecked() and panel.toning_section.isHidden()
+
+
+def test_convert_roll_runs_reanalyze_and_apply_to_roll_offers_every_frame_card(qapp, monkeypatch) -> None:
+    from negpy.desktop.view.sidebar.right_panel import RightPanel
+
+    panel = RightPanel(FakeController(FakeRepo())).controls_panel
+    assert not panel.convert_btn.isEnabled(), "no roll open"
+    panel.convert_btn.setEnabled(True)
+    panel.convert_btn.click()
+    assert panel.controller.request_batch_normalization.call_count == 1
+    asked = []
+    monkeypatch.setattr(panel, "_apply_tab", asked.append)
+    panel.apply_roll_btn.click()
+    assert set(asked[0]) >= {"color", "tone", "paper", "lab", "retouch", "local", "autocrop", "geometry"}
+
+
+def test_the_top_bar_follows_the_panel_and_opens_its_tab(qapp) -> None:
+    from types import SimpleNamespace
+
+    from negpy.desktop.view.sidebar.right_panel import RightPanel
+    from negpy.desktop.view.widgets.baryta_top_bar import BarytaTopBar
+
+    controller = FakeController(FakeRepo())
+    right = RightPanel(controller)
+    bar = BarytaTopBar(SimpleNamespace(controller=controller, right_panel=right))
+    right.show_tab_by_key("roll")
+    assert bar.phase.currentData() == "frame"
+    bar.phase.setCurrentIndex(bar.phase.findData("scan"))
+    assert right._group_keys[right.group_stack.currentIndex()] == "scan"
