@@ -56,6 +56,12 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 | **Export** | File · Proof · Presets · Alongside Exports |
 | **Scan** | Scanner · the scanner's cards · Output |
 
+### Top bar and roll actions
+
+**Scan**, **Library** and **Develop** open the panel tabs for each part of the work. The bar also shows the open file. **Reset** discards this frame's edits. **Export** exports this frame with the settings on the Export tab.
+
+Over the Frame tabs, **Convert Roll** measures every frame so that the whole roll prints alike, as **Reanalyze** in Roll Analysis does. **Apply to Roll…** copies this frame's settings to the selected frames or the whole roll.
+
 ### Base and Advanced
 
 The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit. **Show Advanced**, under the Roll and Frame tabs, switches between the two.

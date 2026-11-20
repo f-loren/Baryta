@@ -56,6 +56,12 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 | **Esporta** | File · Prova · Preimpostazioni · Accanto alle esportazioni |
 | **Scansione** | Scanner · i riquadri dello scanner · Uscita |
 
+### Barra in alto e comandi del rullino
+
+**Scansiona**, **Libreria** e **Sviluppa** aprono le schede del pannello per ogni parte del lavoro. La barra mostra anche il file aperto. **Reimposta** annulla le modifiche di questo fotogramma. **Esporta** esporta questo fotogramma con le impostazioni della scheda Esporta.
+
+Sopra le schede di Fotogramma, **Converti rullino** misura ogni fotogramma perché tutto il rullino stampi uguale, come **Rianalizza** in Analisi del rullino. **Applica al rullino…** copia le impostazioni di questo fotogramma sui fotogrammi scelti o su tutto il rullino.
+
 ### Base e Avanzata
 
 L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica. **Mostra avanzate**, sotto le schede Rullino e Fotogramma, passa da una modalità all'altra.

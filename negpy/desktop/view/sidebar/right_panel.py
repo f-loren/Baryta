@@ -34,7 +34,7 @@ from negpy.desktop.view.widgets.charts import (
     WaveformWidget,
     ZoneStripWidget,
 )
-from negpy.desktop.view.sidebar.baryta_layout import add_rig_cards, advanced_footer
+from negpy.desktop.view.sidebar.baryta_layout import add_rig_cards, advanced_footer, frame_actions
 from negpy.desktop.view.widgets.collapsible import CollapsibleSection, fit_pane, make_section
 from negpy.desktop.view.widgets.fold import Fold, group_fold
 from negpy.desktop.view.widgets.gear_library_panel import GearLibraryPanel
@@ -395,6 +395,7 @@ class RightPanel(QWidget):
             for attr in section_attrs:
                 self._section_tab_index[attr] = i
 
+        page_layout.addWidget(frame_actions(self.controls_panel))
         page_layout.addWidget(self.switcher)
         page_layout.addWidget(self.stack, 1)
 

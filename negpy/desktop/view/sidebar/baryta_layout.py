@@ -8,7 +8,7 @@ and the saved tab resolve by key.
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QHBoxLayout, QWidget
 
-from negpy.desktop.view.styles.templates import labeled_toggle, section_subheader
+from negpy.desktop.view.styles.templates import labeled_action, labeled_toggle, section_subheader
 from negpy.desktop.view.styles.theme import THEME
 from negpy.kernel.system.i18n import tr
 
@@ -109,3 +109,27 @@ def set_advanced_mode(panel, on: bool) -> None:
         btn.blockSignals(False)
     panel.controller.session.repo.save_global_setting(ADVANCED_SETTING, on)
     apply_mode(panel)
+
+
+def frame_actions(panel) -> QWidget:
+    """Convert Roll and Apply to Roll over the Frame tabs: Roll Analysis's Reanalyze, and every
+    Frame card in one Apply to Frames picker."""
+    roll = panel.roll_sidebar
+    panel.convert_btn = labeled_action(
+        "fa5s.magic", tr("Convert Roll"), tr("Measure every frame and print the whole roll alike"), primary=True
+    )
+    panel.convert_btn.clicked.connect(panel.controller.request_batch_normalization)
+    cards = tuple(attr.removesuffix("_section") for _key, _title, attrs in frame_tabs() for attr in attrs)
+    panel.apply_roll_btn = labeled_action(
+        "fa5s.clone", tr("Apply to Roll…"), tr("Copy this frame's settings to the selected frames or the whole roll")
+    )
+    panel.apply_roll_btn.clicked.connect(lambda: panel._apply_tab(cards))
+    panel.convert_btn.setEnabled(roll.reanalyze_btn.isEnabled())
+    panel.modified_synced.connect(lambda: panel.convert_btn.setEnabled(roll.reanalyze_btn.isEnabled()))
+    row_widget = QWidget()
+    row = QHBoxLayout(row_widget)
+    row.setContentsMargins(0, 0, 0, THEME.space_sm)
+    row.setSpacing(THEME.space_sm)
+    row.addWidget(panel.convert_btn, 1)
+    row.addWidget(panel.apply_roll_btn, 1)
+    return row_widget
