@@ -17,6 +17,7 @@ from negpy.desktop.view.confirm import (
     confirm_restore_removed,
     confirm_unload_all,
 )
+from negpy.desktop.view.sidebar.baryta_layout import set_advanced_mode
 from negpy.desktop.view.widgets.granular_settings_dialog import open_paste_dialog, open_sticky_dialog, open_sync_bounds_dialog
 from negpy.desktop.view.widgets.rgb_triplet_dialog import open_triplet_dialog
 from negpy.desktop.view.shortcut_registry import (
@@ -680,6 +681,7 @@ class ShortcutManager:
             "tab_color": lambda: right.show_tab_by_key("color"),
             "tab_finish": lambda: right.show_tab_by_key("finish"),
             "tab_retouch": lambda: right.show_tab_by_key("retouch"),
+            "toggle_advanced": lambda: set_advanced_mode(right.controls_panel, not right.controls_panel.advanced_mode),
             "tab_export": lambda: right.show_tab_by_key("export"),
             "tab_metadata": lambda: right.show_tab_by_key("metadata"),
             "tab_history": lambda: right.show_tab_by_key("history"),

@@ -42,7 +42,7 @@ from negpy.desktop.view.widgets.tab_header import TabHeader
 
 # Sidebar Components
 from negpy.desktop.view.sidebar.presets import PresetsSidebar
-from negpy.desktop.view.sidebar.baryta_layout import frame_tabs
+from negpy.desktop.view.sidebar.baryta_layout import frame_tabs, install_mode_gate
 from negpy.desktop.view.sidebar.flatfield import FlatFieldSidebar
 from negpy.desktop.view.sidebar.process import ProcessSidebar
 from negpy.desktop.view.sidebar.roll import RollAnalysisSidebar
@@ -167,6 +167,7 @@ class ControlsPanel(QWidget):
 
         self._init_ui()
         self._connect_signals()
+        install_mode_gate(self)
 
     def _init_ui(self) -> None:
         self.presets_sidebar = PresetsSidebar(self.controller)
