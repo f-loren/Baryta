@@ -94,7 +94,8 @@ class FakeRepo:
         from unittest.mock import MagicMock
 
         self._mock = MagicMock()
-        self.data = dict(data)
+        # NegPy's tests expect every card in view, which is Baryta's Advanced mode.
+        self.data = {"baryta_advanced": True, **data}
 
     def get_global_setting(self, key, default=None):
         return self.data.get(key, default)

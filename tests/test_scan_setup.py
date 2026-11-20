@@ -48,7 +48,9 @@ def _setup_controller(setup=None, **state):
     controller.state = AppState()
     for key, value in state.items():
         setattr(controller.state, key, value)
-    controller.session.repo.get_global_setting.side_effect = lambda key, default=None: setup if key == "scan_setup" else default
+    controller.session.repo.get_global_setting.side_effect = lambda key, default=None: {"scan_setup": setup, "baryta_advanced": True}.get(
+        key, default
+    )
     controller.active_diptych.return_value = None
     controller.rgb_scan_mode_for_roll.return_value = False
     return controller
