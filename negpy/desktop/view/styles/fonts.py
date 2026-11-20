@@ -6,11 +6,13 @@ to a name the system has, once, and give Qt only that. Resolution needs a live
 QApplication, so it must not run at import time.
 """
 
+import sys
 from functools import lru_cache
 
 from PyQt6.QtGui import QFontDatabase
 
-UI_STACK = ("Inter", "Segoe UI", "Roboto", "Arial")
+# macOS takes its system font through the fallback, as Arial would win the stack there.
+UI_STACK = () if sys.platform == "darwin" else ("Segoe UI", "Roboto", "Arial")
 MONO_STACK = ("Consolas", "SF Mono", "Menlo", "DejaVu Sans Mono", "Courier New")
 
 
