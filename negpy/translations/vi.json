@@ -2610,6 +2610,7 @@
   "Scanned the strip: {frames}. Insert the next strip.": "Đã quét dải phim: {frames}. Hãy đưa dải tiếp theo vào.",
   "Scanned: {path}": "Đã quét: {path}",
   "Scanner": "Máy quét",
+  "Scanner Setup": "Thiết lập máy quét",
   "Scanner busy: {e}": "Máy quét đang bận: {e}",
   "Scanner lamp is still warming up: {value}": "Đèn máy quét vẫn đang khởi động: {value}",
   "Scanner session for {value} is closed": "Phiên máy quét của {value} đã đóng",

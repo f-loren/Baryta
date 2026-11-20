@@ -2610,6 +2610,7 @@
   "Scanned the strip: {frames}. Insert the next strip.": "스트립을 스캔했습니다: {frames}. 다음 스트립을 넣으세요.",
   "Scanned: {path}": "스캔됨: {path}",
   "Scanner": "스캐너",
+  "Scanner Setup": "스캐너 설정",
   "Scanner busy: {e}": "스캐너 사용 중 — {e}",
   "Scanner lamp is still warming up: {value}": "스캐너 램프가 아직 예열 중입니다: {value}",
   "Scanner session for {value} is closed": "{value}의 스캐너 세션이 닫혔습니다",

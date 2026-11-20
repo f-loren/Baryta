@@ -44,7 +44,7 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 
 | Scheda | Riquadri |
 |---|---|
-| **Rullino** | Configurazione · Decodifica RAW · Ottica · Calibrazione · Misurazione · Analisi del rullino · Composizione del fotogramma |
+| **Rullino** | Configurazione · Analisi del rullino · Misurazione · Ripristino dello sbiadimento · Composizione del fotogramma · Impostazione dello scanner (Decodifica RAW · Ottica · Calibrazione) |
 | **Fotogramma › Geometria** | Ritaglio · Raddrizza |
 | **Fotogramma › Colore** | Filtratura |
 | **Fotogramma › Tono** | Tono · Risposta della carta |
@@ -55,6 +55,10 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 | **Metadati** | Anteprima dei metadati · Scatto · Processo · Preimpostazioni · La mia attrezzatura |
 | **Esporta** | File · Prova · Preimpostazioni · Accanto alle esportazioni |
 | **Scansione** | Scanner · i riquadri dello scanner · Uscita |
+
+### Base e Avanzata
+
+L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica.
 
 ### Usare i controlli
 
@@ -494,6 +498,8 @@ Ogni modifica che hai fatto, la più recente in alto (le ultime 100). **Ora** in
 ## 10. Scheda Rullino
 
 Questi riquadri contengono ciò che i fotogrammi di un rullino condividono: la pellicola, come è stata scansionata e le misurazioni del rullino. Ogni riquadro ha la coppia Fotogramma / Rullino ([§1](#fotogramma-o-rullino)). La riga sopra i riquadri elenca i riquadri che questo fotogramma modifica per conto proprio.
+
+I riquadri di **Impostazione dello scanner** in fondo (Decodifica RAW, Ottica, Calibrazione) contengono le impostazioni che fai una volta sola per un sistema di scansione.
 
 <!-- panel:film src:60044f56 -->
 ### 10.1 Configurazione

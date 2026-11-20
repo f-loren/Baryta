@@ -44,7 +44,7 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 
 | Tab | Cards |
 |---|---|
-| **Roll** | Setup · Raw Decode · Optics · Calibration · Metering · Roll Analysis · Frame Assembly |
+| **Roll** | Setup · Roll Analysis · Metering · Fade Restoration · Frame Assembly · Scanner Setup (Raw Decode · Optics · Calibration) |
 | **Frame › Geometry** | Crop · Straighten |
 | **Frame › Color** | Filtration |
 | **Frame › Tone** | Tone · Paper Response |
@@ -55,6 +55,10 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 | **Metadata** | Metadata Preview · Shot · Process · Presets · My Gear |
 | **Export** | File · Proof · Presets · Alongside Exports |
 | **Scan** | Scanner · the scanner's cards · Output |
+
+### Base and Advanced
+
+The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit.
 
 ### Using the controls
 
@@ -494,6 +498,8 @@ Every change you made, newest on top (the last 100). **Now** marks the current s
 ## 10. Roll tab
 
 These cards hold what the frames of a roll share: the film, how it was scanned and the roll's measurements. Each card has the Frame / Roll pair ([§1](#frame-or-roll)). The line above the cards lists the cards this frame changes for itself.
+
+The **Scanner Setup** cards at the bottom (Raw Decode, Optics, Calibration) hold settings you make once for a scanning setup.
 
 <!-- panel:film -->
 ### 10.1 Setup

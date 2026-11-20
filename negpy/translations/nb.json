@@ -2610,6 +2610,7 @@
   "Scanned the strip: {frames}. Insert the next strip.": "Skannet stripen: {frames}. Sett inn neste stripe.",
   "Scanned: {path}": "Skannet: {path}",
   "Scanner": "Skanner",
+  "Scanner Setup": "Skanneroppsett",
   "Scanner busy: {e}": "Skanneren er opptatt: {e}",
   "Scanner lamp is still warming up: {value}": "Skannerlampen varmes fortsatt opp: {value}",
   "Scanner session for {value} is closed": "Skannerøkten for {value} er lukket",
