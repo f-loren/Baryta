@@ -8,13 +8,14 @@ import pytest
 
 from negpy.desktop import startup
 from negpy.kernel.system import paths, user_directory as data
+from negpy.kernel.system.brand import APP_NAME
 
 
 @pytest.fixture
 def locations(monkeypatch, tmp_path):
     monkeypatch.setenv("LOCALAPPDATA", str(tmp_path / "local"))
     monkeypatch.delenv("NEGPY_USER_DIR", raising=False)
-    source = tmp_path / "Documents" / "NegPy"
+    source = tmp_path / "Documents" / APP_NAME
     source.mkdir(parents=True)
     return source, data.local_data_root()
 
@@ -98,7 +99,7 @@ def test_concurrent_selection_is_not_overwritten(monkeypatch, locations, tmp_pat
         raise FileExistsError("already selected")
 
     monkeypatch.setattr(data.os, "link", race)
-    with pytest.raises(OSError, match="Another NegPy"):
+    with pytest.raises(OSError, match=f"Another {APP_NAME}"):
         data.select_user_directory(tmp_path / "loser")
     assert data.saved_user_directory() == root / "data-winner"
 

@@ -479,6 +479,7 @@ class MainWindow(QMainWindow):
         repo.save_global_setting("tutorial_resume", 0 if completed else self.tutorial_overlay.index)
 
     def show_about(self) -> None:
+        from negpy.kernel.system.brand import UPSTREAM_NAME, UPSTREAM_REPO
         from negpy.kernel.system.version import GITHUB_REPO, get_app_version
 
         box = QMessageBox(self)
@@ -491,6 +492,11 @@ class MainWindow(QMainWindow):
                 value=get_app_version(),
                 GITHUB_REPO=GITHUB_REPO,
                 value1=GITHUB_REPO,
+            )
+            + "<br><br>"
+            + tr(
+                "Based on {value}, free software under the GNU GPL version 3.",
+                value=f'<a href="https://github.com/{UPSTREAM_REPO}">{UPSTREAM_NAME}</a>',
             )
         )
         box.setTextInteractionFlags(Qt.TextInteractionFlag.TextBrowserInteraction)

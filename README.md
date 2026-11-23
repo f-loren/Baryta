@@ -1,3 +1,15 @@
+# Baryta
+
+Baryta converts film negatives and slides into finished pictures. It is a fork of [NegPy](https://github.com/marcinz606/NegPy) by marcinz606, with the same engine and a simpler interface for people who scan their own film.
+
+- The license is the GNU GPL version 3, the same as NegPy ([LICENSE](LICENSE)). The source of every Baryta release is in this repository.
+- Each new NegPy release merges into Baryta automatically when the tests pass ([NegPy Sync](.github/workflows/upstream-sync.yml)). A merge that needs a person opens an issue.
+- Baryta keeps its data in its own folder and does not share edits with an installed NegPy.
+
+The NegPy README follows.
+
+---
+
 <div align="center">
   <img src="media/icons/icon.svg" width="96" height="96" alt="NegPy Logo"><h1>NegPy</h1>
 

@@ -14,6 +14,7 @@ from negpy.desktop.view.mac_menu_bar import MacMenuBar, install_mac_menus
 from negpy.desktop.view.shortcut_registry import REGISTRY, default_bindings, set_current_bindings
 from negpy.desktop.view.window_menu import MENU_KEYS
 from negpy.kernel.system.version import ISSUES_PAGE
+from negpy.kernel.system.brand import APP_NAME
 
 
 class _FakeShortcuts:
@@ -70,7 +71,7 @@ def test_menus_are_in_apple_order(window):
     with patch("negpy.desktop.view.mac_menu_bar.sys.platform", "darwin"):
         bar = install_mac_menus(window)
 
-    assert [action.menu().title() for action in bar.actions()] == ["NegPy", "Window", "Help"]
+    assert [action.menu().title() for action in bar.actions()] == [APP_NAME, "Window", "Help"]
 
 
 def test_bar_has_no_parent(bar, window):

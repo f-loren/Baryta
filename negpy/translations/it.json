@@ -300,6 +300,7 @@
   "Bake to Roll": "Fissa sul rullino",
   "Base Relative: line up each channel at its film base, so the channels compare at one height.": "Relativo alla base: allinea ogni canale alla sua base della pellicola, così i canali si confrontano alla stessa altezza.",
   "Base Relative: the scan Parade's density above each channel's film base": "Relativo alla base: la densità della Parata della scansione sopra la base della pellicola di ogni canale",
+  "Based on {value}, free software under the GNU GPL version 3.": "Basato su {value}, software libero con licenza GNU GPL versione 3.",
   "Baseline from an older analysis: run Reanalyze": "Riferimento da un'analisi precedente: esegui Rianalizza",
   "Baseline from an older analysis: run Scene Analysis": "Riferimento da un'analisi precedente: esegui Analisi della scena",
   "Baseline: {value}": "Riferimento: {value}",

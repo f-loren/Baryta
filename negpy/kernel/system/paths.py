@@ -7,6 +7,8 @@ import sys
 import time
 from typing import Optional
 
+from negpy.kernel.system.brand import APP_NAME
+
 
 def get_resource_path(relative_path: str) -> str:
     """
@@ -34,7 +36,7 @@ def _usable_user_dir(base: Path) -> Optional[str]:
     by actually creating — a registered-but-absent folder is indistinguishable
     from a creatable one until CreateDirectory runs.
     """
-    target = base / "NegPy"
+    target = base / APP_NAME
     try:
         if os.path.isdir(base):
             return str(target.absolute())
