@@ -26,14 +26,14 @@ def _image(tab, width: int, height: int = 38):
     return tab.grab().toImage()
 
 
-def test_a_checked_tab_takes_the_warm_chip(qapp):
+def test_a_checked_tab_takes_the_accent_chip(qapp):
     tab = PanelTab("mdi6.crop", "Geometry")
     probe = (THEME.space_xs + THEME.space_sm, 19)
     rest = _image(tab, 105).pixelColor(*probe).name()
     tab.setChecked(True)
 
-    assert rest != QColor(THEME.bg_checked).name()
-    assert _image(tab, 105).pixelColor(*probe).name() == QColor(THEME.bg_checked).name()
+    assert rest != QColor(THEME.bg_primary).name()
+    assert _image(tab, 105).pixelColor(*probe).name() == QColor(THEME.bg_primary).name()
 
 
 def test_the_edit_dot_stays_inside_the_chip_of_a_narrow_tab(qapp):

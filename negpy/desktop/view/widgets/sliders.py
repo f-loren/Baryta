@@ -28,6 +28,10 @@ _RESET_HINT = f'<div style="color:{THEME.text_secondary};">{tr("Double-click to 
 _EMIT_INTERVAL_MS = 33
 # Longest a moving drag waits for a render: without it a steady drag renders only when it pauses.
 _MAX_WAIT_MS = 66
+# Handle diameter; mirrors the QSlider::handle width in modern_dark.qss.
+_HANDLE_W = 16
+# Sliders with a neutral point: the QSS leaves their sub-page empty and paintEvent fills from the point.
+_NEUTRAL_NAMES = ("neutral_slider", "cyan_slider", "magenta_slider", "yellow_slider")
 
 
 class _NoScrollSlider(QSlider):
@@ -45,9 +49,9 @@ class _NoScrollSlider(QSlider):
             event.ignore()
 
     def _value_from_x(self, x: float) -> int:
-        # Mirrors paintEvent's handle mapping (handle_w=12), so click-to-position and the
+        # Mirrors paintEvent's handle mapping, so click-to-position and the
         # default-marker tick agree. Any y within the widget maps here.
-        handle_w = 12
+        handle_w = _HANDLE_W
         usable = max(1, self.width() - handle_w)
         pos = max(0.0, min(1.0, (x - handle_w / 2) / usable))
         if self.invertedAppearance():
@@ -72,7 +76,7 @@ class _NoScrollSlider(QSlider):
 
     def mouseMoveEvent(self, event) -> None:
         if self.isSliderDown() and self._drag_anchor_px is not None and event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
-            usable = max(1, self.width() - 12)
+            usable = max(1, self.width() - _HANDLE_W)
             rng = self.maximum() - self.minimum()
             delta_px = event.position().x() - self._drag_anchor_px
             if self.invertedAppearance():
@@ -89,22 +93,35 @@ class _NoScrollSlider(QSlider):
         super().mouseReleaseEvent(event)
 
     def paintEvent(self, event) -> None:
-        super().paintEvent(event)
         if self._default_pos is None:
+            super().paintEvent(event)
             return
         groove_y = self.height() // 2
-        handle_w = 12
+        handle_w = _HANDLE_W
         usable = self.width() - handle_w
         x = handle_w // 2 + int(self._default_pos * usable)
         handle_x = handle_w // 2 + QStyle.sliderPositionFromValue(
             self.minimum(), self.maximum(), self.value(), usable, self.invertedAppearance()
         )
+        super().paintEvent(event)
+        if self.objectName() in _NEUTRAL_NAMES and self.isEnabled() and handle_x != x:
+            # Over the style's handle, so the handle is drawn again on top of the fill.
+            p = QPainter(self)
+            p.setRenderHint(QPainter.RenderHint.Antialiasing)
+            p.setPen(Qt.PenStyle.NoPen)
+            p.setBrush(QColor(THEME.bg_primary))
+            lo, hi = sorted((x, handle_x))
+            p.drawRoundedRect(QRectF(lo, groove_y - 2, hi - lo, 4), 2, 2)
+            name = self.objectName()
+            handle = getattr(THEME, "filter_" + name.removesuffix("_slider")) if name != "neutral_slider" else THEME.slider_handle
+            p.setBrush(QColor(handle))
+            p.drawEllipse(QRectF(handle_x - handle_w / 2, groove_y - handle_w / 2, handle_w, handle_w))
+            return
         # Over the handle the tick would read as a notch in it.
         if abs(handle_x - x) <= handle_w // 2 + 1:
             return
         p = QPainter(self)
-        pen = QPen(QColor(THEME.text_unit), 1)
-        p.setPen(pen)
+        p.setPen(QPen(QColor(THEME.text_unit), 1))
         p.drawLine(x, groove_y - 1, x, groove_y + 2)
 
 
@@ -363,8 +380,8 @@ class BaseSlider(QWidget):
 
 
 class CompactSlider(BaseSlider):
-    """One row: label, track, value; click the value to type one. A drag on the label scrubs the
-    value."""
+    """Name and value on one line, the track under them; click the value to type one. A drag on
+    the label scrubs the value."""
 
     def __init__(
         self,
@@ -390,7 +407,7 @@ class CompactSlider(BaseSlider):
 
         self.label = QLabel(tr(label))
         self.label.setStyleSheet(slider_label_qss(self._label_color))
-        self.label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
         self.setToolTip(label)
 
         # Keeps its slot while hidden, so the track does not shift.
@@ -412,7 +429,7 @@ class CompactSlider(BaseSlider):
             self.spin.setSuffix(unit)
 
         self.spin.setButtonSymbols(QDoubleSpinBox.ButtonSymbols.NoButtons)
-        self.spin.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
+        self.spin.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
         self.spin.setStyleSheet(slider_value_qss())
         self._advisory = ""
 
@@ -425,13 +442,18 @@ class CompactSlider(BaseSlider):
         self._scrub_start_val = 0.0
         self._band_drag = False
 
-        label_cell = QHBoxLayout()
-        label_cell.setSpacing(THEME.space_xs)
-        label_cell.addWidget(self.label)
-        label_cell.addWidget(self._edited_dot)
-        layout.addLayout(label_cell)
-        layout.addWidget(self.slider, 1)
-        layout.addWidget(self.spin)
+        # The row stays a QHBoxLayout: a fold's chevron opens it, ahead of the body.
+        top = QHBoxLayout()
+        top.setSpacing(THEME.space_xs)
+        top.addWidget(self.label)
+        top.addWidget(self._edited_dot)
+        top.addStretch(1)
+        top.addWidget(self.spin)
+        body = QVBoxLayout()
+        body.setSpacing(0)
+        body.addLayout(top)
+        body.addWidget(self.slider)
+        layout.addLayout(body, 1)
 
     def setToolTip(self, text: str) -> None:
         """Mirror onto the label: a child with its own tooltip shadows the parent's, and
@@ -448,16 +470,6 @@ class CompactSlider(BaseSlider):
         self.spin.setStyleSheet(slider_value_qss(THEME.warn_amber if text else THEME.text_primary))
         # Empty, the value shows the row's tooltip.
         self.spin.setToolTip(wrap_tooltip(text) if text else "")
-
-    def natural_column_widths(self) -> tuple[int, int]:
-        self.label.ensurePolished()
-        self.spin.ensurePolished()
-        return self.label.sizeHint().width(), self.spin.sizeHint().width()
-
-    def set_column_widths(self, label_width: int, value_width: int) -> None:
-        """Minimums, so a label that grows at runtime (a channel suffix) widens its row, not clips."""
-        self.label.setMinimumWidth(label_width)
-        self.spin.setMinimumWidth(value_width)
 
     # Extra clickable px above and below the thin slider, so a near-miss on the handle still
     # grabs it. The slider widget's own rect is only as tall as the handle, so these clicks
@@ -798,42 +810,31 @@ def _row_layout(widget: QWidget) -> QHBoxLayout | None:
 
 
 def align_slider_columns(root: QWidget) -> None:
-    """Give every CompactSlider under root the widest label and value among them, and every field
-    label the label column. A grouped row's label is shorter by the group's indent."""
+    """Give every field label beside a CompactSlider under root one left-aligned column that starts
+    where the slider names start, and end the field at the track's right edge. A grouped row's label
+    is shorter by the group's indent."""
     sliders = root.findChildren(CompactSlider)
-    if not sliders:
-        return
     fields = [(f, row) for f in root.findChildren(FieldLabel) if (row := _row_layout(f)) is not None]
+    if not sliders or not fields:
+        return
+    margins = QWidget.layout(sliders[0]).contentsMargins()
     for field, _ in fields:
         field.ensurePolished()
-    widths = [slider.natural_column_widths() for slider in sliders]
-    label_width = max(
-        [w[0] + _group_indent(s) for w, s in zip(widths, sliders)]
-        + [f.sizeHint().width() - f.contentsMargins().right() + _group_indent(f) for f, _ in fields]
-    )
-    value_width = max(w[1] for w in widths)
-    for slider in sliders:
-        slider.set_column_widths(label_width - _group_indent(slider), value_width)
-    # A field row spans the slider's label cell (edited dot and track gap included) and track; the value column stays clear.
-    slider_row = QWidget.layout(sliders[0])
-    margins = slider_row.contentsMargins()
-    trail = THEME.space_xs + sliders[0]._edited_dot.width() + slider_row.spacing()
+    label_width = max(f.sizeHint().width() - f.contentsMargins().left() + _group_indent(f) for f, _ in fields)
     for field, row in fields:
-        pad = max(trail - max(row.spacing(), 0), 0)
-        field.setContentsMargins(0, 0, pad, 0)
-        field.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
-        field.setFixedWidth(margins.left() + label_width - _group_indent(field) + pad)
+        field.setContentsMargins(margins.left(), 0, 0, 0)
+        field.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
+        field.setFixedWidth(margins.left() + label_width - _group_indent(field))
         # A spacer, not a margin: it gives way in a narrow panel, so the row compacts instead of clipping.
         spacer = getattr(field, "value_spacer", None)
         if spacer is None:
             spacer = field.value_spacer = QSpacerItem(0, 0)
             row.addSpacerItem(spacer)
-        reserve = slider_row.spacing() + value_width + margins.right()
-        # A trailing widget marked value_column sits in the value column instead of narrowing the field.
+        reserve = margins.right()
+        # A trailing widget marked value_column takes the slider's right margin before it narrows the field.
         for k in range(row.count()):
             item = row.itemAt(k)
             if item.widget() is not None and item.widget().property("value_column"):
-                # The item's hint, not the widget's: it honors a fixed size.
                 reserve -= item.sizeHint().width() + row.spacing()
         spacer.changeSize(max(reserve, 0), 0, QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
         row.invalidate()

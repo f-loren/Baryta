@@ -1,7 +1,7 @@
 from negpy.kernel.system.i18n import tr
 import qtawesome as qta
-from PyQt6.QtCore import QRectF, QSize
-from PyQt6.QtGui import QColor, QPainter, QPen
+from PyQt6.QtCore import QRectF, QSize, Qt
+from PyQt6.QtGui import QColor, QPainter
 from PyQt6.QtWidgets import QMenu, QToolButton, QWidget
 
 from negpy.desktop.view.styles.theme import THEME
@@ -73,9 +73,9 @@ class OverflowBar(QWidget):
     def paintEvent(self, event) -> None:
         p = QPainter(self)
         p.setRenderHint(QPainter.RenderHint.Antialiasing)
-        p.setPen(QPen(QColor(THEME.border_primary), 1))
+        p.setPen(Qt.PenStyle.NoPen)
         p.setBrush(QColor(THEME.bg_input))
-        p.drawRoundedRect(QRectF(self.rect()).adjusted(0.5, 0.5, -0.5, -0.5), THEME.radius_lg, THEME.radius_lg)
+        p.drawRoundedRect(QRectF(self.rect()), THEME.radius_lg, THEME.radius_lg)
 
     def _visible_items(self, avail: int) -> list[int]:
         count = len(self._items)

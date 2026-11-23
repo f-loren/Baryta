@@ -1,7 +1,7 @@
 """The right panel's tabs."""
 
 from PyQt6.QtCore import QPointF, QRect, QRectF, Qt
-from PyQt6.QtGui import QColor, QFont, QFontMetrics, QIcon, QPainter, QPen
+from PyQt6.QtGui import QColor, QFont, QFontMetrics, QIcon, QPainter
 from PyQt6.QtWidgets import QAbstractButton
 import qtawesome as qta
 
@@ -42,8 +42,8 @@ class PanelTab(QAbstractButton):
                 icon,
                 color=THEME.text_hint,
                 color_active=THEME.text_primary,
-                color_on=THEME.text_primary,
-                color_on_active=THEME.text_primary,
+                color_on=THEME.text_on_accent,
+                color_on_active=THEME.text_on_accent,
             )
         )
         if icon_only:
@@ -71,13 +71,13 @@ class PanelTab(QAbstractButton):
         checked, hover = self.isChecked(), self.underMouse()
         if self._divider:
             p.fillRect(0, THEME.space_xl, 1, h - 2 * THEME.space_xl, QColor(THEME.border_primary))
-        # The chip of a segmented control's current choice; hover takes its hover tint.
+        # The current tab takes the accent chip; hover takes the hover tint.
         pad_x, pad_y = THEME.space_xs + 0.5, THEME.space_sm + 0.5
         chip = QRectF(0, 0, w, h).adjusted(pad_x, pad_y, -pad_x, -pad_y)
         radius = THEME.radius_lg - pad_x / 2
         if checked:
-            p.setPen(QPen(QColor(THEME.border_checked), 1))
-            p.setBrush(QColor(THEME.bg_checked))
+            p.setPen(Qt.PenStyle.NoPen)
+            p.setBrush(QColor(THEME.bg_primary))
             p.drawRoundedRect(chip, radius, radius)
         elif hover:
             p.setPen(Qt.PenStyle.NoPen)
@@ -101,7 +101,7 @@ class PanelTab(QAbstractButton):
         self.icon().paint(p, icon_rect, Qt.AlignmentFlag.AlignCenter, mode, QIcon.State.On if checked else QIcon.State.Off)
         if text_w:
             p.setFont(font)
-            p.setPen(QColor(THEME.text_primary if checked or hover else THEME.text_hint))
+            p.setPen(QColor(THEME.text_on_accent if checked else THEME.text_primary if hover else THEME.text_hint))
             p.drawText(text_rect, Qt.AlignmentFlag.AlignCenter, self.text())
 
         p.setPen(Qt.PenStyle.NoPen)

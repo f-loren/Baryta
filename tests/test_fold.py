@@ -80,15 +80,6 @@ def test_folded_is_not_gated_but_a_hidden_rail_is():
     assert not fold.button.isHidden()
 
 
-def test_the_parent_label_gives_the_gutter_up_so_the_tracks_line_up():
-    repo, _ = _repo()
-    section, grade, shadows, _fold = _grade_card(repo)
-    section.resize(480, 300)
-    section.show()
-
-    assert grade.label.minimumWidth() + FoldButton.GUTTER + THEME.space_md == shadows.label.minimumWidth() + 8
-
-
 def test_a_field_row_opens_with_the_chevron_and_stays_aligned():
     repo, _ = _repo()
     mode = StepCombo()

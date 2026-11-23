@@ -31,9 +31,9 @@ QDockWidget::title {
 
 /* A button sits on the surface of a segmented control's track and a dropdown's face. */
 QPushButton {
-    background-color: @bg_input;
+    background-color: @bg_header;
     color: @text_primary;
-    border: 1px solid @border_primary;
+    border: 1px solid transparent;
     border-radius: 4px;
     padding: 6px 12px;
 }
@@ -46,8 +46,8 @@ QPushButton:flat {
 }
 
 QPushButton:hover {
-    background-color: @border_primary;
-    border: 1px solid @border_hover;
+    background-color: @bg_selected;
+    border: 1px solid transparent;
 }
 
 QPushButton:pressed {
@@ -60,19 +60,18 @@ QPushButton:pressed {
    brightens from text_hint to text_primary (templates._button_icon). */
 QPushButton:checked {
     background-color: @bg_checked;
-    border: 1px solid @border_checked;
+    border: 1px solid transparent;
     font-weight: 600;
 }
 
 QPushButton:checked:hover {
     background-color: @bg_checked_hover;
-    border: 1px solid @border_checked_hover;
+    border: 1px solid transparent;
 }
 
-/* The fill means checked, so hover on a toggle that is off brightens only the border. */
 QPushButton[checkable="true"]:hover:!checked {
-    background-color: @bg_input;
-    border: 1px solid @border_indicator;
+    background-color: @bg_selected;
+    border: 1px solid transparent;
 }
 
 QPushButton[checkable="true"]:flat:hover:!checked {
@@ -125,18 +124,18 @@ QToolButton {
 }
 
 QToolButton:hover {
-    background-color: @border_primary;
-    border: 1px solid @border_hover;
+    background-color: @bg_selected;
+    border: 1px solid transparent;
 }
 
 QToolButton:checked {
     background-color: @bg_checked;
-    border: 1px solid @border_checked;
+    border: 1px solid transparent;
 }
 
 QToolButton:checked:hover {
     background-color: @bg_checked_hover;
-    border: 1px solid @border_checked_hover;
+    border: 1px solid transparent;
 }
 
 QSlider {
@@ -163,25 +162,30 @@ QSlider#magenta_slider::handle:horizontal { background: @filter_magenta; }
 QSlider#yellow_slider::handle:horizontal { background: @filter_yellow; }
 
 QSlider::handle:horizontal {
-    background: @text_secondary;
+    background: @slider_handle;
     border: none;
-    width: 12px;
-    height: 12px;
-    margin: -4px 0;
-    border-radius: 6px;
+    width: 16px;
+    height: 16px;
+    margin: -6px 0;
+    border-radius: 8px;
 }
 
-QSlider::handle:horizontal:hover { background: @text_primary; }
-QSlider::handle:horizontal:pressed { background: @text_primary; }
-
-/* An even track: the handle and the value say where it is. */
+/* The track fills from its start to the handle; a slider with a neutral point fills from there in paintEvent. */
 QSlider::sub-page:horizontal {
+    background: @bg_primary;
+    border-radius: 2px;
+}
+
+QSlider#neutral_slider::sub-page:horizontal,
+QSlider#cyan_slider::sub-page:horizontal,
+QSlider#magenta_slider::sub-page:horizontal,
+QSlider#yellow_slider::sub-page:horizontal {
     background: transparent;
 }
 
-/* Disabled state — grey out locked/overridden controls. Relies entirely on
-   Qt's automatic isEnabled()-driven :disabled propagation from a parent
-   widget.setEnabled(False); no per-callsite changes needed. */
+QSlider::sub-page:horizontal:disabled { background: @border_color; }
+
+/* Disabled state: Qt's :disabled follows a parent's setEnabled(False). */
 QSlider::handle:horizontal:disabled { background: @slider_disabled; }
 QSlider::groove:horizontal:disabled { background: @border_input; }
 
@@ -399,12 +403,10 @@ QToolTip {
 
 /* Phase 2A — objectName-based rules */
 
+/* Sections sit on the panel ground; a hairline over each header splits them. */
 QFrame#collapsible_content {
-    background-color: @bg_card;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border: 1px solid @border_primary;
-    border-top: none;
+    background-color: transparent;
+    border: none;
 }
 
 /* A card's scope (widgets/collapsible.py set_scope_buttons), as a dim stripe on the header
@@ -510,24 +512,24 @@ QToolButton[dropdown="true"]::menu-indicator {
 /* A QToolButton in a panel (the Library row) sits on the track surface, as a QPushButton does.
    The plain QToolButton stays flat for the canvas bar, which draws its own tracks. */
 QToolButton[boxed="true"] {
-    background-color: @bg_input;
-    border: 1px solid @border_primary;
+    background-color: @bg_header;
+    border: 1px solid transparent;
 }
 
 QToolButton[boxed="true"]:hover {
-    background-color: @border_primary;
-    border: 1px solid @border_hover;
+    background-color: @bg_selected;
+    border: 1px solid transparent;
 }
 
 /* The Roll row's sheet filter while it hides frames: the chip of a chosen item. */
 QToolButton[filtering="true"] {
     background-color: @bg_checked;
-    border: 1px solid @border_checked;
+    border: 1px solid transparent;
 }
 
 QToolButton[filtering="true"]:hover {
     background-color: @bg_checked_hover;
-    border: 1px solid @border_checked_hover;
+    border: 1px solid transparent;
 }
 
 /* Shortcut overview/Customize dialog rows. Transparent by default so the row
@@ -543,28 +545,27 @@ QFrame#shortcut_editor_row[highlighted="true"], QFrame#reveal_flash {
     border-radius: 4px;
 }
 
-/* Primary action (Export in the Export panel): a dark red fill with a dim edge, so it reads
-   as the one call-to-action, not a disabled outline. */
+/* Primary action: the one accent fill in a panel. */
 QPushButton[primary="true"], QToolButton[primary="true"] {
     background-color: @bg_primary;
-    border: 1px solid @border_checked_hover;
+    border: 1px solid transparent;
     color: @text_on_accent;
     font-weight: 600;
 }
 
 QPushButton[primary="true"]:hover, QToolButton[primary="true"]:hover {
     background-color: @bg_primary_hover;
-    border: 1px solid @border_checked_hover;
+    border: 1px solid transparent;
 }
 
 QPushButton[primary="true"]:pressed, QToolButton[primary="true"]:pressed {
     background-color: @bg_checked_hover;
-    border: 1px solid @border_checked_hover;
+    border: 1px solid transparent;
 }
 
 QPushButton[primary="true"]:disabled, QToolButton[primary="true"]:disabled {
-    background-color: transparent;
-    border: 1px solid @border_primary;
+    background-color: @bg_header;
+    border: 1px solid transparent;
     color: @text_muted;
 }
 
@@ -573,26 +574,20 @@ QPushButton[primary="true"]:disabled, QToolButton[primary="true"]:disabled {
    the content frame's, so an open card has square bottom corners; only a collapsed one rounds them. */
 QPushButton#collapsible_header {
     text-align: left;
-    background-color: @bg_header;
-    border: 1px solid @border_primary;
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid @border_input;
     border-radius: 0;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
     color: @text_on_accent;
     padding: 0;
 }
 
-QPushButton#collapsible_header[checkable="true"]:!checked {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
 QPushButton#collapsible_header:hover {
-    background-color: @bg_selected;
+    background-color: @header_veil_hover;
 }
 
 QPushButton#collapsible_header:checked {
-    background-color: @bg_header;
+    background-color: transparent;
 }
 
 QPushButton#collapsible_header[overlay="true"] {
@@ -609,7 +604,7 @@ QPushButton#collapsible_header[overlay="true"]:checked {
 
 /* A card that never collapses has no click target, so its header keeps one look. */
 QPushButton#collapsible_header[checkable="false"]:hover {
-    background-color: @bg_header;
+    background-color: transparent;
 }
 
 /* The tab header (widgets/tab_header.py) sits on the panel ground; its buttons sit in tracks. */

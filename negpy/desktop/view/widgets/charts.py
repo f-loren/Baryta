@@ -9,7 +9,6 @@ from PyQt6.QtGui import (
     QColor,
     QFont,
     QImage,
-    QLinearGradient,
     QPainter,
     QPainterPath,
     QPen,
@@ -405,25 +404,10 @@ class PhotometricCurveWidget(QWidget):
 
         _fill_ground(painter, self)
 
-        # Grid at 0.25 intervals, including 0 and 1, so the axis padding reads as margin and a
-        # curve flat at zero visibly lands on the baseline.
+        # The baseline alone, so a curve flat at zero visibly lands on it; the plot keeps no grid.
         painter.setPen(_guide_pen())
-        for i in range(0, 5):
-            gx = int(self._wx(i * 0.25, w))
-            gy = int(self._wy(i * 0.25, h))
-            painter.drawLine(gx, 0, gx, h)
-            painter.drawLine(0, gy, w, gy)
-
-        # Diagonal reference (dashed)
-        diagonal_pen = _guide_pen()
-        diagonal_pen.setStyle(Qt.PenStyle.DashLine)
-        painter.setPen(diagonal_pen)
-        painter.drawLine(
-            int(self._wx(0.0, w)),
-            int(self._wy(0.0, h)),
-            int(self._wx(1.0, w)),
-            int(self._wy(1.0, h)),
-        )
+        gy = int(self._wy(0.0, h))
+        painter.drawLine(0, gy, w, gy)
 
         # Histograms under everything else so the curve/zone tints stay readable.
         self._draw_density_histogram(painter, w, h)
@@ -447,20 +431,6 @@ class PhotometricCurveWidget(QWidget):
                 self._draw_zone_shading(painter, w, h, self._toe_mask, 0.5, warm)
             elif self._active_param == "shoulder":
                 self._draw_zone_shading(painter, w, h, self._shoulder_mask, 0.5, cool)
-
-            # P2: Gradient luminance fill under the curve
-            fill_path = QPainterPath(curve_path)
-            bot = self._wy(self._Y_MIN, h)
-            fill_path.lineTo(self._wx(self._curve_pts[-1][0], w), bot)
-            fill_path.lineTo(self._wx(self._curve_pts[0][0], w), bot)
-            fill_path.closeSubpath()
-
-            gradient = QLinearGradient(0.0, 0.0, float(w), 0.0)
-            gradient.setColorAt(0.0, with_alpha(THEME.canvas_bg_black, 55))
-            gradient.setColorAt(1.0, with_alpha(THEME.text_on_accent, 55))
-            painter.setBrush(QBrush(gradient))
-            painter.setPen(Qt.PenStyle.NoPen)
-            painter.drawPath(fill_path)
 
             self._draw_zone_ticks(painter, h)
 
@@ -557,14 +527,14 @@ class PhotometricCurveWidget(QWidget):
 
     def _draw_output_histogram(self, painter: QPainter, w: int, h: int) -> None:
         """Print tones, black left → white right across the plot's 0..1, in the density
-        histogram's bottom band: luminance filled gray, R, G and B as lines."""
+        histogram's bottom band: luminance, R, G and B each filled under its line."""
         if self._output_counts is None:
             return
         specs = (
             (3, THEME.text_secondary, 34, 130),
-            (0, THEME.channel_red, 0, 170),
-            (1, THEME.channel_green, 0, 170),
-            (2, THEME.channel_blue, 0, 170),
+            (0, THEME.channel_red, 60, 140),
+            (1, THEME.channel_green, 60, 140),
+            (2, THEME.channel_blue, 60, 140),
         )
         bot = self._wy(self._Y_MIN, h)
         scale = self._DENSITY_HIST_FRAC * h
@@ -1476,13 +1446,12 @@ class _WellEdge(QWidget):
         edge.addRoundedRect(rect, THEME.radius_md, THEME.radius_md)
         outside = QPainterPath()
         outside.addRect(QRectF(self.rect()))
-        # The well sits on a section card: the corners take its color.
-        painter.fillPath(outside.subtracted(edge), QColor(THEME.bg_card))
-        painter.setPen(QPen(QColor(THEME.border_primary), 1))
+        # The well sits on the panel ground, with no edge of its own: the corners take the ground's color.
+        painter.fillPath(outside.subtracted(edge), QColor(THEME.bg_dark))
+        painter.setPen(QPen(QColor(THEME.border_input), 1))
         for chart in self.parentWidget().shown()[1:]:
             y = chart.y() - 0.5
             painter.drawLine(QPointF(rect.left(), y), QPointF(rect.right(), y))
-        painter.drawPath(edge)
 
 
 class MiniHistogramWidget(QWidget):

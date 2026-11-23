@@ -49,11 +49,11 @@ def _fill_at_rest_and_under_mouse(qapp, button) -> tuple[str, str]:
     return fills[0], fills[1]
 
 
-def test_hover_on_a_toggle_that_is_off_draws_no_fill(qapp):
-    """The fill means checked."""
+def test_hover_on_a_toggle_that_is_off_stays_gray(qapp):
+    """The accent fill means checked, so hover only raises the gray."""
     for button in (tool_toggle("fa5s.circle", "Oval", ""), ToggleMenuButton("fa5s.magic", "", "")):
-        rest, hover = _fill_at_rest_and_under_mouse(qapp, button)
-        assert rest == hover, type(button).__name__
+        _rest, hover = _fill_at_rest_and_under_mouse(qapp, button)
+        assert hover != QColor(THEME.bg_checked).name(), type(button).__name__
 
 
 def test_hover_on_an_action_fills(qapp):
@@ -147,7 +147,7 @@ def test_a_progress_bar_fills_with_the_chip(qapp):
     assert image.pixelColor(150, 10).name() == QColor(THEME.bg_input).name()
 
 
-def test_a_button_sits_on_the_track_surface_in_a_subheader_too_and_a_flat_one_on_nothing(qapp):
+def test_a_button_is_a_raised_fill_in_a_subheader_too_and_a_flat_one_on_nothing(qapp):
     host = QWidget()
     host.setObjectName("host")
     host.setStyleSheet(load_stylesheet() + f"#host {{ background: {THEME.bg_card}; }}")
@@ -165,9 +165,8 @@ def test_a_button_sits_on_the_track_surface_in_a_subheader_too_and_a_flat_one_on
     def at(w, x):
         return image.pixelColor(w.geometry().left() + x, w.geometry().center().y()).name()
 
-    track = (QColor(THEME.border_primary).name(), QColor(THEME.bg_input).name())
-    assert (at(boxed, 0), at(boxed, 4)) == track
-    assert (at(subheader, 0), at(subheader, 4)) == track
+    raised = QColor(THEME.bg_header).name()
+    assert at(boxed, 4) == at(subheader, 4) == raised
     assert at(flat, 0) == QColor(THEME.bg_card).name()
 
 
@@ -232,7 +231,7 @@ def _edge_and_fill(image: QImage, widget: QWidget) -> tuple[str, str]:
     return image.pixelColor(widget.geometry().left(), y).name(), image.pixelColor(widget.geometry().left() + 3, y).name()
 
 
-def test_a_panel_tool_button_and_the_dropdown_faces_sit_on_the_track(qapp):
+def test_a_panel_tool_button_is_raised_and_the_dropdown_faces_sit_on_the_track(qapp):
     from PyQt6.QtWidgets import QComboBox, QToolButton
 
     from negpy.desktop.view.widgets.searchable_gear_combo import SearchableGearCombo
@@ -246,10 +245,11 @@ def test_a_panel_tool_button_and_the_dropdown_faces_sit_on_the_track(qapp):
     editable.setEditable(True)
     editable.addItem("4000")
     editable.setFocusPolicy(Qt.FocusPolicy.NoFocus)
+    _host, image = _on_card(boxed)
+    assert _edge_and_fill(image, boxed)[1] == QColor(THEME.bg_header).name()
     track = (QColor(THEME.border_primary).name(), QColor(THEME.bg_input).name())
-    for widget in (boxed, editable):
-        _host, image = _on_card(widget)
-        assert _edge_and_fill(image, widget) == track, widget
+    _host, image = _on_card(editable)
+    assert _edge_and_fill(image, editable) == track
 
     host, image = _on_card(gear)
     assert _edge_and_fill(image, gear)[0] == QColor(THEME.slider_disabled).name(), "the face shows the field's focus"
