@@ -7,6 +7,7 @@ from string import Formatter
 from typing import TYPE_CHECKING, Any
 
 from negpy.kernel.system.paths import get_resource_path
+from negpy.kernel.system.brand import brand
 
 if TYPE_CHECKING:
     from PyQt6.QtCore import QCoreApplication, QTranslator
@@ -85,7 +86,7 @@ def language() -> str:
 
 def tr(source: str, /, **values: Any) -> str:
     """Translate the template first; insert file names, paths and user text as values."""
-    text = _messages.get(source, source)
+    text = brand(_messages.get(source, source))
     return text.format(**values) if values else text
 
 

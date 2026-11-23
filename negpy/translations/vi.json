@@ -300,6 +300,7 @@
   "Bake to Roll": "Cố định vào cuộn",
   "Base Relative: line up each channel at its film base, so the channels compare at one height.": "Tương đối theo nền: căn từng kênh tại nền phim của nó, để các kênh so sánh ở cùng một mức.",
   "Base Relative: the scan Parade's density above each channel's film base": "Tương đối theo nền: mật độ trên Parade của bản quét so với nền phim của từng kênh",
+  "Based on {value}, free software under the GNU GPL version 3.": "Dựa trên {value}, phần mềm tự do theo giấy phép GNU GPL phiên bản 3.",
   "Baseline from an older analysis: run Reanalyze": "Đường cơ sở từ một lần phân tích cũ: hãy chạy Phân tích lại",
   "Baseline from an older analysis: run Scene Analysis": "Đường cơ sở từ một lần phân tích cũ: hãy chạy Phân tích cảnh",
   "Baseline: {value}": "Đường cơ sở: {value}",

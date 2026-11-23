@@ -1,4 +1,5 @@
 from negpy.kernel.system.i18n import configure, install_qt_translations, tr
+from negpy.kernel.system.brand import APP_NAME
 import html
 import os
 import re
@@ -235,7 +236,7 @@ def _run_headless_render(launch, override_cfg) -> int:
         repo = StorageRepository(APP_CONFIG.edits_db_path, APP_CONFIG.settings_db_path)
         apply_stored_override(override_cfg, APP_CONFIG, repo.get_global_setting)
     app = QCoreApplication(sys.argv)
-    app.setApplicationName("NegPy")
+    app.setApplicationName(APP_NAME)
     try:
         return run_render(launch)
     except Exception:
@@ -336,7 +337,7 @@ def main() -> None:
         qInstallMessageHandler(_filter_qt_messages)
         app = QApplication(sys.argv)
         install_qt_translations(app)
-        app.setApplicationName("NegPy")
+        app.setApplicationName(APP_NAME)
         app.setStyle(_AppStyle("Fusion"))
         app.installEventFilter(AppEventFilter(app))
 

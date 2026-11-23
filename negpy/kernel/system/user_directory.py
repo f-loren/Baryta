@@ -1,6 +1,7 @@
 """Persistent Windows data-directory selection."""
 
 from negpy.kernel.system.i18n import tr
+from negpy.kernel.system.brand import APP_NAME
 import json
 import os
 from pathlib import Path
@@ -15,7 +16,7 @@ def local_data_root() -> Path:
     base = Path(os.environ.get("LOCALAPPDATA") or Path.home() / "AppData" / "Local")
     if not base.is_absolute():
         raise OSError(tr("LOCALAPPDATA must be an absolute path."))
-    return base / "NegPy"
+    return base / APP_NAME
 
 
 def saved_user_directory() -> Path | None:

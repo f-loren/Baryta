@@ -8,14 +8,15 @@ import os
 from pathlib import Path
 
 from negpy.kernel.system.paths import _usable_user_dir, get_default_user_dir
+from negpy.kernel.system.brand import APP_NAME
 
 
 def test_usable_dir_existing_base_returns_without_creating(tmp_path):
     result = _usable_user_dir(tmp_path)
 
-    assert result == str((tmp_path / "NegPy").absolute())
+    assert result == str((tmp_path / APP_NAME).absolute())
     # Base exists, so resolution must not touch the filesystem.
-    assert not (tmp_path / "NegPy").exists()
+    assert not (tmp_path / APP_NAME).exists()
 
 
 def test_usable_dir_missing_but_creatable_base_creates(tmp_path):
@@ -23,8 +24,8 @@ def test_usable_dir_missing_but_creatable_base_creates(tmp_path):
 
     result = _usable_user_dir(base)
 
-    assert result == str((base / "NegPy").absolute())
-    assert (base / "NegPy").is_dir()
+    assert result == str((base / APP_NAME).absolute())
+    assert (base / APP_NAME).is_dir()
 
 
 def test_usable_dir_uncreatable_base_returns_none(tmp_path):
@@ -68,7 +69,7 @@ def test_broken_documents_falls_back_to_home(monkeypatch, tmp_path):
     result = get_default_user_dir()
 
     # Falls past the broken Documents to home/Documents, created on the spot.
-    assert result == str((home / "Documents" / "NegPy").absolute())
+    assert result == str((home / "Documents" / APP_NAME).absolute())
     assert Path(result).is_dir()
 
 
@@ -82,5 +83,5 @@ def test_existing_documents_used_without_side_effects(monkeypatch, tmp_path):
 
     result = get_default_user_dir()
 
-    assert result == str((docs / "NegPy").absolute())
-    assert not (docs / "NegPy").exists()
+    assert result == str((docs / APP_NAME).absolute())
+    assert not (docs / APP_NAME).exists()

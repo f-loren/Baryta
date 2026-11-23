@@ -300,6 +300,7 @@
   "Bake to Roll": "롤에 고정",
   "Base Relative: line up each channel at its film base, so the channels compare at one height.": "베이스 기준: 각 채널을 필름 베이스에 맞춰 같은 높이에서 비교할 수 있게 합니다.",
   "Base Relative: the scan Parade's density above each channel's film base": "베이스 기준: 스캔 퍼레이드의 각 채널을 필름 베이스 기준 농도로 표시합니다",
+  "Based on {value}, free software under the GNU GPL version 3.": "{value} 기반의 자유 소프트웨어입니다(GNU GPL 버전 3).",
   "Baseline from an older analysis: run Reanalyze": "이전 분석의 기준값입니다. 다시 분석하세요",
   "Baseline from an older analysis: run Scene Analysis": "이전 분석의 기준값입니다. 장면 분석을 실행하세요",
   "Baseline: {value}": "기준: {value}",

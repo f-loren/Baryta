@@ -300,6 +300,7 @@
   "Bake to Roll": "ロールに確定",
   "Base Relative: line up each channel at its film base, so the channels compare at one height.": "ベース基準：各チャンネルをフィルムベースにそろえ、同じ高さで比べられるようにします。",
   "Base Relative: the scan Parade's density above each channel's film base": "ベース相対：スキャンパレードの各チャンネルをフィルムベース基準の濃度にします",
+  "Based on {value}, free software under the GNU GPL version 3.": "{value} をベースにしたフリーソフトウェアです（GNU GPL バージョン 3）。",
   "Baseline from an older analysis: run Reanalyze": "以前の解析による基準値です。再解析してください",
   "Baseline from an older analysis: run Scene Analysis": "以前の解析による基準値です。シーン解析を実行してください",
   "Baseline: {value}": "ベースライン: {value}",

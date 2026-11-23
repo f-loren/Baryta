@@ -19,6 +19,7 @@ from negpy.desktop.view.styles.templates import pin_dialog_default
 from negpy.desktop.view.styles.theme import THEME
 from negpy.desktop.view.widgets.dialog_geometry import remember_dialog_geometry
 from negpy.kernel.system.paths import get_resource_path
+from negpy.kernel.system.brand import brand
 
 # A localized guide's marker also records its English source (src:<hash>), checked by tests/test_i18n.py.
 _MARKER = re.compile(r"^<!--\s*panel:([a-z_]+)(?:\s+src:[0-9a-f]+)?\s*-->\s*$")
@@ -74,7 +75,7 @@ def has_guide(key: str) -> bool:
 
 
 def guide_markdown(key: str) -> str:
-    return _guides().get(key, "")
+    return brand(_guides().get(key, ""))
 
 
 class SectionHelpDialog(QDialog):
