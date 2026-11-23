@@ -51,6 +51,7 @@ class ThemeConfig:
     border_focus: str = "#898989"
     border_indicator: str = "#696969"
     slider_disabled: str = "#7C7C7C"
+    slider_handle: str = "#F4F4F4"
     text_on_accent: str = "#FFFFFF"
     text_primary: str = "#E6E6E6"
     text_secondary: str = "#BDBDBD"

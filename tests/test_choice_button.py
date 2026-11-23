@@ -245,7 +245,7 @@ def test_segmented_segments_tile_the_track_and_shrink_without_overlap(qapp):
         assert rects[-1].right() <= width
 
 
-def test_segmented_chip_is_warm_while_live_and_gray_while_disabled(qapp):
+def test_segmented_chip_is_raised_while_live_and_flat_while_disabled(qapp):
     from PyQt6.QtGui import QColor
 
     from negpy.desktop.view.styles.theme import THEME
@@ -256,4 +256,4 @@ def test_segmented_chip_is_warm_while_live_and_gray_while_disabled(qapp):
     seg.setEnabled(False)
     disabled = seg.grab().toImage().pixelColor(probe).name()
 
-    assert (live, disabled) == (QColor(THEME.bg_checked).name(), QColor(THEME.bg_selected).name())
+    assert (live, disabled) == (QColor(THEME.bg_selected).name(), QColor(THEME.bg_header).name())

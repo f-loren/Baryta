@@ -327,8 +327,8 @@ class SegmentedChoice(QWidget):
         segments = self._segments()
         live = self.isEnabled()
 
-        border = THEME.border_focus if self.hasFocus() and self._tab_focus else THEME.border_primary
-        p.setPen(QPen(QColor(border), 1))
+        focus = self.hasFocus() and self._tab_focus
+        p.setPen(QPen(QColor(THEME.border_focus), 1) if focus else Qt.PenStyle.NoPen)
         p.setBrush(QColor(THEME.bg_input))
         p.drawRoundedRect(QRectF(self.rect()).adjusted(0.5, 0.5, -0.5, -0.5), THEME.radius_lg, THEME.radius_lg)
 
@@ -340,18 +340,11 @@ class SegmentedChoice(QWidget):
         chip = QRectF(segments[self._index])
         if self._slide.state() == QVariantAnimation.State.Running:
             chip.moveLeft(self._chip_x)
-        # A disabled track keeps a gray chip, so the warm chip always means a live choice.
-        p.setPen(QPen(QColor(THEME.border_checked), 1) if live else Qt.PenStyle.NoPen)
-        p.setBrush(QColor(THEME.bg_checked if live else THEME.bg_selected))
+        # A raised gray chip; a disabled track keeps it flat, so a raised chip always means a live choice.
+        p.setPen(Qt.PenStyle.NoPen)
+        p.setBrush(QColor(THEME.bg_selected if live else THEME.bg_header))
         pad = THEME.space_xs + 0.5
         p.drawRoundedRect(chip.adjusted(pad, pad, -pad, -pad), THEME.radius_lg - pad / 2, THEME.radius_lg - pad / 2)
-
-        p.setPen(QPen(QColor(THEME.border_primary), 1))
-        inset = THEME.space_md + 1
-        for i in range(len(segments) - 1):
-            if self._index not in (i, i + 1):
-                x = int(segments[i].right())
-                p.drawLine(x, inset, x, self.height() - inset)
 
         icons = self._show_icons()
         for i, (r, (icon_name, label, *color)) in enumerate(zip(segments, self._choices)):

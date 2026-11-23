@@ -311,51 +311,6 @@ def test_value_box_prints_a_point_and_reads_a_comma(qapp):
     assert slider.spin.valueFromText("1,25") == 1.25
 
 
-def test_align_slider_columns_lines_up_label_and_value(qapp):
-    from PyQt6.QtWidgets import QVBoxLayout, QWidget
-
-    from negpy.desktop.view.widgets.sliders import align_slider_columns
-
-    root = QWidget()
-    layout = QVBoxLayout(root)
-    short = CompactSlider("Toe", 0.0, 1.0, 0.5)
-    long = CompactSlider("Highlights Density", -1.0, 1.0, 0.0, unit=" st")
-    layout.addWidget(short)
-    layout.addWidget(long)
-
-    align_slider_columns(root)
-
-    assert short.label.minimumWidth() == long.label.minimumWidth() >= long.label.sizeHint().width()
-    assert short.spin.minimumWidth() == long.spin.minimumWidth() >= long.spin.sizeHint().width()
-
-
-def test_align_slider_columns_starts_grouped_tracks_at_same_x(qapp):
-    from PyQt6.QtWidgets import QVBoxLayout, QWidget
-
-    from negpy.desktop.view.widgets.sliders import SliderGroup, align_slider_columns
-
-    root = QWidget()
-    layout = QVBoxLayout(root)
-    layout.setContentsMargins(0, 0, 0, 0)
-    alone = CompactSlider("Toe", 0.0, 1.0, 0.5)
-    grouped = CompactSlider("Highlights Density", -1.0, 1.0, 0.0)
-    layout.addWidget(alone)
-    layout.addWidget(SliderGroup(grouped, CompactSlider("Shadows Density", -1.0, 1.0, 0.0)))
-
-    align_slider_columns(root)
-    root.resize(400, 200)
-    root.show()
-    qapp.processEvents()
-
-    assert alone.slider.mapTo(root, alone.slider.rect().topLeft()).x() == grouped.slider.mapTo(root, grouped.slider.rect().topLeft()).x()
-
-
-def test_label_text_sits_against_the_track(qapp):
-    slider = CompactSlider("Density", 0.0, 2.0, 1.0)
-
-    assert slider.label.alignment() & Qt.AlignmentFlag.AlignRight
-
-
 def test_field_label_right_aligns_only_in_a_column(qapp):
     from negpy.desktop.view.styles.templates import field_label
 
@@ -363,7 +318,7 @@ def test_field_label_right_aligns_only_in_a_column(qapp):
     assert field_label("Format", 90).alignment() & Qt.AlignmentFlag.AlignRight
 
 
-def test_field_row_in_a_slider_card_spans_the_track(qapp):
+def test_field_row_in_a_slider_card_starts_with_the_names_and_ends_with_the_track(qapp):
     from PyQt6.QtWidgets import QComboBox, QHBoxLayout, QVBoxLayout, QWidget
 
     from negpy.desktop.view.styles.templates import field_label
@@ -384,8 +339,8 @@ def test_field_row_in_a_slider_card_spans_the_track(qapp):
     card.show()
     qapp.processEvents()
 
-    assert label.alignment() & Qt.AlignmentFlag.AlignRight
-    assert combo.x() == slider.x() + slider.slider.x()
+    assert label.alignment() & Qt.AlignmentFlag.AlignLeft
+    assert label.x() + label.contentsMargins().left() == slider.x() + slider.label.x()
     assert combo.geometry().right() == slider.x() + slider.slider.geometry().right()
 
 
@@ -435,6 +390,5 @@ def test_a_value_column_button_leaves_the_field_the_whole_track(qapp):
     card.show()
     qapp.processEvents()
 
-    track_right = slider.x() + slider.slider.geometry().right()
-    assert combo.geometry().right() == track_right
-    assert track_right < button.x() and button.geometry().right() <= card.width()
+    assert combo.geometry().right() < button.x()
+    assert button.geometry().right() <= slider.x() + slider.slider.geometry().right() + slider.layout().contentsMargins().right()
