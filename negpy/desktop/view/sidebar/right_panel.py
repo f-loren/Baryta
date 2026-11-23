@@ -34,7 +34,7 @@ from negpy.desktop.view.widgets.charts import (
     WaveformWidget,
     ZoneStripWidget,
 )
-from negpy.desktop.view.sidebar.baryta_layout import add_rig_cards
+from negpy.desktop.view.sidebar.baryta_layout import add_rig_cards, advanced_footer, frame_actions
 from negpy.desktop.view.widgets.collapsible import CollapsibleSection, fit_pane, make_section
 from negpy.desktop.view.widgets.fold import Fold, group_fold
 from negpy.desktop.view.widgets.gear_library_panel import GearLibraryPanel
@@ -213,6 +213,8 @@ class RightPanel(QWidget):
         layout.addWidget(self.group_switcher)
         layout.addSpacing(THEME.space_sm)
         layout.addWidget(self.splitter, 1)
+        self.advanced_footer = advanced_footer(self.controls_panel)
+        layout.addWidget(self.advanced_footer)
 
         self.apply_shortcut_tooltips()
 
@@ -393,6 +395,7 @@ class RightPanel(QWidget):
             for attr in section_attrs:
                 self._section_tab_index[attr] = i
 
+        page_layout.addWidget(frame_actions(self.controls_panel))
         page_layout.addWidget(self.switcher)
         page_layout.addWidget(self.stack, 1)
 
@@ -835,6 +838,7 @@ class RightPanel(QWidget):
         self.group_stack.setCurrentIndex(index)
         analysis_shown = self._group_keys[index] in ("roll", "frame")
         self.analysis_section.setVisible(analysis_shown)
+        self.advanced_footer.setVisible(analysis_shown)
         if analysis_shown:
             saved = self.controller.session.repo.get_global_setting(self._analysis_expanded_setting())
             self.analysis_section.set_expanded(THEME.sidebar_expanded_defaults["analysis"] if saved is None else bool(saved))
