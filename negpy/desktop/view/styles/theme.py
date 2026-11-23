@@ -19,45 +19,45 @@ class ThemeConfig:
 
     # Colors. Surfaces, darkest first.
     # bg_dark is also the macOS window background (view/mac_window.py): an alternate theme updates that fix.
-    bg_dark: str = "#323232"
-    bg_panel: str = "#323232"
-    bg_input: str = "#2F2F2F"
-    bg_card: str = "#373737"
-    bg_header: str = "#3B3B3B"
-    bg_selected: str = "#484848"
-    bg_hover: str = "#4C4C4C"
-    bg_menu_selected: str = "#545454"
+    bg_dark: str = "#262626"
+    bg_panel: str = "#262626"
+    bg_input: str = "#222222"
+    bg_card: str = "#2B2B2B"
+    bg_header: str = "#303030"
+    bg_selected: str = "#3A3A3A"
+    bg_hover: str = "#3E3E3E"
+    bg_menu_selected: str = "#474747"
     # A checked toggle and a segmented control's current choice; also the Scan button's tint
     # while it cannot start or while it reads Stop.
-    bg_checked: str = "#504242"
-    bg_checked_hover: str = "#5B4544"
-    border_checked: str = "#714A4A"
-    border_checked_hover: str = "#865050"
+    bg_checked: str = "#253A63"
+    bg_checked_hover: str = "#2C4675"
+    border_checked: str = "#3A5FAE"
+    border_checked_hover: str = "#2F6BEA"
     # The primary action: the strongest button on a panel.
-    bg_primary: str = "#724241"
-    bg_primary_hover: str = "#824747"
+    bg_primary: str = "#2F6BEA"
+    bg_primary_hover: str = "#285ED2"
     # An edited card's frame-scope stripe and lit Frame icon; a roll-scope card takes border_checked_hover.
     border_scope_frame: str = "#5D4B24"
     # The dot on an edited control. A warning takes a sign in warn_amber, never a dot.
     mark_edited: str = "#C79A3A"
-    # The canvas strip's job bar: the one warm red bright enough to read as progress.
-    progress_fill: str = "#9C3B3B"
-    bg_accent_muted: str = "#3F3939"
-    border_input: str = "#3F3F3F"
-    border_primary: str = "#4C4C4C"
-    border_color: str = "#595959"
-    border_hover: str = "#606060"
+    # The canvas strip's job bar, in the accent blue.
+    progress_fill: str = "#2F6BEA"
+    bg_accent_muted: str = "#2C3242"
+    border_input: str = "#333333"
+    border_primary: str = "#3E3E3E"
+    border_color: str = "#4A4A4A"
+    border_hover: str = "#555555"
     # Keyboard focus: a neutral edge, as hover and the arrow-key row are neutral.
     border_focus: str = "#898989"
     border_indicator: str = "#696969"
     slider_disabled: str = "#7C7C7C"
     text_on_accent: str = "#FFFFFF"
-    text_primary: str = "#E4E4E4"
-    text_secondary: str = "#BCBCBC"
-    # hint = readable secondary copy (5.1:1 on bg_panel); muted = disabled widgets only, and
+    text_primary: str = "#E6E6E6"
+    text_secondary: str = "#BDBDBD"
+    # hint = readable secondary copy (6.1:1 on bg_panel); muted = disabled widgets only, and
     # too dim (3.0:1) for text a user must read.
     text_hint: str = "#A4A4A4"
-    text_muted: str = "#7A7A7A"
+    text_muted: str = "#6E6E6E"
     text_unit: str = "#8B8B8B"
     warn_amber: str = "#C79A3A"
     # Marks drawn over the photo: white on a dark edge or plate, which reads on any picture.
@@ -85,13 +85,13 @@ class ThemeConfig:
     # Surface overlay tokens (rgba). Integer alpha where a widget sheet reads it.
     surface_scrim: str = "rgba(5, 5, 5, 115)"
     surface_pill: str = "rgba(0, 0, 0, 140)"
-    surface_reveal_flash: str = "rgba(134, 80, 80, 0.35)"  # border_checked_hover, faint
+    surface_reveal_flash: str = "rgba(47, 107, 234, 0.35)"  # border_checked_hover, faint
     surface_hover_faint: str = "#0CFFFFFF"  # #AARRGGBB: QColor reads it, not rgba()
-    surface_overlay: str = "rgba(50,50,50,0.88)"
+    surface_overlay: str = "rgba(38,38,38,0.88)"
     # A card header over its chart: light enough for the chart to read through.
-    header_veil: str = "rgba(63,63,63,0.55)"
-    header_veil_hover: str = "rgba(72,72,72,0.62)"
-    surface_overlay_hover: str = "rgba(72,72,72,0.88)"
+    header_veil: str = "rgba(48,48,48,0.55)"
+    header_veil_hover: str = "rgba(58,58,58,0.62)"
+    surface_overlay_hover: str = "rgba(58,58,58,0.88)"
 
     # Font weight scale
     weight_regular: int = 400
