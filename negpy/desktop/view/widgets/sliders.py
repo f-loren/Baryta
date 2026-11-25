@@ -107,7 +107,7 @@ class _NoScrollSlider(QSlider):
         p.drawRoundedRect(QRectF(0, groove_y - 1.5, self.width(), 3), 1.5, 1.5)
         if self.isEnabled():
             lo, hi = sorted((anchor_x, handle_x))
-            p.setBrush(QColor(THEME.bg_primary))
+            p.setBrush(QColor(THEME.slider_fill))
             p.drawRoundedRect(QRectF(lo, groove_y - 1.5, hi - lo, 3), 1.5, 1.5)
         if self._default_pos is not None:
             p.setPen(QPen(QColor(THEME.text_hint), 2))

@@ -54,8 +54,9 @@ class ThemeConfig:
     border_focus: str = "#898989"
     border_indicator: str = "#696969"
     slider_disabled: str = "#6E6A62"
-    # The slider handle's ring.
+    # The slider handle's ring and the track's fill from the default.
     slider_handle: str = "#ECE6D6"
+    slider_fill: str = "#ECE6D6"
     text_on_accent: str = "#151515"
     text_primary: str = "#ECE6D6"
     text_secondary: str = "#BDB7A8"
@@ -155,6 +156,69 @@ class ThemeConfig:
 
 
 THEME = ThemeConfig()
+
+# Day: a cream ground, a film-base orange accent and black text. Semantic text colors go darker to
+# keep 4.5:1 on cream; the slider takes a darker orange to keep 3:1 against its track.
+DAY_COLORS: Dict[str, str] = {
+    "bg_dark": "#F3EDE0",
+    "bg_panel": "#F3EDE0",
+    "bg_input": "#E9E1D0",
+    "bg_card": "#FBF7EE",
+    "bg_header": "#E6DECC",
+    "bg_selected": "#D6CCB6",
+    "bg_hover": "#DCD3BF",
+    "bg_menu_selected": "#CFC4AC",
+    "bg_checked": "#EBD6BC",
+    "bg_checked_hover": "#E3C8A6",
+    "border_checked": "#A65A26",
+    "border_checked_hover": "#C8743A",
+    "bg_primary": "#C8743A",
+    "bg_primary_hover": "#D4844C",
+    "border_scope_frame": "#B08A4A",
+    "mark_edited": "#A87A1E",
+    "progress_fill": "#C8743A",
+    "bg_accent_muted": "#E2D6C2",
+    "border_input": "#DDD3BF",
+    "border_primary": "#D3C8B2",
+    "border_color": "#C4B8A0",
+    "border_hover": "#B0A48C",
+    "border_focus": "#6F675A",
+    "border_indicator": "#8E8676",
+    "slider_disabled": "#B4AA96",
+    "slider_handle": "#A65A26",
+    "slider_fill": "#A65A26",
+    "text_on_accent": "#141210",
+    "text_primary": "#141210",
+    "text_secondary": "#3B362E",
+    "text_hint": "#5F574B",
+    "text_muted": "#A39A88",
+    "text_unit": "#6F675A",
+    "warn_amber": "#7C5913",
+    "error": "#C62828",
+    "error_text": "#B3261E",
+    "status_success": "#1A6D50",
+    "channel_red_text": "#BA2525",
+    "channel_green_text": "#286D2B",
+    "channel_blue_text": "#1460B8",
+    "surface_reveal_flash": "rgba(200, 116, 58, 0.30)",
+    "surface_hover_faint": "#0C000000",
+    "surface_overlay": "rgba(243,237,224,0.92)",
+    "header_veil": "rgba(230,222,204,0.55)",
+    "header_veil_hover": "rgba(214,204,182,0.62)",
+    "surface_overlay_hover": "rgba(214,204,182,0.92)",
+}
+APPEARANCES = ("night", "day")
+
+
+def apply_appearance(name: str) -> None:
+    """Sets THEME to the saved appearance ("night" or "day"). Call it before any view module
+    imports: modules read THEME into stylesheets and constants at import."""
+    if name == "day":
+        for key, value in DAY_COLORS.items():
+            # THEME is frozen against stray edits; this is the one sanctioned change, at startup.
+            object.__setattr__(THEME, key, value)
+
+
 # Scene marks cycle through existing tokens; red is left out because it reads as an error or the selection mat.
 SCENE_COLORS = (THEME.channel_blue, THEME.status_success, THEME.warn_amber, THEME.filter_magenta, THEME.filter_cyan, THEME.mode_c41)
 

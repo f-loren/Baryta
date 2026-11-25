@@ -464,7 +464,7 @@ class PhotometricCurveWidget(QWidget):
                     painter.drawPath(ch_path)
                 painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_SourceOver)
             else:
-                painter.setPen(QPen(QColor(THEME.mark_photo), 1.5))
+                painter.setPen(QPen(QColor(THEME.text_primary), 1.5))
                 painter.drawPath(curve_path)
 
             # P3: Pivot crosshairs + dot
@@ -478,7 +478,7 @@ class PhotometricCurveWidget(QWidget):
                 painter.drawLine(int(wpx), 0, int(wpx), h)
                 painter.drawLine(0, int(wpy), w, int(wpy))
 
-                painter.setBrush(QBrush(QColor(THEME.mark_photo)))
+                painter.setBrush(QBrush(QColor(THEME.text_primary)))
                 painter.setPen(QPen(QColor(THEME.canvas_bg_black), 1))
                 painter.drawEllipse(QPointF(wpx, wpy), 3.5, 3.5)
 
@@ -988,13 +988,13 @@ class WaveformWidget(QWidget):
             if len(tones) == 3 and self._split() and self._aligned():
                 # Green's level across all three panels: a neutral rings on it in each.
                 gy = min(max(h - tones[1] * h, 0.0), h - 1.0)
-                painter.setPen(QPen(with_alpha(THEME.mark_photo, 90), 1, Qt.PenStyle.DashLine))
+                painter.setPen(QPen(with_alpha(THEME.text_primary, 90), 1, Qt.PenStyle.DashLine))
                 painter.drawLine(QPointF(0, gy), QPointF(w, gy))
             for rect, tone in zip(channel_rects if len(tones) == 3 else rects, tones):
                 # Kept a ring's width inside the panel, so an edge column's mark is not cut in half.
                 mx = min(max(rect.x() + x * rect.width(), rect.x() + 5.0), rect.x() + rect.width() - 5.0)
                 my = min(max(h - tone * h, 5.0), h - 5.0)
-                painter.setPen(QPen(with_alpha(THEME.mark_photo, 90), 1, Qt.PenStyle.DashLine))
+                painter.setPen(QPen(with_alpha(THEME.text_primary, 90), 1, Qt.PenStyle.DashLine))
                 painter.drawLine(QPointF(mx, 0), QPointF(mx, h))
                 _draw_hover_ring(painter, QPointF(mx, my))
 
@@ -1147,7 +1147,7 @@ class VectorscopeWidget(QWidget):
             r = min(float(scope_radius(float(np.hypot(a, b)), self._log_scale)), 1.0) * rim
             angle = float(np.arctan2(b, a))
             spot = QPointF(center.x() + np.cos(angle) * r, center.y() - np.sin(angle) * r)
-            painter.setPen(QPen(with_alpha(THEME.mark_photo, 90), 1, Qt.PenStyle.DashLine))
+            painter.setPen(QPen(with_alpha(THEME.text_primary, 90), 1, Qt.PenStyle.DashLine))
             painter.drawLine(center, spot)
             _draw_hover_ring(painter, spot)
 

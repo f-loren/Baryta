@@ -5,6 +5,7 @@ Every control drives a part of NegPy that already exists; the bar holds no state
 
 import os
 
+import qtawesome as qta
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QHBoxLayout, QWidget
 
@@ -42,6 +43,7 @@ class BarytaTopBar(QWidget):
 
         self.reset_btn = labeled_action("fa5s.history", tr("Reset"), tr("Discard all edits and return this frame to its default look"))
         self.reset_btn.setObjectName("baryta_reset")
+        self.reset_btn.setIcon(qta.icon("fa5s.history", color=THEME.mark_photo))
         self.reset_btn.clicked.connect(controller.session.reset_settings)
         self.export_btn = labeled_action(
             "fa5s.file-export", tr("Export"), tr("Export this frame with the settings on the Export tab"), primary=True

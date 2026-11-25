@@ -189,7 +189,7 @@ QSlider#yellow_slider::handle:horizontal:disabled { border-color: @slider_disabl
 /* Baryta's top bar Reset: the one red button, a dark safelight. */
 QPushButton#baryta_reset {
     background-color: @bg_reset;
-    color: @text_primary;
+    color: @mark_photo;
 }
 
 QPushButton#baryta_reset:hover, QPushButton#baryta_reset:pressed {
