@@ -249,7 +249,7 @@ class _ThumbnailDelegate(QStyledItemDelegate):
         painter.setPen(Qt.PenStyle.NoPen)
         painter.setBrush(QColor(THEME.error))
         painter.drawEllipse(QRect(cx - r, cy - r, 2 * r, 2 * r))
-        painter.setPen(QPen(QColor(THEME.text_on_accent), 2))
+        painter.setPen(QPen(QColor(THEME.mark_photo), 2))
         painter.drawLine(cx, cy - 4, cx, cy + 1)
         painter.drawPoint(cx, cy + 4)
 
@@ -1267,7 +1267,7 @@ class _FilmGridView(ThumbnailGridView):
             painter.setPen(QPen(QColor(THEME.border_checked_hover), 1))
             painter.setBrush(QColor(THEME.bg_primary))
             painter.drawEllipse(corner)
-            painter.setPen(QColor(THEME.text_primary))
+            painter.setPen(QColor(THEME.text_on_accent))
             painter.drawText(corner, Qt.AlignmentFlag.AlignCenter, str(len(move["rows"])))
         chip = QRectF(
             pos.x() + THEME.space_xl,

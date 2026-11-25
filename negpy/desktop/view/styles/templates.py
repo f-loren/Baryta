@@ -497,9 +497,7 @@ def set_hint_kind(lbl: QLabel, kind: str) -> None:
 def caption_label(text: str) -> QLabel:
     """A white, bold caption that sits directly above an image (the A/Skip/B frames in Pick Better)."""
     lbl = QLabel(text)
-    lbl.setStyleSheet(
-        f"color: {THEME.text_on_accent}; font-size: {THEME.font_size_small}px; font-weight: {THEME.weight_bold}; border: none;"
-    )
+    lbl.setStyleSheet(f"color: {THEME.mark_photo}; font-size: {THEME.font_size_small}px; font-weight: {THEME.weight_bold}; border: none;")
     return lbl
 
 
@@ -731,5 +729,5 @@ def slider_value_qss(color: str = THEME.text_primary) -> str:
 
 
 def slider_handle_qss(color: str) -> str:
-    """Recolors the handle only; geometry cascades from the app-wide QSlider style."""
-    return f"QSlider::handle:horizontal {{background: {color};}}"
+    """Recolors the handle's ring only; geometry cascades from the app-wide QSlider style."""
+    return f"QSlider::handle:horizontal {{border-color: {color};}}"

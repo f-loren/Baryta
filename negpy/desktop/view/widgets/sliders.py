@@ -15,7 +15,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
 )
 from PyQt6.QtGui import QPainter, QColor, QPen
-from PyQt6.QtCore import Qt, pyqtSignal, QTimer, QRectF, QEvent, QLocale
+from PyQt6.QtCore import Qt, pyqtSignal, QTimer, QPointF, QRectF, QEvent, QLocale
 from negpy.desktop.view.styles.theme import THEME
 from negpy.kernel.system.i18n import tr
 from negpy.desktop.view.styles.templates import EditedDot, FieldLabel, slider_handle_qss, slider_label_qss, slider_value_qss, wrap_tooltip
@@ -28,10 +28,8 @@ _RESET_HINT = f'<div style="color:{THEME.text_secondary};">{tr("Double-click to 
 _EMIT_INTERVAL_MS = 33
 # Longest a moving drag waits for a render: without it a steady drag renders only when it pauses.
 _MAX_WAIT_MS = 66
-# Handle diameter; mirrors the QSlider::handle width in modern_dark.qss.
-_HANDLE_W = 16
-# Sliders with a neutral point: the QSS leaves their sub-page empty and paintEvent fills from the point.
-_NEUTRAL_NAMES = ("neutral_slider", "cyan_slider", "magenta_slider", "yellow_slider")
+# Handle diameter; mirrors the QSlider::handle width plus its ring in modern_dark.qss.
+_HANDLE_W = 14
 
 
 class _NoScrollSlider(QSlider):
@@ -41,6 +39,8 @@ class _NoScrollSlider(QSlider):
         self._default_slider_value: Optional[int] = None
         self._drag_anchor_px: Optional[float] = None
         self._drag_anchor_value: int = 0
+        # The QSS clears the groove and sub-page of a painted slider: paintEvent draws the track.
+        self.setProperty("painted", True)
 
     def wheelEvent(self, event) -> None:
         if self.hasFocus():
@@ -93,36 +93,27 @@ class _NoScrollSlider(QSlider):
         super().mouseReleaseEvent(event)
 
     def paintEvent(self, event) -> None:
-        if self._default_pos is None:
-            super().paintEvent(event)
-            return
-        groove_y = self.height() // 2
-        handle_w = _HANDLE_W
-        usable = self.width() - handle_w
-        x = handle_w // 2 + int(self._default_pos * usable)
-        handle_x = handle_w // 2 + QStyle.sliderPositionFromValue(
+        # Track, fill and tick go under the handle, which the style draws last.
+        groove_y = self.height() / 2
+        usable = self.width() - _HANDLE_W
+        handle_x = _HANDLE_W / 2 + QStyle.sliderPositionFromValue(
             self.minimum(), self.maximum(), self.value(), usable, self.invertedAppearance()
         )
-        super().paintEvent(event)
-        if self.objectName() in _NEUTRAL_NAMES and self.isEnabled() and handle_x != x:
-            # Over the style's handle, so the handle is drawn again on top of the fill.
-            p = QPainter(self)
-            p.setRenderHint(QPainter.RenderHint.Antialiasing)
-            p.setPen(Qt.PenStyle.NoPen)
-            p.setBrush(QColor(THEME.bg_primary))
-            lo, hi = sorted((x, handle_x))
-            p.drawRoundedRect(QRectF(lo, groove_y - 2, hi - lo, 4), 2, 2)
-            name = self.objectName()
-            handle = getattr(THEME, "filter_" + name.removesuffix("_slider")) if name != "neutral_slider" else THEME.slider_handle
-            p.setBrush(QColor(handle))
-            p.drawEllipse(QRectF(handle_x - handle_w / 2, groove_y - handle_w / 2, handle_w, handle_w))
-            return
-        # Over the handle the tick would read as a notch in it.
-        if abs(handle_x - x) <= handle_w // 2 + 1:
-            return
+        anchor_x = _HANDLE_W / 2 + (self._default_pos if self._default_pos is not None else 0.0) * usable
         p = QPainter(self)
-        p.setPen(QPen(QColor(THEME.text_unit), 1))
-        p.drawLine(x, groove_y - 1, x, groove_y + 2)
+        p.setRenderHint(QPainter.RenderHint.Antialiasing)
+        p.setPen(Qt.PenStyle.NoPen)
+        p.setBrush(QColor(THEME.bg_selected if self.isEnabled() else THEME.border_input))
+        p.drawRoundedRect(QRectF(0, groove_y - 1.5, self.width(), 3), 1.5, 1.5)
+        if self.isEnabled():
+            lo, hi = sorted((anchor_x, handle_x))
+            p.setBrush(QColor(THEME.bg_primary))
+            p.drawRoundedRect(QRectF(lo, groove_y - 1.5, hi - lo, 3), 1.5, 1.5)
+        if self._default_pos is not None:
+            p.setPen(QPen(QColor(THEME.text_hint), 2))
+            p.drawLine(QPointF(anchor_x, groove_y - 4), QPointF(anchor_x, groove_y + 4))
+        p.end()
+        super().paintEvent(event)
 
 
 class _NoScrollSpinBox(QDoubleSpinBox):
