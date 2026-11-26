@@ -79,11 +79,13 @@ class ThemeConfig:
 
     # Spacing scale (px)
     space_xs: int = 2
-    space_sm: int = 4
-    space_md: int = 6
-    space_lg: int = 8
-    space_xl: int = 12
+    space_sm: int = 6
+    space_md: int = 9
+    space_lg: int = 12
+    space_xl: int = 14
     space_2xl: int = 16
+    # Top and bottom padding of a text or icon button; default_button_height() measures the result.
+    button_pad_y: int = 9
 
     # Radius scale (px)
     radius_sm: int = 3

@@ -84,7 +84,8 @@ class MenuButton(_MenuButton):
         self._chevron_inset = THEME.space_2xl
         self.setStyleSheet(
             f"QPushButton {{font-size: {THEME.font_size_base}px;"
-            f" padding: 6px {self._chevron_inset + self._chevron_size + THEME.space_md}px 6px {THEME.space_xl}px;"
+            f" padding: {THEME.button_pad_y}px {self._chevron_inset + self._chevron_size + THEME.space_md}px"
+            f" {THEME.button_pad_y}px {THEME.space_xl}px;"
             " text-align: left;}"
         )
 

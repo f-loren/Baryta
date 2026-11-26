@@ -35,7 +35,7 @@ QPushButton {
     color: @text_primary;
     border: 1px solid transparent;
     border-radius: 4px;
-    padding: 6px 12px;
+    padding: @button_pad_ypx 12px;
 }
 
 /* setFlat: a sub-header row's icons, and the canvas bar's buttons, which sit in their
