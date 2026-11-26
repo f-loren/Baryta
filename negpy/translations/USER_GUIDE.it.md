@@ -10,7 +10,7 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 
 ### Termini usati in questa guida
 
-*   **Rullino**: un gruppo di fotogrammi, di solito una pellicola. Ciò che un rullino condivide si trova nella scheda Rullino.
+*   **Rullino**: un gruppo di fotogrammi, di solito una pellicola. Ciò che un rullino condivide si trova in cima a **Sviluppa**.
 *   **Rullino-cartella**: un rullino formato dai file immagine di una cartella. I nuovi file della cartella vi entrano.
 *   **Rullino virtuale**: un rullino formato da un elenco fisso di fotogrammi, da qualsiasi cartella. I nuovi file non vi entrano mai.
 *   **Densità**: quanto è scura una parte del negativo o della stampa. Un negativo denso è scuro; su una stampa, più densità significa più scuro.
@@ -29,48 +29,49 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 *   **Area di lavoro** (al centro): l'immagine. Scorri o pizzica per lo zoom, trascina per spostarti e fai doppio clic per passare da adatta a 100%. Il clic destro offre opzioni di visualizzazione, copia e incolla delle impostazioni, reimpostazioni e **Chiudi**.
 *   **Striscia pellicola** (sotto l'area di lavoro): i fotogrammi aperti in una riga. Trascinane il bordo superiore per ridimensionarla; `Ctrl+[` la ripiega.
 *   **Barra degli strumenti** (in basso): **Foto** contiene navigazione, zoom, rotazione, **Strumenti** (ritaglio, prelievi, maschere, ritocco), annulla, il menu **Stampa** (Prima / Dopo e le sbirciate), **Media del rullino**, **Esporta** e **Sovrapposizioni**. **Esporta** fa ciò che fa il pulsante del pannello Esporta, e la sua freccia sceglie i fotogrammi. **Rullino** contiene importazione, filtro, ordinamento e azioni del rullino della Striscia pellicola. Il menu **⋯** contiene tutte le azioni, comprese le **Preferenze…**.
-*   **Controlli** (a destra): le schede **Libreria**, **Rullino**, **Fotogramma**, **Metadati**, **Esporta** e **Scansione**. Solo Rullino e Fotogramma cambiano l'immagine. Trascina il pannello dal bordo superiore per renderlo mobile.
+*   **Controlli** (a destra): una colonna. **Scansiona**, **Libreria** e **Sviluppa** nella barra in alto scelgono cosa mostra. Solo Sviluppa cambia l'immagine. Trascina il pannello dal bordo superiore per renderlo mobile.
 *   **Info fotogramma** (`I`): la striscia sopra l'area di lavoro. Mostra a sinistra nome file, pellicola e dimensioni, a destra la ricetta di stampa e al centro i messaggi. Un'operazione in corso riempie la barra lungo il bordo inferiore, un segmento per fotogramma per un lotto breve; **Interrompi** la ferma.
 
 **Maiusc+H** nasconde i pannelli, e **Reimposta la disposizione dei pannelli** (Preferenze → Interfaccia, oppure `Ctrl+Maiusc+L`) li ripristina. Quando non è aperto nulla, l'area di lavoro offre **Carica scansioni…** e **Fai la visita guidata**.
 
 ### Il flusso di lavoro
 
-1.  Nella scheda **Libreria**, importa una cartella come rullino e aprila.
-2.  Nella scheda **Rullino**, controlla **Configurazione** (tipo di pellicola e scanner).
-3.  In **Fotogramma › Geometria**, ritaglia e raddrizza. Poi esegui l'**Analisi del rullino** nella scheda Rullino, così i fotogrammi si uniformano.
-4.  Nelle altre schede di **Fotogramma**, imposta luminosità, contrasto e colore (**Colore**, **Tono**), l'aspetto (**Finitura**) e rimuovi la polvere (**Ritocco**).
-5.  Esporta nella scheda **Esporta**.
+1.  Fai clic su **Libreria**, poi importa una cartella come rullino e aprila.
+2.  Fai clic su **Sviluppa**, poi controlla **Configurazione** (tipo di pellicola e scanner) in cima alla colonna.
+3.  Nella scheda **Geometria**, ritaglia e raddrizza. Poi fai clic su **Converti rullino**, così i fotogrammi si uniformano.
+4.  Nelle altre schede, imposta luminosità, contrasto e colore (**Colore**, **Tono**), l'aspetto (**Finitura**) e rimuovi la polvere (**Ritocco**).
+5.  Fai clic su **Esporta** nella barra in alto, poi su **Esporta fotogramma**.
 
-| Scheda | Riquadri |
+| Posto | Riquadri |
 |---|---|
-| **Rullino** | Configurazione · Analisi del rullino · Misurazione · Ripristino dello sbiadimento · Composizione del fotogramma · Impostazione dello scanner (Decodifica RAW · Ottica · Calibrazione) |
-| **Fotogramma › Geometria** | Ritaglio · Raddrizza |
-| **Fotogramma › Colore** | Filtratura |
-| **Fotogramma › Tono** | Tono · Risposta della carta |
-| **Fotogramma › Finitura** | Lab · Viraggio · Rifinitura · Processi alternativi |
-| **Fotogramma › Ritocco** | Ritocco · Schermatura e bruciatura |
-| **Fotogramma › Preferiti** (stella) | I cursori che hai scelto · Preimpostazioni |
-| **Fotogramma › Cronologia** (orologio) | Stampe di lavoro · Cronologia delle modifiche |
+| **Sviluppa** | Configurazione · Rullino · Preimpostazioni, poi le schede sotto |
+| **Sviluppa › Rullino** | Analisi del rullino · Misurazione · Ripristino dello sbiadimento · Composizione del fotogramma · Impostazione dello scanner (Decodifica RAW · Ottica · Calibrazione) |
+| **Sviluppa › Geometria** | Ritaglio · Raddrizza |
+| **Sviluppa › Colore** | Filtratura |
+| **Sviluppa › Tono** | Tono · Risposta della carta |
+| **Sviluppa › Finitura** | Lab · Viraggio · Rifinitura · Processi alternativi |
+| **Sviluppa › Ritocco** | Ritocco · Schermatura e bruciatura |
+| **Sviluppa › Preferiti** (stella) | I cursori che hai scelto |
+| **Sviluppa › Cronologia** (orologio) | Stampe di lavoro · Cronologia delle modifiche |
 | **Metadati** | Anteprima dei metadati · Scatto · Processo · Preimpostazioni · La mia attrezzatura |
 | **Esporta** | File · Prova · Preimpostazioni · Accanto alle esportazioni |
 | **Scansione** | Scanner · i riquadri dello scanner · Uscita |
 
 ### Barra in alto e comandi del rullino
 
-**Scansiona**, **Libreria** e **Sviluppa** aprono le schede del pannello per ogni parte del lavoro. La barra mostra anche il file aperto. **Reimposta** annulla le modifiche di questo fotogramma. **Esporta** esporta questo fotogramma con le impostazioni della scheda Esporta.
+**Scansiona**, **Libreria** e **Sviluppa** scelgono cosa mostra la colonna di destra. La barra mostra anche il file aperto. **Reimposta** annulla le modifiche di questo fotogramma. **Esporta** apre le impostazioni di esportazione, con **Metadati** accanto; **‹** torna a Sviluppa.
 
-Sopra le schede di Fotogramma, **Converti rullino** misura ogni fotogramma perché tutto il rullino stampi uguale, come **Rianalizza** in Analisi del rullino. **Applica al rullino…** copia le impostazioni di questo fotogramma sui fotogrammi scelti o su tutto il rullino.
+Sotto **Configurazione**, **Converti rullino** misura ogni fotogramma perché tutto il rullino stampi uguale, come **Rianalizza** in Analisi del rullino. **Applica al rullino…** copia le impostazioni di questo fotogramma sui fotogrammi scelti o su tutto il rullino. Il riquadro **Rullino** contiene gli altri riquadri del rullino e parte chiuso. Il grafico di Analisi resta in alto mentre la colonna scorre.
 
 ### Base e Avanzata
 
-L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica. **Mostra avanzate**, sotto le schede Rullino e Fotogramma, passa da una modalità all'altra.
+L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica. **Mostra avanzate**, sotto la colonna Sviluppa, passa da una modalità all'altra.
 
 ### Usare i controlli
 
 Su un cursore, fai clic sul valore per digitare un numero, trascina il nome per regolarlo (**Maiusc** per passi fini) e fai doppio clic per reimpostarlo. Una freccia nasconde i controlli di regolazione fine; un punto su una sezione chiusa, un riquadro o una scheda segnala un valore modificato. In un menu a tendina, **‹** e **›** scorrono tra le scelte. Ogni riquadro ha una freccia di reimpostazione e una **ⓘ** che apre la sua parte di questa guida.
 
-Una scheda con più riquadri ha una barra come **3 riquadri su 5 modificati**, con reimposta, **Reimposta al rullino**, **Applica** e comprimi per l'intera scheda. Nelle schede Rullino e Metadati, **Applica** dà al rullino ogni riquadro che questo fotogramma ha modificato. In una scheda Fotogramma, copia la scheda su altri fotogrammi.
+Una scheda con più riquadri ha una barra come **3 riquadri su 5 modificati**, con reimposta, **Reimposta al rullino**, **Applica** e comprimi per l'intera scheda. Nel riquadro Rullino e nelle schede Metadati, **Applica** dà al rullino ogni riquadro che questo fotogramma ha modificato. In una scheda di Sviluppa, copia la scheda su altri fotogrammi.
 
 ### Fotogramma o rullino
 
@@ -206,7 +207,7 @@ I termini si combinano: `film:portra iso:>=400 -rejected:`. I termini dei metada
 
 Fai clic destro su un fotogramma, o usa le scorciatoie, per **Tenerlo** (un segno di spunta) o **Scartarlo** (una croce; il fotogramma si attenua e le esportazioni in lotto lo saltano). I tuoi file non cambiano mai.
 
-Un segno a forma di pellicola nell'angolo in alto a destra indica che il fotogramma stampa sulla media del rullino; è ambra quando il colore del fotogramma è lontano da quella media. Un segno a forma di immagine accanto indica che il fotogramma mantiene un valore proprio in un riquadro della scheda Rullino, quindi una modifica al rullino non lo raggiunge; passaci sopra per vedere quali riquadri. Un segno nell'angolo in basso a sinistra indica che il fotogramma è costruito da più file (un'unione, una fusione HDR, una tricromia o un mezzo formato), oppure che è stato scattato con un'acquisizione a Miscela o a Esposizione singola; passaci sopra per il nome. Un punto esclamativo indica che il file non si è aperto (fai clic per riprovare); un piccolo punto ambra indica che la miniatura non è aggiornata.
+Un segno a forma di pellicola nell'angolo in alto a destra indica che il fotogramma stampa sulla media del rullino; è ambra quando il colore del fotogramma è lontano da quella media. Un segno a forma di immagine accanto indica che il fotogramma mantiene un valore proprio in un riquadro del rullino, quindi una modifica al rullino non lo raggiunge; passaci sopra per vedere quali riquadri. Un segno nell'angolo in basso a sinistra indica che il fotogramma è costruito da più file (un'unione, una fusione HDR, una tricromia o un mezzo formato), oppure che è stato scattato con un'acquisizione a Miscela o a Esposizione singola; passaci sopra per il nome. Un punto esclamativo indica che il file non si è aperto (fai clic per riprovare); un piccolo punto ambra indica che la miniatura non è aggiornata.
 
 Il menu del clic destro inoltre copia, incolla e reimposta le impostazioni, le applica ad altri fotogrammi, rianalizza i fotogrammi ([§10.3](#103-misurazione-negativo--positivo)), mette la selezione sulla media del rullino o la riporta sulla propria misura, mostra il file nella sua cartella e sposta i file nel Cestino (la modifica resta).
 
@@ -315,7 +316,7 @@ Corregge il colore della stampa, come fanno i filtri colorati di un ingranditore
 *   **Rimozione della dominante**: rimuove una dominante di colore diversa tra le parti scure e chiare dell'immagine. Parte da 0,5 (metà) sui negativi a colori e da 0 sulle diapositive. Foglie, cielo e acqua non contano come grigio, quindi mantengono il loro colore.
 *   **Filtro**: un filtro colorato, come sull'obiettivo della fotocamera per la pellicola in bianco e nero. Compare solo su un negativo a colori o una diapositiva a colori in B/N, e sostituisce i controlli precedenti. Ogni filtro scurisce i colori opposti al proprio. Giallo n. 8, Giallo intenso n. 15, Arancione n. 21 e Rosso n. 25 scuriscono un cielo blu, passo dopo passo. Il rosso rende anche scure le foglie e pallida la pelle. Giallo-verde n. 11 e Verde n. 58 schiariscono le foglie e scuriscono la pelle. Nessuno dà l'aspetto di una normale pellicola in bianco e nero.
 
-<!-- panel:tone src:4cf78932 -->
+<!-- panel:tone src:ea6fcb40 -->
 ### 5.2 Tono: luminosità e contrasto
 
 Quanto è chiara o scura la stampa, e quanto contrasto ha.
@@ -335,7 +336,7 @@ Quanto è chiara o scura la stampa, e quanto contrasto ha.
     *   **Maschera di contrasto**: apre le grandi zone scure e trattiene quelle grandi e chiare, conservando il dettaglio fine. In camera oscura, uno stampatore ottiene questo effetto con una maschera morbida e sfocata posta sul negativo. Nella stampa digitale, gli scanner Fujifilm Frontier ottengono un effetto simile con HyperTone. Le zone lontane dal grigio medio cambiano di più, quindi un fotogramma a basso contrasto cambia poco.
 *   **Globale / R / G / B**: R, G o B applica le gradazioni a un solo colore, per una dominante diversa tra ombre e alte luci.
 
-**Punto del bianco** e **Punto del nero** si trovano nel riquadro **Misurazione** della scheda Rullino ([§10.3](#103-misurazione-negativo--positivo)).
+**Punto del bianco** e **Punto del nero** si trovano nel riquadro **Misurazione**, dentro il riquadro **Rullino** ([§10.3](#103-misurazione-negativo--positivo)).
 
 <!-- panel:paper src:eb1bce00 -->
 ### 5.3 Risposta della carta: la carta
@@ -501,9 +502,9 @@ Ogni modifica che hai fatto, la più recente in alto (le ultime 100). **Ora** in
 
 ---
 
-## 10. Scheda Rullino
+## 10. Configurazione e riquadro Rullino
 
-Questi riquadri contengono ciò che i fotogrammi di un rullino condividono: la pellicola, come è stata scansionata e le misurazioni del rullino. Ogni riquadro ha la coppia Fotogramma / Rullino ([§1](#fotogramma-o-rullino)). La riga sopra i riquadri elenca i riquadri che questo fotogramma modifica per conto proprio.
+Questi riquadri contengono ciò che i fotogrammi di un rullino condividono: la pellicola, come è stata scansionata e le misurazioni del rullino. **Configurazione** apre la colonna Sviluppa, e gli altri riquadri stanno nel riquadro **Rullino** sotto di essa. Ogni riquadro ha la coppia Fotogramma / Rullino ([§1](#fotogramma-o-rullino)). La riga in cima al riquadro Rullino elenca i riquadri che questo fotogramma modifica per conto proprio.
 
 I riquadri di **Impostazione dello scanner** in fondo (Decodifica RAW, Ottica, Calibrazione) contengono le impostazioni che fai una volta sola per un sistema di scansione.
 

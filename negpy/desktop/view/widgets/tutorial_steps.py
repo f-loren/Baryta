@@ -116,10 +116,10 @@ def build(window: "MainWindow") -> list[TutorialStep]:
             tr("The Screen"),
             tr(
                 "The picture is in the middle, the <b>Film Strip</b> under it, and the controls on the right. "
-                "The <b>Roll</b> tab holds what a roll shares, the <b>Frame</b> tab one picture's print. "
+                "<b>Scan</b>, <b>Library</b> and <b>Develop</b> pick what the right column shows. "
                 "Edits save by themselves."
             ),
-            lambda w: rp(w).group_switcher,
+            lambda w: w.menuWidget().phase,
         ),
         step(
             BASICS,
@@ -454,10 +454,10 @@ def build(window: "MainWindow") -> list[TutorialStep]:
             tr("Presets"),
             tr(
                 "A <b>preset</b> keeps the settings you choose under a name. Apply it to this frame, the selected "
-                "frames or the whole roll. Presets are on the star tab, with your favorite sliders."
+                "frames or the whole roll. Presets are in <b>Develop</b>, under <b>Setup</b> and <b>Roll</b>."
             ),
             lambda w: cp(w).presets_section,
-            pre_hook=lambda w: rp(w).show_tab_by_key("favourites"),
+            pre_hook=lambda w: rp(w).reveal_widget(cp(w).presets_section),
             guide=("presets", "Presets"),
         ),
         step(

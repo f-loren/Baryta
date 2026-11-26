@@ -10,7 +10,7 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 
 ### Words in this guide
 
-*   **Roll**: a group of frames, usually one film. What a roll shares is on the Roll tab.
+*   **Roll**: a group of frames, usually one film. What a roll shares is at the top of **Develop**.
 *   **Folder roll**: a roll of the image files in one folder. New files in the folder join it.
 *   **Virtual roll**: a roll of a fixed list of frames, from any folders. New files never join it.
 *   **Density**: how dark a part of the negative or the print is. A dense negative is dark; on a print, more density is darker.
@@ -29,48 +29,49 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 *   **Canvas** (center): the picture. Scroll or pinch to zoom, drag to pan, and double-click to switch between fit and 100%. Right-click for view options, copy and paste of settings, resets and **Unload**.
 *   **Film Strip** (under the canvas): the open frames in one row. Drag its top edge to resize it; `Ctrl+[` folds it away.
 *   **Toolbar** (bottom): **Photo** holds navigation, zoom, rotate, **Tools** (crop, pickers, masks, retouching), undo, the **Print** menu (Before / After and the peeks), **Roll Average**, **Export** and **Overlays**. **Export** does what the Export panel's button does, and its chevron picks the frames. **Roll** holds the Film Strip's import, filter, sort and roll actions. The **⋯** menu holds every action, **Preferences…** included.
-*   **Controls** (right): the tabs **Library**, **Roll**, **Frame**, **Metadata**, **Export** and **Scan**. Only Roll and Frame change the picture. Drag the panel by its top edge to float it.
+*   **Controls** (right): one column. **Scan**, **Library** and **Develop** on the top bar pick what it shows. Only Develop changes the picture. Drag the panel by its top edge to float it.
 *   **Frame Info** (`I`): the strip above the canvas. It shows the file name, film and size on the left, the print recipe on the right, and messages in the middle. A running job fills the bar along its bottom edge, one segment per frame for a short batch; **Abort** stops it.
 
 **Shift+H** hides the panels, and **Reset Panel Layout** (Preferences → Interface, or `Ctrl+Shift+L`) restores them. With nothing open, the canvas offers **Load Scans…** and **Take the Tour**.
 
 ### The workflow
 
-1.  On the **Library** tab, import a folder as a roll and open it.
-2.  On the **Roll** tab, check **Setup** (film type and scanner).
-3.  On **Frame › Geometry**, crop and straighten. Then run **Roll Analysis** on the Roll tab, so the frames match.
-4.  On the other **Frame** tabs, set brightness, contrast and color (**Color**, **Tone**), the look (**Finish**), and remove dust (**Retouch**).
-5.  Export on the **Export** tab.
+1.  Click **Library**, then import a folder as a roll and open it.
+2.  Click **Develop**, then check **Setup** (film type and scanner) at the top of the column.
+3.  On the **Geometry** tab, crop and straighten. Then click **Convert Roll**, so the frames match.
+4.  On the other tabs, set brightness, contrast and color (**Color**, **Tone**), the look (**Finish**), and remove dust (**Retouch**).
+5.  Click **Export** on the top bar, then **Export Frame**.
 
-| Tab | Cards |
+| Place | Cards |
 |---|---|
-| **Roll** | Setup · Roll Analysis · Metering · Fade Restoration · Frame Assembly · Scanner Setup (Raw Decode · Optics · Calibration) |
-| **Frame › Geometry** | Crop · Straighten |
-| **Frame › Color** | Filtration |
-| **Frame › Tone** | Tone · Paper Response |
-| **Frame › Finish** | Lab · Toning · Finishing · Alternative Processes |
-| **Frame › Retouch** | Retouch · Dodge & Burn |
-| **Frame › Favorites** (star) | Your chosen sliders · Presets |
-| **Frame › History** (clock) | Work prints · Edit history |
+| **Develop** | Setup · Roll · Presets, then the tabs below |
+| **Develop › Roll** | Roll Analysis · Metering · Fade Restoration · Frame Assembly · Scanner Setup (Raw Decode · Optics · Calibration) |
+| **Develop › Geometry** | Crop · Straighten |
+| **Develop › Color** | Filtration |
+| **Develop › Tone** | Tone · Paper Response |
+| **Develop › Finish** | Lab · Toning · Finishing · Alternative Processes |
+| **Develop › Retouch** | Retouch · Dodge & Burn |
+| **Develop › Favorites** (star) | Your chosen sliders |
+| **Develop › History** (clock) | Work prints · Edit history |
 | **Metadata** | Metadata Preview · Shot · Process · Presets · My Gear |
 | **Export** | File · Proof · Presets · Alongside Exports |
 | **Scan** | Scanner · the scanner's cards · Output |
 
 ### Top bar and roll actions
 
-**Scan**, **Library** and **Develop** open the panel tabs for each part of the work. The bar also shows the open file. **Reset** discards this frame's edits. **Export** exports this frame with the settings on the Export tab.
+**Scan**, **Library** and **Develop** pick what the right column shows. The bar also shows the open file. **Reset** discards this frame's edits. **Export** opens the export settings, with **Metadata** beside them; **‹** goes back to Develop.
 
-Over the Frame tabs, **Convert Roll** measures every frame so that the whole roll prints alike, as **Reanalyze** in Roll Analysis does. **Apply to Roll…** copies this frame's settings to the selected frames or the whole roll.
+Under **Setup**, **Convert Roll** measures every frame so that the whole roll prints alike, as **Reanalyze** in Roll Analysis does. **Apply to Roll…** copies this frame's settings to the selected frames or the whole roll. The **Roll** card holds the other roll cards and starts closed. The Analysis chart stays at the top while the column scrolls.
 
 ### Base and Advanced
 
-The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit. **Show Advanced**, under the Roll and Frame tabs, switches between the two.
+The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit. **Show Advanced**, under the Develop column, switches between the two.
 
 ### Using the controls
 
 On a slider, click the value to type a number, drag the name to adjust (**Shift** for fine steps), and double-click to reset. A chevron hides fine-tune controls; a dot on a closed fold, a card or a tab marks a changed value. On a dropdown, **‹** and **›** step through the choices. Each card has a reset arrow and an **ⓘ** that opens its part of this guide.
 
-A tab with several cards has a bar such as **3 of 5 cards edited**, with reset, **Reset to Roll**, **Apply** and collapse for the whole tab. On the Roll and Metadata tabs, **Apply** gives the roll every card this frame changed. On a Frame tab, it copies the tab to other frames.
+A tab with several cards has a bar such as **3 of 5 cards edited**, with reset, **Reset to Roll**, **Apply** and collapse for the whole tab. On the Roll card and the Metadata tabs, **Apply** gives the roll every card this frame changed. On a Develop tab, it copies the tab to other frames.
 
 ### Frame or roll
 
@@ -206,7 +207,7 @@ Terms combine: `film:portra iso:>=400 -rejected:`. Metadata terms match only fra
 
 Right-click a frame, or use the shortcuts, to **Keep** it (a check) or **Reject** it (a cross; the frame dims and batch exports skip it). Your files never change.
 
-A film mark in the top-right corner means the frame prints on the roll average; it is amber when the frame's color is far from that average. A picture mark beside it means the frame keeps its own value on a Roll tab card, so a change to the roll does not reach it; hover it to see which cards. A mark in the bottom-left corner means the frame is built from several files (a stitch, HDR merge, Trichrome or half frame), or a Blend or Single Exposure capture shot it; hover it for the name. An exclamation mark means the file did not open (click to retry); a small amber dot means the thumbnail is out of date.
+A film mark in the top-right corner means the frame prints on the roll average; it is amber when the frame's color is far from that average. A picture mark beside it means the frame keeps its own value on a roll card, so a change to the roll does not reach it; hover it to see which cards. A mark in the bottom-left corner means the frame is built from several files (a stitch, HDR merge, Trichrome or half frame), or a Blend or Single Exposure capture shot it; hover it for the name. An exclamation mark means the file did not open (click to retry); a small amber dot means the thumbnail is out of date.
 
 The right-click menu also copies, pastes and resets settings, applies them to other frames, reanalyzes frames ([§10.3](#103-metering-negative--positive)), puts the selection on the roll average or back on its own measurement, shows the file in its folder, and moves files to the Trash (the edit stays).
 
@@ -335,7 +336,7 @@ How light or dark the print is, and how much contrast it has.
     *   **Contrast Mask**: opens up large dark areas and holds back large bright ones, and keeps fine detail. In the darkroom, a printer gets this with a soft, blurred mask placed on the negative. In digital printing, Fujifilm Frontier scanners get a similar effect with HyperTone. Areas far from mid-gray change most, so a low-contrast frame changes little.
 *   **Global / R / G / B**: R, G or B applies the grades to one color only, for a cast that differs between shadows and highlights.
 
-**White Point** and **Black Point** are on the Roll tab's **Metering** card ([§10.3](#103-metering-negative--positive)).
+**White Point** and **Black Point** are on the **Metering** card, inside the **Roll** card ([§10.3](#103-metering-negative--positive)).
 
 <!-- panel:paper -->
 ### 5.3 Paper Response: the paper
@@ -501,9 +502,9 @@ Every change you made, newest on top (the last 100). **Now** marks the current s
 
 ---
 
-## 10. Roll tab
+## 10. Setup and the Roll card
 
-These cards hold what the frames of a roll share: the film, how it was scanned and the roll's measurements. Each card has the Frame / Roll pair ([§1](#frame-or-roll)). The line above the cards lists the cards this frame changes for itself.
+These cards hold what the frames of a roll share: the film, how it was scanned and the roll's measurements. **Setup** leads the Develop column, and the other cards are in the **Roll** card under it. Each card has the Frame / Roll pair ([§1](#frame-or-roll)). The line at the top of the Roll card lists the cards this frame changes for itself.
 
 The **Scanner Setup** cards at the bottom (Raw Decode, Optics, Calibration) hold settings you make once for a scanning setup.
 
