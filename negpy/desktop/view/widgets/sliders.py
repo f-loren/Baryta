@@ -28,8 +28,10 @@ _RESET_HINT = f'<div style="color:{THEME.text_secondary};">{tr("Double-click to 
 _EMIT_INTERVAL_MS = 33
 # Longest a moving drag waits for a render: without it a steady drag renders only when it pauses.
 _MAX_WAIT_MS = 66
-# Handle diameter; mirrors the QSlider::handle width plus its ring in modern_dark.qss.
-_HANDLE_W = 14
+# Handle diameter; mirrors the QSlider::handle width plus its edge in modern_dark.qss.
+_HANDLE_W = 20
+_TRACK_H = 6
+_TICK_H = 14
 
 
 class _NoScrollSlider(QSlider):
@@ -100,18 +102,19 @@ class _NoScrollSlider(QSlider):
             self.minimum(), self.maximum(), self.value(), usable, self.invertedAppearance()
         )
         anchor_x = _HANDLE_W / 2 + (self._default_pos if self._default_pos is not None else 0.0) * usable
+        radius = _TRACK_H / 2
         p = QPainter(self)
         p.setRenderHint(QPainter.RenderHint.Antialiasing)
         p.setPen(Qt.PenStyle.NoPen)
-        p.setBrush(QColor(THEME.bg_selected if self.isEnabled() else THEME.border_input))
-        p.drawRoundedRect(QRectF(0, groove_y - 1.5, self.width(), 3), 1.5, 1.5)
+        p.setBrush(QColor(THEME.slider_track if self.isEnabled() else THEME.border_input))
+        p.drawRoundedRect(QRectF(0, groove_y - radius, self.width(), _TRACK_H), radius, radius)
         if self.isEnabled():
             lo, hi = sorted((anchor_x, handle_x))
             p.setBrush(QColor(THEME.slider_fill))
-            p.drawRoundedRect(QRectF(lo, groove_y - 1.5, hi - lo, 3), 1.5, 1.5)
+            p.drawRoundedRect(QRectF(lo, groove_y - radius, hi - lo, _TRACK_H), radius, radius)
         if self._default_pos is not None:
-            p.setPen(QPen(QColor(THEME.text_hint), 2))
-            p.drawLine(QPointF(anchor_x, groove_y - 4), QPointF(anchor_x, groove_y + 4))
+            p.setPen(QPen(QColor(THEME.text_primary if self.isEnabled() else THEME.text_muted), 2))
+            p.drawLine(QPointF(anchor_x, groove_y - _TICK_H / 2), QPointF(anchor_x, groove_y + _TICK_H / 2))
         p.end()
         super().paintEvent(event)
 

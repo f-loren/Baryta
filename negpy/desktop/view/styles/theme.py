@@ -54,9 +54,11 @@ class ThemeConfig:
     border_focus: str = "#898989"
     border_indicator: str = "#696969"
     slider_disabled: str = "#6E6A62"
-    # The slider handle's ring and the track's fill from the default.
+    # The slider handle's knob and the track's fill up to it.
     slider_handle: str = "#ECE6D6"
     slider_fill: str = "#ECE6D6"
+    # The empty track, light enough to read on the panel at rest.
+    slider_track: str = "#5A5D61"
     text_on_accent: str = "#151515"
     text_primary: str = "#ECE6D6"
     text_secondary: str = "#BDB7A8"
@@ -189,6 +191,7 @@ DAY_COLORS: Dict[str, str] = {
     "slider_disabled": "#B4AA96",
     "slider_handle": "#A65A26",
     "slider_fill": "#A65A26",
+    "slider_track": "#C4B8A0",
     "text_on_accent": "#141210",
     "text_primary": "#141210",
     "text_secondary": "#3B362E",
