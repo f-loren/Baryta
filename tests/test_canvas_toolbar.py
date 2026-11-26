@@ -147,7 +147,7 @@ class TestCanvasToolbarResponsive(unittest.TestCase):
 
         self.assertEqual(_visible_item_count(tb), len(tb._item_ids))
         self.assertTrue(tb.source_choice.isVisible())
-        self.assertTrue(tb.btn_undo.isVisible())
+        self.assertTrue(tb.btn_tools.isVisible())
         self.assertTrue(tb.btn_zoom.isVisible())
 
     def test_every_visible_control_shares_one_row_height(self):

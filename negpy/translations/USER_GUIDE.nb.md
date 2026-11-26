@@ -106,12 +106,12 @@ Velg den delen av bildet du vil beholde, selv eller med autobeskjæring.
 
 Autobeskjæring krever at skannerlyset eller holderen er den lyseste delen av skanningen. Den lar et bilde være i fred når bildet er like lyst som lyset, eller når neste bilde fyller en stor del av én side. Beskjær et slikt bilde selv, eller bruk **Filmkant** og juster innover.
 
-<!-- panel:geometry src:ad12a4c6 -->
+<!-- panel:geometry src:99cf02cf -->
 ### 4.2 Rett opp
 
 Drei bildet og sett det i vater.
 
-*   **Roter** og **Speilvend**: drei bildet en kvart omdreining, eller speilvend det. Verktøylinjen har de samme knappene.
+*   **Roter** og **Speilvend**: drei bildet en kvart omdreining, eller speilvend det. **Rediger verktøylinje…** legger de samme knappene på verktøylinjen.
 *   **Vater**: tegn en linje langs horisonten eller en loddrett kant, så roteres bildet til det er i vater.
 *   **Rett mot film** (også på linjen i fanen Geometri): retter bildet inn etter kantene på filmen. Den ser bort fra innholdet i bildet, så et bilde tatt på skrå blir stående på skrå.
 *   **Finrotasjon**: dreier bildet litt. Positiv er med klokken.
@@ -132,7 +132,7 @@ Korrigerer fargen i kopien, slik fargefiltrene i et forstørrelsesapparat i mør
 *   **Fjerning av fargestikk**: fjerner et fargestikk som er ulikt i de mørke og lyse delene av bildet. Den starter på 0,5 (halvparten) for fargenegativer og på 0 for dias. Blader, himmel og vann regnes ikke som grått, så de beholder fargen.
 *   **Filter**: et farget filter, som på kameraobjektivet for svart-hvitt-film. Det vises bare for et fargenegativ eller fargedias i S/H, og erstatter kontrollene ovenfor. Hvert filter gjør fargene motsatt av sin egen mørkere. Gul #8, Dyp gul #15, Oransje #21 og Rød #25 gjør en blå himmel mørkere, trinn for trinn. Rød gjør også blader mørke og hud blek. Gulgrønn #11 og Grønn #58 gjør blader lysere og hud mørkere. Ingen gir utseendet til en vanlig svart-hvitt-film.
 
-<!-- panel:tone src:4cf78932 -->
+<!-- panel:tone src:ea6fcb40 -->
 ### 5.2 Tone: lyshet og kontrast
 
 Hvor lys eller mørk kopien er, og hvor mye kontrast den har.
@@ -152,7 +152,7 @@ Hvor lys eller mørk kopien er, og hvor mye kontrast den har.
     *   **Kontrastmaske**: åpner store mørke områder og holder tilbake store lyse, og beholder fine detaljer. I mørkerommet får en kopist dette med en myk, uskarp maske lagt på negativet. I digital kopiering får Fujifilm Frontier-skannere en lignende virkning med HyperTone. Områder langt fra mellomgrå endres mest, så et bilde med lav kontrast endres lite.
 *   **Global / R / G / B**: R, G eller B bruker graderingene på bare én farge, for et fargestikk som er ulikt i skygger og høylys.
 
-**Hvitpunkt** og **Svartpunkt** er på kortet **Lysmåling** i fanen Rull ([§10.3](#103-metering-negative--positive)).
+**Hvitpunkt** og **Svartpunkt** er på kortet **Lysmåling**, inne i kortet **Rull** ([§10.3](#103-metering-negative--positive)).
 
 <!-- panel:paper src:eb1bce00 -->
 ### 5.3 Papirrespons: papiret

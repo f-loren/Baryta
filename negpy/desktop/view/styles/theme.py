@@ -19,18 +19,18 @@ class ThemeConfig:
 
     # Colors. Surfaces, darkest first.
     # bg_dark is also the macOS window background (view/mac_window.py): an alternate theme updates that fix.
-    bg_dark: str = "#131313"
-    bg_panel: str = "#131313"
-    bg_input: str = "#0B0B0B"
-    bg_card: str = "#1A1A1A"
-    bg_header: str = "#1F1F1F"
-    bg_selected: str = "#2A2A2A"
-    bg_hover: str = "#2E2E2E"
-    bg_menu_selected: str = "#363636"
+    bg_dark: str = "#1C1E20"
+    bg_panel: str = "#1C1E20"
+    bg_input: str = "#16181A"
+    bg_card: str = "#222427"
+    bg_header: str = "#2A2C2F"
+    bg_selected: str = "#343639"
+    bg_hover: str = "#383A3D"
+    bg_menu_selected: str = "#404245"
     # A checked toggle and a segmented control's current choice; also the Scan button's tint
     # while it cannot start or while it reads Stop.
-    bg_checked: str = "#34312B"
-    bg_checked_hover: str = "#3D3932"
+    bg_checked: str = "#3A372F"
+    bg_checked_hover: str = "#433F37"
     border_checked: str = "#8C8678"
     border_checked_hover: str = "#ECE6D6"
     # The primary action: the strongest button on a panel. A light fill, so its text is text_on_accent.
@@ -45,26 +45,28 @@ class ThemeConfig:
     mark_edited: str = "#C79A3A"
     # The canvas strip's job bar, in the accent.
     progress_fill: str = "#ECE6D6"
-    bg_accent_muted: str = "#24221E"
-    border_input: str = "#242424"
-    border_primary: str = "#2E2E2E"
-    border_color: str = "#3A3A3A"
-    border_hover: str = "#4A4A4A"
+    bg_accent_muted: str = "#2A2925"
+    border_input: str = "#2C2E31"
+    border_primary: str = "#36383B"
+    border_color: str = "#46484C"
+    border_hover: str = "#56585C"
     # Keyboard focus: a neutral edge, as hover and the arrow-key row are neutral.
     border_focus: str = "#898989"
     border_indicator: str = "#696969"
     slider_disabled: str = "#6E6A62"
-    # The slider handle's ring and the track's fill from the default.
+    # The slider handle's knob and the track's fill up to it.
     slider_handle: str = "#ECE6D6"
     slider_fill: str = "#ECE6D6"
+    # The empty track, light enough to read on the panel at rest.
+    slider_track: str = "#5A5D61"
     text_on_accent: str = "#151515"
     text_primary: str = "#ECE6D6"
     text_secondary: str = "#BDB7A8"
     # hint = readable secondary copy (6.2:1 on bg_panel); muted = disabled widgets only, and
-    # too dim (2.7:1) for text a user must read.
-    text_hint: str = "#9A9486"
+    # too dim (2.5:1) for text a user must read.
+    text_hint: str = "#A39D8F"
     text_muted: str = "#5F5B53"
-    text_unit: str = "#8A8478"
+    text_unit: str = "#948E81"
     warn_amber: str = "#C79A3A"
     # Marks drawn over the photo: white on a dark edge or plate, which reads on any picture.
     mark_photo: str = "#FFFFFF"
@@ -93,11 +95,11 @@ class ThemeConfig:
     surface_pill: str = "rgba(0, 0, 0, 140)"
     surface_reveal_flash: str = "rgba(236, 230, 214, 0.35)"  # border_checked_hover, faint
     surface_hover_faint: str = "#0CFFFFFF"  # #AARRGGBB: QColor reads it, not rgba()
-    surface_overlay: str = "rgba(19,19,19,0.88)"
+    surface_overlay: str = "rgba(28,30,32,0.88)"
     # A card header over its chart: light enough for the chart to read through.
-    header_veil: str = "rgba(31,31,31,0.55)"
-    header_veil_hover: str = "rgba(42,42,42,0.62)"
-    surface_overlay_hover: str = "rgba(42,42,42,0.88)"
+    header_veil: str = "rgba(42,44,47,0.55)"
+    header_veil_hover: str = "rgba(52,54,57,0.62)"
+    surface_overlay_hover: str = "rgba(52,54,57,0.88)"
 
     # Font weight scale
     weight_regular: int = 400
@@ -133,6 +135,8 @@ class ThemeConfig:
     canvas_bg_mid_grey: str = "#6F6F6F"
     canvas_bg_light_grey: str = "#AAAAAA"
     canvas_bg_white: str = "#E8E8E8"
+    # The swatch a new user starts on, an index into canvas/toolbar.CANVAS_COLORS: Dark Gray, Light Gray by day.
+    canvas_bg_default: int = 1
 
     # Status semantic
     status_success: str = "#33AD83"
@@ -187,6 +191,7 @@ DAY_COLORS: Dict[str, str] = {
     "slider_disabled": "#B4AA96",
     "slider_handle": "#A65A26",
     "slider_fill": "#A65A26",
+    "slider_track": "#C4B8A0",
     "text_on_accent": "#141210",
     "text_primary": "#141210",
     "text_secondary": "#3B362E",
@@ -217,6 +222,7 @@ def apply_appearance(name: str) -> None:
         for key, value in DAY_COLORS.items():
             # THEME is frozen against stray edits; this is the one sanctioned change, at startup.
             object.__setattr__(THEME, key, value)
+        object.__setattr__(THEME, "canvas_bg_default", 4)
 
 
 # Scene marks cycle through existing tokens; red is left out because it reads as an error or the selection mat.

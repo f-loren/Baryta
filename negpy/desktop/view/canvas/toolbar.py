@@ -111,17 +111,9 @@ DEFAULT_TOOLBAR_IDS: tuple[str, ...] = (
     "position",
     "next",
     "zoom",
-    "rot_l",
-    "rot_r",
-    "flip_h",
-    "flip_v",
     "tools",
-    "undo",
-    "redo",
     "source",
-    "average",
     "export",
-    "overlays",
 )
 
 # Buttons folded into one menu control, so a stored row keeps what it showed.

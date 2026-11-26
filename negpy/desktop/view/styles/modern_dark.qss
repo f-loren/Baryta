@@ -157,19 +157,19 @@ QSlider[painted="true"]::sub-page:horizontal {
     background: transparent;
 }
 
-/* The handle is a ring: the panel ground inside, a 2px edge in the slider's color. */
+/* The handle is a solid knob in the slider's color, with a 2px edge of panel ground. */
 QSlider::handle:horizontal {
-    background: @bg_panel;
-    border: 2px solid @slider_handle;
-    width: 10px;
-    height: 10px;
-    margin: -5px 0;
-    border-radius: 7px;
+    background: @slider_handle;
+    border: 2px solid @bg_panel;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0;
+    border-radius: 10px;
 }
 
-QSlider#cyan_slider::handle:horizontal { border-color: @filter_cyan; }
-QSlider#magenta_slider::handle:horizontal { border-color: @filter_magenta; }
-QSlider#yellow_slider::handle:horizontal { border-color: @filter_yellow; }
+QSlider#cyan_slider::handle:horizontal { background: @filter_cyan; }
+QSlider#magenta_slider::handle:horizontal { background: @filter_magenta; }
+QSlider#yellow_slider::handle:horizontal { background: @filter_yellow; }
 
 QSlider::sub-page:horizontal {
     background: @bg_primary;
@@ -179,12 +179,12 @@ QSlider::sub-page:horizontal {
 QSlider::sub-page:horizontal:disabled { background: @border_color; }
 
 /* Disabled state: Qt's :disabled follows a parent's setEnabled(False). */
-QSlider::handle:horizontal:disabled { border-color: @slider_disabled; }
+QSlider::handle:horizontal:disabled { background: @slider_disabled; }
 QSlider::groove:horizontal:disabled { background: @border_input; }
 
 QSlider#cyan_slider::handle:horizontal:disabled,
 QSlider#magenta_slider::handle:horizontal:disabled,
-QSlider#yellow_slider::handle:horizontal:disabled { border-color: @slider_disabled; }
+QSlider#yellow_slider::handle:horizontal:disabled { background: @slider_disabled; }
 
 /* Baryta's top bar Reset: the one red button, a dark safelight. */
 QPushButton#baryta_reset {
