@@ -287,6 +287,9 @@ def main() -> None:
         repo = StorageRepository(APP_CONFIG.edits_db_path, APP_CONFIG.settings_db_path)
         repo.initialize()
         configure(str(repo.get_global_setting("ui_language", "system") or "system"))
+        from negpy.desktop.view.styles.theme import apply_appearance
+
+        apply_appearance(str(repo.get_global_setting("ui_appearance", "night") or "night"))
 
         # Load the catalog before UI modules construct their static labels.
         from negpy.desktop.controller import AppController

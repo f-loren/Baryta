@@ -26,7 +26,7 @@ QDockWidget::title {
     background-color: @bg_dark;
     padding: 5px;
     font-weight: bold;
-    color: @text_on_accent;
+    color: @text_primary;
 }
 
 /* A button sits on the surface of a segmented control's track and a dropdown's face. */
@@ -53,7 +53,7 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: @bg_checked_hover;
     border: 1px solid @border_checked_hover;
-    color: @text_on_accent;
+    color: @text_primary;
 }
 
 /* A checked toggle takes the chip of a segmented control's current choice; its icon
@@ -95,7 +95,7 @@ QPushButton#scan_btn:hover {
 }
 
 QPushButton#scan_btn:pressed {
-    background-color: @bg_checked_hover;
+    background-color: @bg_primary_hover;
     color: @text_on_accent;
 }
 
@@ -150,48 +150,52 @@ QSlider::groove:horizontal {
     border-radius: 2px;
 }
 
-QSlider#neutral_slider::groove:horizontal,
-QSlider#cyan_slider::groove:horizontal,
-QSlider#magenta_slider::groove:horizontal,
-QSlider#yellow_slider::groove:horizontal {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 @border_primary, stop:0.49 @border_primary, stop:0.5 @slider_disabled, stop:0.51 @border_primary, stop:1 @border_primary);
+/* A panel slider paints its own track: a thin line, a fill from the default to the handle and a
+   tick at the default (_NoScrollSlider.paintEvent). The style draws only the handle over it. */
+QSlider[painted="true"]::groove:horizontal,
+QSlider[painted="true"]::sub-page:horizontal {
+    background: transparent;
 }
 
-QSlider#cyan_slider::handle:horizontal { background: @filter_cyan; }
-QSlider#magenta_slider::handle:horizontal { background: @filter_magenta; }
-QSlider#yellow_slider::handle:horizontal { background: @filter_yellow; }
-
+/* The handle is a ring: the panel ground inside, a 2px edge in the slider's color. */
 QSlider::handle:horizontal {
-    background: @slider_handle;
-    border: none;
-    width: 16px;
-    height: 16px;
-    margin: -6px 0;
-    border-radius: 8px;
+    background: @bg_panel;
+    border: 2px solid @slider_handle;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0;
+    border-radius: 7px;
 }
 
-/* The track fills from its start to the handle; a slider with a neutral point fills from there in paintEvent. */
+QSlider#cyan_slider::handle:horizontal { border-color: @filter_cyan; }
+QSlider#magenta_slider::handle:horizontal { border-color: @filter_magenta; }
+QSlider#yellow_slider::handle:horizontal { border-color: @filter_yellow; }
+
 QSlider::sub-page:horizontal {
     background: @bg_primary;
     border-radius: 2px;
 }
 
-QSlider#neutral_slider::sub-page:horizontal,
-QSlider#cyan_slider::sub-page:horizontal,
-QSlider#magenta_slider::sub-page:horizontal,
-QSlider#yellow_slider::sub-page:horizontal {
-    background: transparent;
-}
-
 QSlider::sub-page:horizontal:disabled { background: @border_color; }
 
 /* Disabled state: Qt's :disabled follows a parent's setEnabled(False). */
-QSlider::handle:horizontal:disabled { background: @slider_disabled; }
+QSlider::handle:horizontal:disabled { border-color: @slider_disabled; }
 QSlider::groove:horizontal:disabled { background: @border_input; }
 
 QSlider#cyan_slider::handle:horizontal:disabled,
 QSlider#magenta_slider::handle:horizontal:disabled,
-QSlider#yellow_slider::handle:horizontal:disabled { background: @slider_disabled; }
+QSlider#yellow_slider::handle:horizontal:disabled { border-color: @slider_disabled; }
+
+/* Baryta's top bar Reset: the one red button, a dark safelight. */
+QPushButton#baryta_reset {
+    background-color: @bg_reset;
+    color: @mark_photo;
+}
+
+QPushButton#baryta_reset:hover, QPushButton#baryta_reset:pressed {
+    background-color: @bg_reset_hover;
+    border: 1px solid transparent;
+}
 
 QListView {
     background-color: @bg_dark;
@@ -268,7 +272,7 @@ QComboBox QAbstractItemView {
     padding: 4px;
     outline: none;
     selection-background-color: @bg_menu_selected;
-    selection-color: @text_on_accent;
+    selection-color: @text_primary;
 }
 
 QComboBox QAbstractItemView::item {
@@ -283,7 +287,7 @@ QComboBox QAbstractItemView::item {
 QComboBox QAbstractItemView::item:selected,
 QComboBox QAbstractItemView::item:hover {
     background-color: @bg_menu_selected;
-    color: @text_on_accent;
+    color: @text_primary;
     /* Override the generic QListView::item:selected slider_disabled border so the
        highlight is a flat fill exactly like the QMenu one (no bordered box). */
     border: none;
@@ -367,7 +371,7 @@ QMenu::item {
 
 QMenu::item:selected {
     background-color: @bg_menu_selected;
-    color: @text_on_accent;
+    color: @text_primary;
 }
 
 /* Hover stays gray; the chip marks the item that is on, as on a checked toggle. */
@@ -559,7 +563,7 @@ QPushButton[primary="true"]:hover, QToolButton[primary="true"]:hover {
 }
 
 QPushButton[primary="true"]:pressed, QToolButton[primary="true"]:pressed {
-    background-color: @bg_checked_hover;
+    background-color: @bg_primary_hover;
     border: 1px solid transparent;
 }
 

@@ -19,7 +19,8 @@ from PyQt6.QtWidgets import (
 from negpy.desktop.controller import AppController
 from negpy.desktop.view.styles.color_vision import PALETTES
 from negpy.desktop.view.styles.templates import field_label, hint_label, labeled_action, labeled_toggle, pin_dialog_default, set_hint_kind
-from negpy.desktop.view.styles.theme import THEME
+from negpy.desktop.view.styles.theme import APPEARANCES, THEME
+from negpy.desktop.view.widgets.segmented_choice import SegmentedChoice
 from negpy.desktop.view.widgets.collapsible import CollapsibleSection
 from negpy.desktop.view.widgets.dialog_geometry import remember_dialog_geometry
 from negpy.desktop.view.widgets.semantic_download_dialog import ClipDownloadDialog
@@ -251,6 +252,19 @@ class PreferencesDialog(QDialog):
         self.language_combo.currentIndexChanged.connect(self._on_language_changed)
         grid.addWidget(field_label(tr("Language")), row, 0)
         grid.addWidget(self.language_combo, row, 1)
+        row += 1
+
+        self.appearance_choice = SegmentedChoice(
+            (("fa5s.moon", tr("Night")), ("fa5s.sun", tr("Day"))),
+            tr("The colors of the interface, applied when NegPy starts again."),
+            data=APPEARANCES,
+        )
+        self.appearance_choice.setCurrentIndex(
+            max(0, self.appearance_choice.findData(self.repo.get_global_setting("ui_appearance", "night")))
+        )
+        self.appearance_choice.currentChanged.connect(self._on_appearance_changed)
+        grid.addWidget(field_label(tr("Appearance")), row, 0)
+        grid.addWidget(self.appearance_choice, row, 1)
         row += 1
 
         grid.addWidget(field_label(tr("UI scale")), row, 0)
@@ -523,6 +537,10 @@ class PreferencesDialog(QDialog):
 
     def _on_ui_scale_changed(self, index: int) -> None:
         self.repo.save_global_setting("ui_scale", float(self.scale_combo.itemData(index)))
+        self._mark_restart()
+
+    def _on_appearance_changed(self, index: int) -> None:
+        self.repo.save_global_setting("ui_appearance", self.appearance_choice.currentData())
         self._mark_restart()
 
     def _on_language_changed(self, index: int) -> None:

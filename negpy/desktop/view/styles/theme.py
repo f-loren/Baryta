@@ -19,47 +19,52 @@ class ThemeConfig:
 
     # Colors. Surfaces, darkest first.
     # bg_dark is also the macOS window background (view/mac_window.py): an alternate theme updates that fix.
-    bg_dark: str = "#262626"
-    bg_panel: str = "#262626"
-    bg_input: str = "#222222"
-    bg_card: str = "#2B2B2B"
-    bg_header: str = "#303030"
-    bg_selected: str = "#3A3A3A"
-    bg_hover: str = "#3E3E3E"
-    bg_menu_selected: str = "#474747"
+    bg_dark: str = "#131313"
+    bg_panel: str = "#131313"
+    bg_input: str = "#0B0B0B"
+    bg_card: str = "#1A1A1A"
+    bg_header: str = "#1F1F1F"
+    bg_selected: str = "#2A2A2A"
+    bg_hover: str = "#2E2E2E"
+    bg_menu_selected: str = "#363636"
     # A checked toggle and a segmented control's current choice; also the Scan button's tint
     # while it cannot start or while it reads Stop.
-    bg_checked: str = "#253A63"
-    bg_checked_hover: str = "#2C4675"
-    border_checked: str = "#3A5FAE"
-    border_checked_hover: str = "#2F6BEA"
-    # The primary action: the strongest button on a panel.
-    bg_primary: str = "#2F6BEA"
-    bg_primary_hover: str = "#285ED2"
+    bg_checked: str = "#34312B"
+    bg_checked_hover: str = "#3D3932"
+    border_checked: str = "#8C8678"
+    border_checked_hover: str = "#ECE6D6"
+    # The primary action: the strongest button on a panel. A light fill, so its text is text_on_accent.
+    bg_primary: str = "#ECE6D6"
+    bg_primary_hover: str = "#D9D2C0"
+    # The top bar's Reset: a dark safelight red, under the lightness of a bright red.
+    bg_reset: str = "#7A241C"
+    bg_reset_hover: str = "#6B2019"
     # An edited card's frame-scope stripe and lit Frame icon; a roll-scope card takes border_checked_hover.
     border_scope_frame: str = "#5D4B24"
     # The dot on an edited control. A warning takes a sign in warn_amber, never a dot.
     mark_edited: str = "#C79A3A"
-    # The canvas strip's job bar, in the accent blue.
-    progress_fill: str = "#2F6BEA"
-    bg_accent_muted: str = "#2C3242"
-    border_input: str = "#333333"
-    border_primary: str = "#3E3E3E"
-    border_color: str = "#4A4A4A"
-    border_hover: str = "#555555"
+    # The canvas strip's job bar, in the accent.
+    progress_fill: str = "#ECE6D6"
+    bg_accent_muted: str = "#24221E"
+    border_input: str = "#242424"
+    border_primary: str = "#2E2E2E"
+    border_color: str = "#3A3A3A"
+    border_hover: str = "#4A4A4A"
     # Keyboard focus: a neutral edge, as hover and the arrow-key row are neutral.
     border_focus: str = "#898989"
     border_indicator: str = "#696969"
-    slider_disabled: str = "#7C7C7C"
-    slider_handle: str = "#F4F4F4"
-    text_on_accent: str = "#FFFFFF"
-    text_primary: str = "#E6E6E6"
-    text_secondary: str = "#BDBDBD"
-    # hint = readable secondary copy (6.1:1 on bg_panel); muted = disabled widgets only, and
-    # too dim (3.0:1) for text a user must read.
-    text_hint: str = "#A4A4A4"
-    text_muted: str = "#6E6E6E"
-    text_unit: str = "#8B8B8B"
+    slider_disabled: str = "#6E6A62"
+    # The slider handle's ring and the track's fill from the default.
+    slider_handle: str = "#ECE6D6"
+    slider_fill: str = "#ECE6D6"
+    text_on_accent: str = "#151515"
+    text_primary: str = "#ECE6D6"
+    text_secondary: str = "#BDB7A8"
+    # hint = readable secondary copy (6.2:1 on bg_panel); muted = disabled widgets only, and
+    # too dim (2.7:1) for text a user must read.
+    text_hint: str = "#9A9486"
+    text_muted: str = "#5F5B53"
+    text_unit: str = "#8A8478"
     warn_amber: str = "#C79A3A"
     # Marks drawn over the photo: white on a dark edge or plate, which reads on any picture.
     mark_photo: str = "#FFFFFF"
@@ -86,13 +91,13 @@ class ThemeConfig:
     # Surface overlay tokens (rgba). Integer alpha where a widget sheet reads it.
     surface_scrim: str = "rgba(5, 5, 5, 115)"
     surface_pill: str = "rgba(0, 0, 0, 140)"
-    surface_reveal_flash: str = "rgba(47, 107, 234, 0.35)"  # border_checked_hover, faint
+    surface_reveal_flash: str = "rgba(236, 230, 214, 0.35)"  # border_checked_hover, faint
     surface_hover_faint: str = "#0CFFFFFF"  # #AARRGGBB: QColor reads it, not rgba()
-    surface_overlay: str = "rgba(38,38,38,0.88)"
+    surface_overlay: str = "rgba(19,19,19,0.88)"
     # A card header over its chart: light enough for the chart to read through.
-    header_veil: str = "rgba(48,48,48,0.55)"
-    header_veil_hover: str = "rgba(58,58,58,0.62)"
-    surface_overlay_hover: str = "rgba(58,58,58,0.88)"
+    header_veil: str = "rgba(31,31,31,0.55)"
+    header_veil_hover: str = "rgba(42,42,42,0.62)"
+    surface_overlay_hover: str = "rgba(42,42,42,0.88)"
 
     # Font weight scale
     weight_regular: int = 400
@@ -151,6 +156,69 @@ class ThemeConfig:
 
 
 THEME = ThemeConfig()
+
+# Day: a cream ground, a film-base orange accent and black text. Semantic text colors go darker to
+# keep 4.5:1 on cream; the slider takes a darker orange to keep 3:1 against its track.
+DAY_COLORS: Dict[str, str] = {
+    "bg_dark": "#F3EDE0",
+    "bg_panel": "#F3EDE0",
+    "bg_input": "#E9E1D0",
+    "bg_card": "#FBF7EE",
+    "bg_header": "#E6DECC",
+    "bg_selected": "#D6CCB6",
+    "bg_hover": "#DCD3BF",
+    "bg_menu_selected": "#CFC4AC",
+    "bg_checked": "#EBD6BC",
+    "bg_checked_hover": "#E3C8A6",
+    "border_checked": "#A65A26",
+    "border_checked_hover": "#C8743A",
+    "bg_primary": "#C8743A",
+    "bg_primary_hover": "#D4844C",
+    "border_scope_frame": "#B08A4A",
+    "mark_edited": "#A87A1E",
+    "progress_fill": "#C8743A",
+    "bg_accent_muted": "#E2D6C2",
+    "border_input": "#DDD3BF",
+    "border_primary": "#D3C8B2",
+    "border_color": "#C4B8A0",
+    "border_hover": "#B0A48C",
+    "border_focus": "#6F675A",
+    "border_indicator": "#8E8676",
+    "slider_disabled": "#B4AA96",
+    "slider_handle": "#A65A26",
+    "slider_fill": "#A65A26",
+    "text_on_accent": "#141210",
+    "text_primary": "#141210",
+    "text_secondary": "#3B362E",
+    "text_hint": "#5F574B",
+    "text_muted": "#A39A88",
+    "text_unit": "#6F675A",
+    "warn_amber": "#7C5913",
+    "error": "#C62828",
+    "error_text": "#B3261E",
+    "status_success": "#1A6D50",
+    "channel_red_text": "#BA2525",
+    "channel_green_text": "#286D2B",
+    "channel_blue_text": "#1460B8",
+    "surface_reveal_flash": "rgba(200, 116, 58, 0.30)",
+    "surface_hover_faint": "#0C000000",
+    "surface_overlay": "rgba(243,237,224,0.92)",
+    "header_veil": "rgba(230,222,204,0.55)",
+    "header_veil_hover": "rgba(214,204,182,0.62)",
+    "surface_overlay_hover": "rgba(214,204,182,0.92)",
+}
+APPEARANCES = ("night", "day")
+
+
+def apply_appearance(name: str) -> None:
+    """Sets THEME to the saved appearance ("night" or "day"). Call it before any view module
+    imports: modules read THEME into stylesheets and constants at import."""
+    if name == "day":
+        for key, value in DAY_COLORS.items():
+            # THEME is frozen against stray edits; this is the one sanctioned change, at startup.
+            object.__setattr__(THEME, key, value)
+
+
 # Scene marks cycle through existing tokens; red is left out because it reads as an error or the selection mat.
 SCENE_COLORS = (THEME.channel_blue, THEME.status_success, THEME.warn_amber, THEME.filter_magenta, THEME.filter_cyan, THEME.mode_c41)
 

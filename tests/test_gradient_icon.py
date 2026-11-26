@@ -6,8 +6,8 @@ from negpy.desktop.view.styles.theme import THEME
 
 
 def _opaque(image) -> list[QColor]:
-    """The glyph's pixels, left to right."""
-    return [image.pixelColor(x, y) for x in range(image.width()) for y in range(image.height()) if image.pixelColor(x, y).alpha() > 200]
+    """The glyph's fully opaque pixels, left to right: an edge pixel's color moves by one in alpha rounding."""
+    return [image.pixelColor(x, y) for x in range(image.width()) for y in range(image.height()) if image.pixelColor(x, y).alpha() == 255]
 
 
 def test_the_glyph_runs_red_on_the_left_to_blue_on_the_right():
@@ -18,11 +18,10 @@ def test_the_glyph_runs_red_on_the_left_to_blue_on_the_right():
     assert right.blue() > max(right.red(), right.green())
 
 
-def test_a_disabled_glyph_stays_flat_gray():
+def test_a_disabled_glyph_is_flat_in_the_disabled_color():
     image = gradient_icon("fa5s.square").pixmap(QSize(32, 32), QIcon.Mode.Disabled).toImage()
 
-    pixels = _opaque(image)
-    assert pixels and all(c.red() == c.green() == c.blue() for c in pixels)
+    assert {c.name() for c in _opaque(image)} == {QColor(THEME.text_muted).name()}
 
 
 def test_a_sweep_at_90_degrees_runs_top_to_bottom():
