@@ -106,12 +106,12 @@ Wähle den Teil des Bildes, der bleibt, von Hand oder mit dem Auto-Zuschnitt.
 
 Der Auto-Zuschnitt braucht die Scannerlichtquelle oder den Halter als hellsten Teil des Scans. Er lässt ein Bild unverändert, wenn das Bild so hell ist wie die Lichtquelle oder das nächste Bild einen großen Teil einer Seite füllt. Schneide ein solches Bild von Hand zu oder nutze **Filmrand** und schneide nach innen.
 
-<!-- panel:geometry src:ad12a4c6 -->
+<!-- panel:geometry src:99cf02cf -->
 ### 4.2 Geraderichten
 
 Drehe das Bild und richte es gerade aus.
 
-*   **Drehen** und **Spiegeln**: drehen das Bild um eine Vierteldrehung oder spiegeln es. Die Werkzeugleiste hat dieselben Schaltflächen.
+*   **Drehen** und **Spiegeln**: drehen das Bild um eine Vierteldrehung oder spiegeln es. **Werkzeugleiste bearbeiten…** legt dieselben Schaltflächen auf die Werkzeugleiste.
 *   **Ausrichten**: Zeichne eine Linie entlang des Horizonts oder einer senkrechten Kante. Das Bild dreht sich, bis die Linie gerade ist.
 *   **An Film ausrichten** (auch in der Leiste des Tabs Geometrie): richtet das Bild an den Kanten des Films aus. Der Bildinhalt zählt dabei nicht. Ein schief fotografiertes Bild bleibt also schief.
 *   **Feindrehung**: dreht das Bild in kleinen Schritten. Positiv ist im Uhrzeigersinn.

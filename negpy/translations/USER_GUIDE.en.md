@@ -28,7 +28,7 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 
 *   **Canvas** (center): the picture. Scroll or pinch to zoom, drag to pan, and double-click to switch between fit and 100%. Right-click for view options, copy and paste of settings, resets and **Unload**.
 *   **Film Strip** (under the canvas): the open frames in one row. Drag its top edge to resize it; `Ctrl+[` folds it away.
-*   **Toolbar** (bottom): **Photo** holds navigation, zoom, rotate, **Tools** (crop, pickers, masks, retouching), undo, the **Print** menu (Before / After and the peeks), **Roll Average**, **Export** and **Overlays**. **Export** does what the Export panel's button does, and its chevron picks the frames. **Roll** holds the Film Strip's import, filter, sort and roll actions. The **⋯** menu holds every action, **Preferences…** included.
+*   **Toolbar** (bottom): **Photo** holds navigation, zoom, **Tools** (crop, pickers, masks, retouching), the **Print** menu (Before / After and the peeks) and **Export**. **Edit Toolbar…** adds rotate, undo, **Roll Average** and **Overlays**. **Export** does what the Export panel's button does, and its chevron picks the frames. **Roll** holds the Film Strip's import, filter, sort and roll actions. The **⋯** menu holds every action, **Preferences…** included.
 *   **Controls** (right): one column. **Scan**, **Library** and **Develop** on the top bar pick what it shows. Only Develop changes the picture. Drag the panel by its top edge to float it.
 *   **Frame Info** (`I`): the strip above the canvas. It shows the file name, film and size on the left, the print recipe on the right, and messages in the middle. A running job fills the bar along its bottom edge, one segment per frame for a short batch; **Abort** stops it.
 
@@ -69,7 +69,7 @@ The app starts in **Base** mode, with the cards most rolls need. **Advanced** al
 
 ### Using the controls
 
-On a slider, click the value to type a number, drag the name to adjust (**Shift** for fine steps), and double-click to reset. A chevron hides fine-tune controls; a dot on a closed fold, a card or a tab marks a changed value. On a dropdown, **‹** and **›** step through the choices. Each card has a reset arrow and an **ⓘ** that opens its part of this guide.
+On a slider, click the value to type a number, drag the name to adjust (**Shift** for fine steps), and double-click to reset. A chevron hides fine-tune controls; a dot on a closed fold, a card or a tab marks a changed value. On a dropdown, **‹** and **›** step through the choices. A card header shows its icons when the pointer is on it, such as the **ⓘ** that opens its part of this guide. An edited card also shows a reset arrow.
 
 A tab with several cards has a bar such as **3 of 5 cards edited**, with reset, **Reset to Roll**, **Apply** and collapse for the whole tab. On the Roll card and the Metadata tabs, **Apply** gives the roll every card this frame changed. On a Develop tab, it copies the tab to other frames.
 
@@ -94,7 +94,7 @@ A new frame gets the roll's film type, and the crop, print stock and Lab setting
 *   **Before / After** (`\`, or the **Print** menu): splits the canvas between the default conversion and your edit. Hold `\` to see the default alone. To compare with an earlier version, right-click it in **History**.
 *   **Peeks**: hold `N` for the scan as loaded (the negative), `M` for the flat master, and `P` for the camera's own JPEG. The **Print** menu has them too.
 *   **Roll Average** (`U`, or the **Print** menu): prints this frame on the average and changes nothing. The bar has **Luma**, **Color** and **Cast**; right-click one to turn them all on or off. The averages the frame has now show after **Applied**. On a frame in a scene, **Scene** and **Roll** choose which average. **Apply** saves them to the frame. The view stays open when you go to the next frame.
-*   **Roll Average** button (filmstrip icon on the toolbar): opens the **Roll Average** bar. It is lit while the frame uses an average. Right-click turns every average on or off at once, as one edit. An amber icon marks a frame far from the roll color.
+*   **Roll Average** button (filmstrip icon, added to the toolbar with **Edit Toolbar…**): opens the **Roll Average** bar. It is lit while the frame uses an average. Right-click turns every average on or off at once, as one edit. An amber icon marks a frame far from the roll color.
 *   **Export Size** (**Print** menu): shows the frame as it exports, at the size the **Export** panel sets, at 100%. Use it to judge sharpening and grain. It updates a moment after each edit.
 *   **Grain Focuser** (`Shift+L`, **Overlays** menu): a magnifier at the pointer that shows the exported pixels at their true size, with a sharpness number.
 *   **Reference View** (`Shift+R`): pins this frame beside the canvas, to match other frames to it.
@@ -289,7 +289,7 @@ Auto Crop needs the scanner light or holder to be the brightest part of the scan
 
 Turn the picture and make it level.
 
-*   **Rotate** and **Flip**: turn the picture a quarter turn, or mirror it. The toolbar has the same buttons.
+*   **Rotate** and **Flip**: turn the picture a quarter turn, or mirror it. **Edit Toolbar…** puts the same buttons on the toolbar.
 *   **Level**: draw a line along the horizon or a vertical edge, and the picture turns to make it level.
 *   **Square to Film** (also on the Geometry tab's bar): lines the picture up with the edges of the film. It ignores what is in the picture, so a photo taken at a tilt stays tilted.
 *   **Fine Rotation**: turns the picture by small amounts. Positive is clockwise.

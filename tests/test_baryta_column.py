@@ -65,3 +65,25 @@ def test_the_frame_tabs_take_the_height_of_the_tab_in_front(qapp) -> None:
         heights.add(_height(right.stack))
         assert _height(right.stack) == _height(right.stack.currentWidget()) + right.stack.contentsMargins().top()
     assert len(heights) > 1
+
+
+def test_card_headers_keep_only_name_and_chevron_until_pointed_at(qapp) -> None:
+    from negpy.desktop.view.sidebar.baryta_column import PANEL_WIDTH
+
+    right = _column()
+    section = right.controls_panel.film_section
+    assert section.icon_label is None or section.icon_label.isHidden()
+    assert section.info_btn.graphicsEffect().opacity() == 0.0
+    assert section.reset_btn.graphicsEffect() is None
+    toggle = section.add_header_toggle("fa5s.eye", "A tool")
+    toggle.setChecked(True)
+    assert toggle.graphicsEffect().opacity() == 1.0
+    assert right.sizeHint().width() == max(PANEL_WIDTH, right.minimumSizeHint().width())
+
+
+def test_setup_shows_its_choices_without_the_notes(qapp) -> None:
+    from negpy.desktop.view.sidebar.scan_setup import ScanSetupSidebar
+
+    setup = _column().findChild(ScanSetupSidebar)
+    setup.hint.setVisible(True)
+    assert setup.hint.isHidden()

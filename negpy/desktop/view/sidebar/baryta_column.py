@@ -7,24 +7,45 @@ NegPy's own; this module only moves widgets after RightPanel builds them, so an 
 keeps its own layout code.
 """
 
-from PyQt6.QtCore import QSize
-from PyQt6.QtWidgets import QHBoxLayout, QScrollArea, QStackedWidget, QVBoxLayout, QWidget
+from PyQt6.QtCore import QEvent, QObject, QSize
+from PyQt6.QtWidgets import (
+    QAbstractButton,
+    QGraphicsOpacityEffect,
+    QHBoxLayout,
+    QScrollArea,
+    QStackedWidget,
+    QVBoxLayout,
+    QWidget,
+)
 
 from negpy.desktop.view.styles.templates import icon_button
 from negpy.desktop.view.styles.theme import THEME
-from negpy.desktop.view.widgets.collapsible import make_section
+from negpy.desktop.view.sidebar.scan_setup import ScanSetupSidebar
+from negpy.desktop.view.widgets.collapsible import CollapsibleSection, make_section
 from negpy.desktop.view.widgets.segmented_choice import SegmentedChoice
+from negpy.desktop.view.widgets.tab_header import TabHeader
 from negpy.kernel.system.i18n import tr
 
 ROLL_KEY = "baryta_roll"
 # Groups that open behind the back row, in its choice order.
 VIEW_GROUPS = ("export", "metadata")
+# The panel's first width, before the user drags it; the cards fit down to RightPanel's minimum.
+PANEL_WIDTH = 380
 
 
 def apply_column_layout(right) -> None:
     keys = right._group_keys
     right.group_switcher.hide()
     _build_develop_column(right)
+    _cap_width(right)
+    for section in right.findChildren(CollapsibleSection):
+        # A tab's header row is a toolbar, so its tracks stay in view.
+        if not isinstance(section, TabHeader):
+            _quiet_header(section)
+    for setup in right.findChildren(ScanSetupSidebar):
+        # Its notes restate the choices above them; refresh() would show them again.
+        setup.hint.hide()
+        setup.hint.setVisible = lambda _visible: None
     header = _view_header(right)
     native_switch = right._switch_group
 
@@ -138,3 +159,68 @@ def _view_header(right) -> QWidget:
     row.addWidget(right.view_choice, 1)
     right.layout().insertWidget(1, header)
     return header
+
+
+class _WidthHint(QWidget):
+    """Holds the panel's body and asks for PANEL_WIDTH, so the widest page does not set the first width."""
+
+    def sizeHint(self) -> QSize:  # noqa: N802
+        return QSize(max(PANEL_WIDTH, self.minimumSizeHint().width()), super().sizeHint().height())
+
+
+def _cap_width(right) -> None:
+    holder = _WidthHint()
+    box = QVBoxLayout(holder)
+    box.setContentsMargins(0, 0, 0, 0)
+    right.layout().replaceWidget(right.splitter, holder)
+    box.addWidget(right.splitter)
+
+
+class _HeaderHover(QObject):
+    """Shows a card header's action icons while the pointer or focus is on the header. A checked
+    toggle stays in view, as it reports a state; the scope pair's stripe already reports its own.
+    Reset and the roll revert appear only on an edited card, so they stay as they are."""
+
+    def __init__(self, section: CollapsibleSection) -> None:
+        super().__init__(section)
+        self._section = section
+        self._header = section.toggle_button
+        self._effects: dict[QAbstractButton, QGraphicsOpacityEffect] = {}
+        self._header.installEventFilter(self)
+        for button in self._header.findChildren(QAbstractButton):
+            self._add(button)
+        self.refresh()
+
+    def _add(self, button: QAbstractButton) -> None:
+        s = self._section
+        if button in self._effects or button in (s.reset_btn, s.roll_revert_btn, s.select_box):
+            return
+        effect = QGraphicsOpacityEffect(button)
+        button.setGraphicsEffect(effect)
+        self._effects[button] = effect
+        button.installEventFilter(self)
+        button.toggled.connect(lambda _on: self.refresh())
+
+    def refresh(self) -> None:
+        shown = self._header.underMouse() or any(b.hasFocus() for b in self._effects)
+        scope = (self._section.frame_btn, self._section.roll_btn)
+        for button, effect in self._effects.items():
+            lit = button.isChecked() and button not in scope
+            effect.setOpacity(1.0 if shown or lit else 0.0)
+
+    def eventFilter(self, obj, event) -> bool:  # noqa: N802
+        kind = event.type()
+        if obj is self._header and kind == QEvent.Type.ChildAdded and isinstance(event.child(), QAbstractButton):
+            # Header buttons a card adds after the build, such as the scope pair.
+            self._add(event.child())
+            self.refresh()
+        elif kind in (QEvent.Type.Enter, QEvent.Type.Leave, QEvent.Type.FocusIn, QEvent.Type.FocusOut):
+            self.refresh()
+        return False
+
+
+def _quiet_header(section: CollapsibleSection) -> None:
+    """A card header shows its name and chevron; its action icons wait for the pointer."""
+    if section.icon_label is not None:
+        section.icon_label.hide()
+    _HeaderHover(section)

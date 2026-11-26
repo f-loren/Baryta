@@ -148,7 +148,7 @@ class _EmptyStateOverlay(QWidget):
 
 
 # (canvas, Film Strip) heights until the splitter is first dragged; Qt scales them to the window.
-_STRIP_DEFAULT_SPLIT = (700, 300)
+_STRIP_DEFAULT_SPLIT = (840, 160)
 _CANVAS_MIN_HEIGHT = 120
 _LOADING_MESSAGE = tr("Processing…")
 # The Film Strip section's key, so a strip folded before keeps its fold.

@@ -106,12 +106,12 @@ Velg den delen av bildet du vil beholde, selv eller med autobeskjæring.
 
 Autobeskjæring krever at skannerlyset eller holderen er den lyseste delen av skanningen. Den lar et bilde være i fred når bildet er like lyst som lyset, eller når neste bilde fyller en stor del av én side. Beskjær et slikt bilde selv, eller bruk **Filmkant** og juster innover.
 
-<!-- panel:geometry src:ad12a4c6 -->
+<!-- panel:geometry src:99cf02cf -->
 ### 4.2 Rett opp
 
 Drei bildet og sett det i vater.
 
-*   **Roter** og **Speilvend**: drei bildet en kvart omdreining, eller speilvend det. Verktøylinjen har de samme knappene.
+*   **Roter** og **Speilvend**: drei bildet en kvart omdreining, eller speilvend det. **Rediger verktøylinje…** legger de samme knappene på verktøylinjen.
 *   **Vater**: tegn en linje langs horisonten eller en loddrett kant, så roteres bildet til det er i vater.
 *   **Rett mot film** (også på linjen i fanen Geometri): retter bildet inn etter kantene på filmen. Den ser bort fra innholdet i bildet, så et bilde tatt på skrå blir stående på skrå.
 *   **Finrotasjon**: dreier bildet litt. Positiv er med klokken.

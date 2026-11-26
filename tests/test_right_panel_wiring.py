@@ -251,9 +251,9 @@ def test_first_run_analysis_height_shrinks_on_a_short_screen():
     def screen(height):
         return MagicMock(availableGeometry=lambda: MagicMock(height=lambda: height))
 
-    assert default_analysis_split(screen(1440))[0] == 320
-    assert default_analysis_split(screen(900))[0] == 270
-    assert default_analysis_split(None)[0] == 320
+    assert default_analysis_split(screen(1440))[0] == 280
+    assert default_analysis_split(screen(800))[0] == 240
+    assert default_analysis_split(None)[0] == 280
 
 
 def test_update_analysis_tells_the_strip_whether_placement_is_available() -> None:

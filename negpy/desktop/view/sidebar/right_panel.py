@@ -97,7 +97,7 @@ def saved_group_key(saved: object, keys: list[str]) -> str:
 
 def default_analysis_split(screen) -> list[int]:
     height = screen.availableGeometry().height() if screen is not None else 1080
-    top = min(320, height * 3 // 10)
+    top = min(280, height * 3 // 10)
     return [top, max(600, height - top)]
 
 

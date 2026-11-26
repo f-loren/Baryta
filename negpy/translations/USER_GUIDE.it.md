@@ -28,7 +28,7 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 
 *   **Area di lavoro** (al centro): l'immagine. Scorri o pizzica per lo zoom, trascina per spostarti e fai doppio clic per passare da adatta a 100%. Il clic destro offre opzioni di visualizzazione, copia e incolla delle impostazioni, reimpostazioni e **Chiudi**.
 *   **Striscia pellicola** (sotto l'area di lavoro): i fotogrammi aperti in una riga. Trascinane il bordo superiore per ridimensionarla; `Ctrl+[` la ripiega.
-*   **Barra degli strumenti** (in basso): **Foto** contiene navigazione, zoom, rotazione, **Strumenti** (ritaglio, prelievi, maschere, ritocco), annulla, il menu **Stampa** (Prima / Dopo e le sbirciate), **Media del rullino**, **Esporta** e **Sovrapposizioni**. **Esporta** fa ciò che fa il pulsante del pannello Esporta, e la sua freccia sceglie i fotogrammi. **Rullino** contiene importazione, filtro, ordinamento e azioni del rullino della Striscia pellicola. Il menu **⋯** contiene tutte le azioni, comprese le **Preferenze…**.
+*   **Barra degli strumenti** (in basso): **Foto** contiene navigazione, zoom, **Strumenti** (ritaglio, prelievi, maschere, ritocco), il menu **Stampa** (Prima / Dopo e le sbirciate) ed **Esporta**. **Modifica barra degli strumenti…** aggiunge rotazione, annulla, **Media del rullino** e **Sovrapposizioni**. **Esporta** fa ciò che fa il pulsante del pannello Esporta, e la sua freccia sceglie i fotogrammi. **Rullino** contiene importazione, filtro, ordinamento e azioni del rullino della Striscia pellicola. Il menu **⋯** contiene tutte le azioni, comprese le **Preferenze…**.
 *   **Controlli** (a destra): una colonna. **Scansiona**, **Libreria** e **Sviluppa** nella barra in alto scelgono cosa mostra. Solo Sviluppa cambia l'immagine. Trascina il pannello dal bordo superiore per renderlo mobile.
 *   **Info fotogramma** (`I`): la striscia sopra l'area di lavoro. Mostra a sinistra nome file, pellicola e dimensioni, a destra la ricetta di stampa e al centro i messaggi. Un'operazione in corso riempie la barra lungo il bordo inferiore, un segmento per fotogramma per un lotto breve; **Interrompi** la ferma.
 
@@ -69,7 +69,7 @@ L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte
 
 ### Usare i controlli
 
-Su un cursore, fai clic sul valore per digitare un numero, trascina il nome per regolarlo (**Maiusc** per passi fini) e fai doppio clic per reimpostarlo. Una freccia nasconde i controlli di regolazione fine; un punto su una sezione chiusa, un riquadro o una scheda segnala un valore modificato. In un menu a tendina, **‹** e **›** scorrono tra le scelte. Ogni riquadro ha una freccia di reimpostazione e una **ⓘ** che apre la sua parte di questa guida.
+Su un cursore, fai clic sul valore per digitare un numero, trascina il nome per regolarlo (**Maiusc** per passi fini) e fai doppio clic per reimpostarlo. Una freccia nasconde i controlli di regolazione fine; un punto su una sezione chiusa, un riquadro o una scheda segnala un valore modificato. In un menu a tendina, **‹** e **›** scorrono tra le scelte. L'intestazione di un riquadro mostra le sue icone quando il puntatore è sopra, come la **ⓘ** che apre la sua parte di questa guida. Un riquadro modificato mostra anche una freccia di reimpostazione.
 
 Una scheda con più riquadri ha una barra come **3 riquadri su 5 modificati**, con reimposta, **Reimposta al rullino**, **Applica** e comprimi per l'intera scheda. Nel riquadro Rullino e nelle schede Metadati, **Applica** dà al rullino ogni riquadro che questo fotogramma ha modificato. In una scheda di Sviluppa, copia la scheda su altri fotogrammi.
 
@@ -94,7 +94,7 @@ Un nuovo fotogramma riceve il tipo di pellicola del rullino, e il ritaglio, il s
 *   **Prima / Dopo** (`\`, oppure il menu **Stampa**): divide l'area di lavoro tra la conversione predefinita e la tua modifica. Tieni premuto `\` per vedere solo quella predefinita. Per confrontare con una versione precedente, fai clic destro su di essa in **Cronologia**.
 *   **Sbirciate**: tieni premuto `N` per la scansione così come è stata caricata (il negativo), `M` per il master piatto e `P` per il JPEG della fotocamera. Si trovano anche nel menu **Stampa**.
 *   **Media del rullino** (`U`, oppure il menu **Stampa**): stampa questo fotogramma sulla media e non cambia nulla. La barra ha **Luma**, **Colore** e **Dominante**; fai clic destro su una per attivarle o disattivarle tutte. Le medie che il fotogramma usa ora compaiono dopo **Applicato**. Su un fotogramma in una scena, **Scena** e **Rullino** scelgono quale media. **Applica** le salva nel fotogramma. La vista resta aperta quando passi al fotogramma successivo.
-*   Pulsante **Media del rullino** (icona a pellicola sulla barra degli strumenti): apre la barra **Media del rullino**. È acceso mentre il fotogramma usa una media. Il clic destro attiva o disattiva tutte le medie in una volta, come un'unica modifica. Un'icona ambra segnala un fotogramma lontano dal colore del rullino.
+*   Pulsante **Media del rullino** (icona a pellicola, da aggiungere alla barra con **Modifica barra degli strumenti…**): apre la barra **Media del rullino**. È acceso mentre il fotogramma usa una media. Il clic destro attiva o disattiva tutte le medie in una volta, come un'unica modifica. Un'icona ambra segnala un fotogramma lontano dal colore del rullino.
 *   **Dimensioni di esportazione** (menu **Stampa**): mostra il fotogramma come viene esportato, alle dimensioni impostate dal pannello **Esporta**, al 100%. Usalo per valutare nitidezza e grana. Si aggiorna un attimo dopo ogni modifica.
 *   **Focometro** (`Maiusc+L`, menu **Sovrapposizioni**): una lente sotto il puntatore che mostra i pixel esportati alla loro dimensione reale, con un valore di nitidezza.
 *   **Vista di riferimento** (`Maiusc+R`): fissa questo fotogramma accanto all'area di lavoro, per adeguarvi gli altri fotogrammi.
@@ -284,12 +284,12 @@ Scegli la parte dell'immagine da conservare, a mano o con il Ritaglio automatico
 
 Il Ritaglio automatico richiede che la luce dello scanner o il supporto sia la parte più luminosa della scansione. Lascia stare un fotogramma quando l'immagine è luminosa quanto la luce, o quando il fotogramma successivo occupa gran parte di un lato. Ritaglia a mano un fotogramma del genere, oppure usa **Bordo della pellicola** e rifila verso l'interno.
 
-<!-- panel:geometry src:ad12a4c6 -->
+<!-- panel:geometry src:99cf02cf -->
 ### 4.2 Raddrizza
 
 Ruota l'immagine e mettila in bolla.
 
-*   **Ruota** e **Rifletti**: ruotano l'immagine di un quarto di giro o la specchiano. La barra degli strumenti ha gli stessi pulsanti.
+*   **Ruota** e **Rifletti**: ruotano l'immagine di un quarto di giro o la specchiano. **Modifica barra degli strumenti…** mette gli stessi pulsanti sulla barra degli strumenti.
 *   **Livella**: traccia una linea lungo l'orizzonte o un bordo verticale, e l'immagine ruota per metterla in bolla.
 *   **Allinea alla pellicola** (anche sulla barra della scheda Geometria): allinea l'immagine ai bordi della pellicola. Ignora il contenuto dell'immagine, quindi una foto scattata inclinata resta inclinata.
 *   **Rotazione fine**: ruota l'immagine di piccole quantità. Positivo è in senso orario.
