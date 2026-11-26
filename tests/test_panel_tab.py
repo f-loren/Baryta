@@ -28,12 +28,14 @@ def _image(tab, width: int, height: int = 38):
 
 def test_a_checked_tab_takes_the_accent_chip(qapp):
     tab = PanelTab("mdi6.crop", "Geometry")
+    # At its own minimum width the icon starts past the probe, whatever the font's metrics.
+    width = PanelTab.min_width(["Geometry"], stacked=False)
     probe = (THEME.space_xs + THEME.space_sm, 19)
-    rest = _image(tab, 105).pixelColor(*probe).name()
+    rest = _image(tab, width).pixelColor(*probe).name()
     tab.setChecked(True)
 
     assert rest != QColor(THEME.bg_primary).name()
-    assert _image(tab, 105).pixelColor(*probe).name() == QColor(THEME.bg_primary).name()
+    assert _image(tab, width).pixelColor(*probe).name() == QColor(THEME.bg_primary).name()
 
 
 def test_the_edit_dot_stays_inside_the_chip_of_a_narrow_tab(qapp):
