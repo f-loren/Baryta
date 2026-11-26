@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "Zuschnittversatz ↑/↓",
   "Crop Ratio": "Zuschnittverhältnis",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "Alle Bilder gemeinsam zuschneiden: klare Bilder helfen unklaren, und von dir gezeichnete Zuschnitte bleiben erhalten.",
+  "Crop and Straighten": "Zuschnitt und Geraderichten",
+  "Crop and straighten the frame": "Bild zuschneiden und geraderichten",
   "Crop is locked while Auto Crop runs": "Der Zuschnitt ist gesperrt, solange der Auto-Zuschnitt läuft",
   "Crop offset down": "Zuschnittversatz verringern",
   "Crop offset up": "Zuschnittversatz erhöhen",

@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "Beskjæringsforskyvning ↑/↓",
   "Crop Ratio": "Beskjæringsforhold",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "Beskjær alle bilder sammen: tydelige bilder hjelper utydelige, og beskjæringer du har tegnet, blir stående.",
+  "Crop and Straighten": "Beskjær og rett opp",
+  "Crop and straighten the frame": "Beskjær bildet og rett det opp",
   "Crop is locked while Auto Crop runs": "Beskjæringen er låst mens autobeskjæring kjører",
   "Crop offset down": "Beskjæringsforskyvning ned",
   "Crop offset up": "Beskjæringsforskyvning opp",

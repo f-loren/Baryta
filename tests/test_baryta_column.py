@@ -87,3 +87,71 @@ def test_setup_shows_its_choices_without_the_notes(qapp) -> None:
     setup = _column().findChild(ScanSetupSidebar)
     setup.hint.setVisible(True)
     assert setup.hint.isHidden()
+
+
+def test_the_top_bar_crop_opens_crop_and_straighten_in_place_of_the_column(qapp) -> None:
+    from negpy.desktop.view.sidebar.baryta_column import CROP_TAB
+    from negpy.desktop.view.widgets.baryta_top_bar import BarytaTopBar
+
+    right = _column()
+    crop = right.crop_view
+    draw = right.controls_panel.autocrop_sidebar.manual_crop_btn
+    bar = BarytaTopBar(SimpleNamespace(controller=right.controller, right_panel=right))
+    assert right._tab_buttons[right._tab_keys.index(CROP_TAB)] not in right.switcher.buttons
+    right.show_tab_by_key("frame")
+    right._switch_tab(right._tab_keys.index("color"))
+    bar.crop_btn.click()
+    assert crop.is_open and bar.crop_btn.isChecked() and draw.isChecked()
+    assert right.stack.currentIndex() == right._tab_keys.index(CROP_TAB)
+    assert right.switcher.isHidden() and not right.controls_panel.film_section.isVisibleTo(right)
+    draw.toggle()
+    assert not crop.is_open and not bar.crop_btn.isChecked()
+    assert right.stack.currentIndex() == right._tab_keys.index("color") and not right.switcher.isHidden()
+    bar.crop_btn.click()
+    bar.crop_btn.click()
+    assert not crop.is_open and not bar.crop_btn.isChecked() and not draw.isChecked()
+
+
+def test_a_crop_card_jump_or_the_draw_tool_opens_crop_and_another_tab_or_page_closes_it(qapp) -> None:
+    right = _column()
+    crop = right.crop_view
+    right.show_tab_by_key("frame")
+    right.reveal_widget(right.controls_panel.geometry_section)
+    assert crop.is_open
+    right.reveal_widget(right.controls_panel.presets_section)
+    assert not crop.is_open
+    right.controls_panel.autocrop_sidebar.manual_crop_btn.toggle()
+    assert crop.is_open
+    right.show_tab_by_key("scan")
+    assert not crop.is_open and not right.controls_panel.autocrop_sidebar.manual_crop_btn.isChecked()
+
+
+def test_crop_and_straighten_stay_open_when_level_takes_over_from_draw(qapp) -> None:
+    from negpy.desktop.session import ToolMode
+
+    right = _column()
+    draw = right.controls_panel.autocrop_sidebar.manual_crop_btn
+    right.show_tab_by_key("frame")
+    draw.toggle()
+    right.controller.state.active_tool = ToolMode.STRAIGHTEN
+    draw.toggle()
+    assert right.crop_view.is_open
+
+
+def test_the_top_bar_crop_opens_develop_from_another_page(qapp) -> None:
+    from negpy.desktop.view.widgets.baryta_top_bar import BarytaTopBar
+
+    right = _column()
+    bar = BarytaTopBar(SimpleNamespace(controller=right.controller, right_panel=right))
+    bar.export_btn.click()
+    bar.crop_btn.click()
+    assert _shown_group(right) == "frame" and right.crop_view.is_open
+
+
+def test_a_refused_crop_leaves_crop_and_straighten_closed(qapp) -> None:
+    right = _column()
+    draw = right.controls_panel.autocrop_sidebar.manual_crop_btn
+    right.show_tab_by_key("frame")
+    draw.toggled.connect(lambda on: on and draw.setChecked(False))
+    draw.toggle()
+    assert not right.crop_view.is_open

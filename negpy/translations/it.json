@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "Scostamento del ritaglio ↑/↓",
   "Crop Ratio": "Proporzioni del ritaglio",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "Ritaglia tutti i fotogrammi insieme: i fotogrammi nitidi aiutano quelli incerti, e i ritagli che hai disegnato restano.",
+  "Crop and Straighten": "Ritaglio e raddrizza",
+  "Crop and straighten the frame": "Ritaglia e raddrizza il fotogramma",
   "Crop is locked while Auto Crop runs": "Il ritaglio è bloccato mentre è in corso il Ritaglio automatico",
   "Crop offset down": "Scostamento del ritaglio giù",
   "Crop offset up": "Scostamento del ritaglio su",

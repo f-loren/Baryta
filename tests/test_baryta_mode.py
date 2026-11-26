@@ -64,11 +64,13 @@ def test_convert_roll_runs_reanalyze_and_apply_to_roll_offers_every_frame_card(q
 def test_the_top_bar_follows_the_panel_and_opens_its_tab(qapp) -> None:
     from types import SimpleNamespace
 
+    from negpy.desktop.view.sidebar.baryta_column import apply_column_layout
     from negpy.desktop.view.sidebar.right_panel import RightPanel
     from negpy.desktop.view.widgets.baryta_top_bar import BarytaTopBar
 
     controller = FakeController(FakeRepo())
     right = RightPanel(controller)
+    apply_column_layout(right)
     bar = BarytaTopBar(SimpleNamespace(controller=controller, right_panel=right))
     right.show_tab_by_key("roll")
     assert bar.phase.currentData() == "frame"

@@ -90,13 +90,13 @@ Folden **Avlesninger** inneholder tall om skanningen. En gul verdi er en advarse
 *   **Reparer**: andel av bildet som støvfjerningen skrev om.
 *   **Fargeomfang**: andel som prøveskriveren ikke kan gjengi, under prøvetrykk på skjerm.
 
-<!-- panel:autocrop src:3047f00d -->
+<!-- panel:autocrop src:7a721929 -->
 ### 4.1 Beskjæring
 
 Velg den delen av bildet du vil beholde, selv eller med autobeskjæring.
 
 *   **Tegn**: dra en beskjæring på bildet. Dra et hjørne for å endre størrelsen, innsiden for å flytte den, eller utenfor boksen for å rotere. `Enter` eller **Ferdig** beholder beskjæringen, og `Esc` setter tilbake beskjæringen du hadde før. **×** fjerner en beskjæring du har tegnet. Tegning slår av autobeskjæring.
-*   **Autobeskjær** (også på linjen i fanen Geometri): finner kantene i bildet og beskjærer etter dem.
+*   **Autobeskjær** (også på linjen over kortene): finner kantene i bildet og beskjærer etter dem.
 *   **Forhold**: formen på beskjæringen, for eksempel `3:2` eller `1:1`, dreid for å passe bildet. **Fri** bruker formen NegPy finner, og du kan dra én side om gangen. **Oppdag** velger den nærmeste standardformen.
 *   **Veiledning**: komposisjonslinjer, for eksempel tredjedeler, mens du tegner. Roterknappen dreier dem.
 *   **Modus** (folden Innstillinger for autobeskjæring): **Bare bildet** beskjærer til bildet. **Filmkant** beholder hele filmen med kanten og hullene.
@@ -106,14 +106,14 @@ Velg den delen av bildet du vil beholde, selv eller med autobeskjæring.
 
 Autobeskjæring krever at skannerlyset eller holderen er den lyseste delen av skanningen. Den lar et bilde være i fred når bildet er like lyst som lyset, eller når neste bilde fyller en stor del av én side. Beskjær et slikt bilde selv, eller bruk **Filmkant** og juster innover.
 
-<!-- panel:geometry src:99cf02cf -->
+<!-- panel:geometry src:a9debe08 -->
 ### 4.2 Rett opp
 
 Drei bildet og sett det i vater.
 
 *   **Roter** og **Speilvend**: drei bildet en kvart omdreining, eller speilvend det. **Rediger verktøylinje…** legger de samme knappene på verktøylinjen.
 *   **Vater**: tegn en linje langs horisonten eller en loddrett kant, så roteres bildet til det er i vater.
-*   **Rett mot film** (også på linjen i fanen Geometri): retter bildet inn etter kantene på filmen. Den ser bort fra innholdet i bildet, så et bilde tatt på skrå blir stående på skrå.
+*   **Rett mot film** (også på linjen over kortene): retter bildet inn etter kantene på filmen. Den ser bort fra innholdet i bildet, så et bilde tatt på skrå blir stående på skrå.
 *   **Finrotasjon**: dreier bildet litt. Positiv er med klokken.
 *   **Tilt** og **Sving** (fold): rett opp en bygning fotografert nedenfra (Tilt) eller en vegg fotografert fra siden (Sving). **Tegn linjer** angir begge ut fra linjer langs de fire filmkantene.
 *   **Beskjær tomme hjørner**: beskjærer bort de tomme hjørnene som rotasjon, Tilt og Sving etterlater.

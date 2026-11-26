@@ -2,12 +2,12 @@
 
 Develop holds the Roll tab's cards above the Frame tabs in one scroll: Setup leads as the film
 card, the other roll cards fold into the Roll card, then Presets and the Frame tabs. The Roll tab
-opens the top of that column. Export and Metadata open behind a back row. Every card stays
-NegPy's own; this module only moves widgets after RightPanel builds them, so an upstream merge
+opens the top of that column. Crop and Straighten, Export and Metadata open behind a back row.
+Every card stays NegPy's own; this module only moves widgets after RightPanel builds them, so an upstream merge
 keeps its own layout code.
 """
 
-from PyQt6.QtCore import QEvent, QObject, QSize
+from PyQt6.QtCore import QEvent, QObject, QSize, pyqtSignal
 from PyQt6.QtWidgets import (
     QAbstractButton,
     QGraphicsOpacityEffect,
@@ -18,10 +18,12 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from negpy.desktop.view.styles.templates import icon_button
+from negpy.desktop.session import ToolMode
+from negpy.desktop.view.styles.templates import icon_button, section_subheader
 from negpy.desktop.view.styles.theme import THEME
 from negpy.desktop.view.sidebar.scan_setup import ScanSetupSidebar
 from negpy.desktop.view.widgets.collapsible import CollapsibleSection, make_section
+from negpy.desktop.view.widgets.overflow_bar import OverflowBar
 from negpy.desktop.view.widgets.segmented_choice import SegmentedChoice
 from negpy.desktop.view.widgets.tab_header import TabHeader
 from negpy.kernel.system.i18n import tr
@@ -31,6 +33,8 @@ ROLL_KEY = "baryta_roll"
 VIEW_GROUPS = ("export", "metadata")
 # The panel's first width, before the user drags it; the cards fit down to RightPanel's minimum.
 PANEL_WIDTH = 380
+# The Frame tab that the top bar's Crop opens instead of a tab of its own.
+CROP_TAB = "geometry"
 
 
 def apply_column_layout(right) -> None:
@@ -53,6 +57,8 @@ def apply_column_layout(right) -> None:
         if keys[index] == "roll":
             index = keys.index("frame")
             right.develop_scroll.verticalScrollBar().setValue(0)
+        if keys[index] != "frame":
+            right.crop_view.close()
         native_switch(index)
         key = keys[index]
         header.setVisible(key in VIEW_GROUPS)
@@ -79,6 +85,8 @@ def _build_develop_column(right) -> None:
     _fit_stack(right)
     right._switch_tab(right._active_index)
 
+    _drop_crop_tab(right)
+
     edit = QWidget()
     edit_layout = QVBoxLayout(edit)
     edit_layout.setContentsMargins(0, 0, 0, 0)
@@ -86,17 +94,141 @@ def _build_develop_column(right) -> None:
     edit_layout.addWidget(right.switcher)
     edit_layout.addWidget(right.stack)
 
+    browse = QWidget()
+    browse_layout = QVBoxLayout(browse)
+    browse_layout.setContentsMargins(0, 0, 0, 0)
+    browse_layout.setSpacing(THEME.space_lg)
+    for widget in (cp.film_section, actions, right.roll_section, cp.presets_section):
+        browse_layout.addWidget(widget)
+
+    back = icon_button("fa5s.chevron-left", tr("Back to Develop"))
+    crop_header = QWidget()
+    row = QHBoxLayout(crop_header)
+    row.setContentsMargins(0, 0, 0, 0)
+    row.setSpacing(THEME.space_sm)
+    row.addWidget(back)
+    row.addWidget(section_subheader(tr("Crop and Straighten")), 1)
+
     column = QWidget()
     col = QVBoxLayout(column)
     col.setContentsMargins(0, 0, 0, 0)
     col.setSpacing(THEME.space_lg)
-    for widget in (cp.film_section, actions, right.roll_section, cp.presets_section, edit):
+    for widget in (browse, crop_header, edit):
         col.addWidget(widget)
     col.addStretch(1)
     right.develop_scroll = QScrollArea()
     right.develop_scroll.setWidgetResizable(True)
     right.develop_scroll.setWidget(column)
     page_layout.addWidget(right.develop_scroll, 1)
+
+    right.crop_view = _CropView(right, browse, crop_header)
+    back.clicked.connect(right.crop_view.close)
+
+
+class _CropFreeBar(OverflowBar):
+    """The Frame tab bar without the crop tab. It takes the stack's indices, as RightPanel pins by them."""
+
+    def __init__(self, crop: int, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self._crop = crop
+
+    def set_pinned(self, button_index: int) -> None:
+        if button_index == self._crop:
+            button_index = -1
+        elif button_index > self._crop:
+            button_index -= 1
+        super().set_pinned(button_index)
+
+
+def _drop_crop_tab(right) -> None:
+    old = right.switcher
+    crop = right._tab_keys.index(CROP_TAB)
+    bar = _CropFreeBar(crop, height=old.height(), min_item=old.minimumSizeHint().width() - OverflowBar.OVERFLOW_W)
+    for i, (button, label) in enumerate(zip(old.buttons, right._tab_tooltips)):
+        if i == crop:
+            # RightPanel still checks it on every switch.
+            button.setParent(bar)
+            button.hide()
+        else:
+            bar.add_button(button, label)
+    old.deleteLater()
+    right.switcher = bar
+
+
+class _CropView(QObject):
+    """Crop and Straighten in place of the column, opened by the top bar's Crop, Draw or a jump to
+    one of its cards. It closes when Draw ends with no tool after it, on the back row, another tab
+    or another page; closing ends Draw, and the top bar's Crop opens it with Draw on."""
+
+    changed = pyqtSignal(bool)
+
+    def __init__(self, right, browse: QWidget, header: QWidget) -> None:
+        super().__init__(right)
+        self._right = right
+        self._browse, self._header = browse, header
+        self._crop = right._tab_keys.index(CROP_TAB)
+        self._return = right._active_index if right._active_index != self._crop else right._tab_keys.index("tone")
+        self._draw = right.controls_panel.autocrop_sidebar.manual_crop_btn
+        self.is_open = False
+        native_tab = right._switch_tab
+
+        def switch_tab(index: int) -> None:
+            if index != self._crop:
+                self._return = index
+            native_tab(index)
+            self._show(index == self._crop)
+
+        right._switch_tab = switch_tab
+        native_reveal = right.reveal_widget
+
+        def reveal_widget(widget: QWidget) -> None:
+            if browse.isAncestorOf(widget):
+                self.close()
+            native_reveal(widget)
+
+        right.reveal_widget = reveal_widget
+        self._draw.toggled.connect(self._follow_draw)
+        self._show(False)
+        if right._active_index == self._crop:
+            switch_tab(self._return)
+
+    def open(self) -> None:
+        if not self.is_open:
+            self._right.show_tab_by_key(CROP_TAB)
+
+    def close(self) -> None:
+        if self.is_open:
+            self._right._switch_tab(self._return)
+
+    def _follow_draw(self, _on: bool) -> None:
+        # The button, not the argument: a refused crop unchecks it inside this same emission.
+        # Draw also turns off when Level or Draw Lines takes over, and the view stays for them.
+        if self._draw.isChecked():
+            self.open()
+        elif self._right.controller.state.active_tool == ToolMode.NONE:
+            self.close()
+
+    def toggle(self) -> None:
+        """The top bar's Crop: the view with the crop tool on, or back to the tabs."""
+        if self.is_open:
+            self.close()
+            return
+        self.open()
+        if not self._draw.isChecked():
+            self._draw.toggle()
+
+    def _show(self, on: bool) -> None:
+        right = self._right
+        self._browse.setVisible(not on)
+        right.switcher.setVisible(not on)
+        self._header.setVisible(on)
+        if on == self.is_open:
+            return
+        self.is_open = on
+        right.develop_scroll.verticalScrollBar().setValue(0)
+        if not on and self._draw.isChecked():
+            self._draw.toggle()
+        self.changed.emit(on)
 
 
 class _FitStack(QStackedWidget):

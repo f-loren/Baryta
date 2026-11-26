@@ -317,7 +317,7 @@ def icon_button(icon_name: str, tooltip: str, width: int | None = ICON_BUTTON_WI
     """
     btn = QPushButton()
     btn.setIcon(qta.icon(icon_name, color=THEME.text_primary, color_disabled=THEME.text_muted))
-    btn.setStyleSheet("QPushButton {padding: 6px;}")
+    btn.setStyleSheet(f"QPushButton {{padding: {THEME.button_pad_y}px;}}")
     if width is not None:
         btn.setFixedWidth(width)
     btn.setFixedHeight(default_button_height())
@@ -538,7 +538,7 @@ def dialog_pane_qss() -> str:
 
 def labeled_toggle_qss() -> str:
     """Segmented/selector toggle. Vertical padding matches default_button_height()'s reference, or descenders clip."""
-    return f"font-size: {THEME.font_size_base}px; padding: 6px 8px;"
+    return f"font-size: {THEME.font_size_base}px; padding: {THEME.button_pad_y}px 8px;"
 
 
 class EditedDot(QLabel):
@@ -734,7 +734,7 @@ def field_row(label: str, field: QWidget, *trailing: QWidget) -> QHBoxLayout:
 def tool_toggle_qss(icon_only: bool = False, align_left: bool = False) -> str:
     """Icon-only padding; the checked look is the app-wide rule in modern_dark.qss."""
     if icon_only:
-        return "QPushButton {padding: 6px;}"
+        return f"QPushButton {{padding: {THEME.button_pad_y}px;}}"
     return f"QPushButton {{text-align: left; padding-left: {THEME.space_xl}px;}}" if align_left else ""
 
 

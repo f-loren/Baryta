@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "Độ lệch vùng cắt ↑/↓",
   "Crop Ratio": "Tỷ lệ cắt",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "Cắt mọi khung hình cùng lúc: khung hình rõ giúp khung hình không rõ, và vùng cắt bạn đã vẽ được giữ nguyên.",
+  "Crop and Straighten": "Cắt và làm thẳng",
+  "Crop and straighten the frame": "Cắt và làm thẳng khung hình",
   "Crop is locked while Auto Crop runs": "Vùng cắt bị khóa khi Tự động cắt đang chạy",
   "Crop offset down": "Giảm độ lệch vùng cắt",
   "Crop offset up": "Tăng độ lệch vùng cắt",

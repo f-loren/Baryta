@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "裁切偏移 ↑/↓",
   "Crop Ratio": "裁切比例",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "一起裁切所有画面：清晰的画面帮助不清晰的画面，你绘制的裁切保持不变。",
+  "Crop and Straighten": "裁切与拉直",
+  "Crop and straighten the frame": "裁切并拉直这一帧",
   "Crop is locked while Auto Crop runs": "自动裁切运行时，裁切已锁定",
   "Crop offset down": "减小裁切偏移",
   "Crop offset up": "增大裁切偏移",
