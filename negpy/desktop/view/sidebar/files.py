@@ -917,7 +917,7 @@ class _FilmGridView(ThumbnailGridView):
         self._zoom_angle = 0
         # Margins, not QSS padding, which would inset the scroll bar too; the film runs off the top and bottom.
         self.setViewportMargins(THEME.space_2xl, 0, THEME.space_2xl, 0)
-        self.set_table_color(table_color(AppState.canvas_bg_index))
+        self.set_table_color(table_color(THEME.canvas_bg_default))
 
     def set_table_color(self, color: str) -> None:
         self._table_color = color
