@@ -271,6 +271,9 @@ class _ShowWithParts(QObject):
         self._sync()
 
     def eventFilter(self, obj, event) -> bool:  # noqa: N802
+        # The garbage collector can clear this wrapper while Qt still sends it teardown events.
+        if not self.__dict__:
+            return False
         if event.type() in (QEvent.Type.ShowToParent, QEvent.Type.HideToParent):
             self._sync()
         return False

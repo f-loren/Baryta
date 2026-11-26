@@ -341,6 +341,9 @@ class _HeaderHover(QObject):
             effect.setOpacity(1.0 if shown or lit else 0.0)
 
     def eventFilter(self, obj, event) -> bool:  # noqa: N802
+        # The garbage collector can clear this wrapper while Qt still sends it teardown events.
+        if not self.__dict__:
+            return False
         kind = event.type()
         if obj is self._header and kind == QEvent.Type.ChildAdded and isinstance(event.child(), QAbstractButton):
             # Header buttons a card adds after the build, such as the scope pair.
