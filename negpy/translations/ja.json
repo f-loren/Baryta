@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "トリミングオフセット ↑/↓",
   "Crop Ratio": "トリミングレシオ",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "すべてのフレームをまとめてトリミングします。はっきりしたフレームが不明瞭なフレームを助け、手で描いたトリミングは残ります。",
+  "Crop and Straighten": "トリミングとまっすぐにする",
+  "Crop and straighten the frame": "フレームをトリミングしてまっすぐにします",
   "Crop is locked while Auto Crop runs": "自動トリミングの実行中は、トリミングはロックされます",
   "Crop offset down": "トリミングオフセットダウン",
   "Crop offset up": "トリミングオフセットアップ",

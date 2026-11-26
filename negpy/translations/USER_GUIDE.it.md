@@ -38,7 +38,7 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 
 1.  Fai clic su **Libreria**, poi importa una cartella come rullino e aprila.
 2.  Fai clic su **Sviluppa**, poi controlla **Configurazione** (tipo di pellicola e scanner) in cima alla colonna.
-3.  Nella scheda **Geometria**, ritaglia e raddrizza. Poi fai clic su **Converti rullino**, così i fotogrammi si uniformano.
+3.  Fai clic su **Ritaglio** nella barra in alto, ritaglia e raddrizza, poi fai clic su **Fatto**. Poi fai clic su **Converti rullino**, così i fotogrammi si uniformano.
 4.  Nelle altre schede, imposta luminosità, contrasto e colore (**Colore**, **Tono**), l'aspetto (**Finitura**) e rimuovi la polvere (**Ritocco**).
 5.  Fai clic su **Esporta** nella barra in alto, poi su **Esporta fotogramma**.
 
@@ -46,7 +46,7 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 |---|---|
 | **Sviluppa** | Configurazione · Rullino · Preimpostazioni, poi le schede sotto |
 | **Sviluppa › Rullino** | Analisi del rullino · Misurazione · Ripristino dello sbiadimento · Composizione del fotogramma · Impostazione dello scanner (Decodifica RAW · Ottica · Calibrazione) |
-| **Sviluppa › Geometria** | Ritaglio · Raddrizza |
+| **Ritaglio** (barra in alto) | Ritaglio · Raddrizza |
 | **Sviluppa › Colore** | Filtratura |
 | **Sviluppa › Tono** | Tono · Risposta della carta |
 | **Sviluppa › Finitura** | Lab · Viraggio · Rifinitura · Processi alternativi |
@@ -264,17 +264,17 @@ La sezione **Letture** contiene numeri sulla scansione. Un valore ambra è un av
 
 ---
 
-## 4. Scheda Geometria
+## 4. Ritaglio e raddrizza
 
-Due riquadri: **Ritaglio** stabilisce la parte dell'immagine che conservi, e **Raddrizza** la ruota e la livella. Entrambi contengono i valori propri di questo fotogramma. Il loro pulsante **Applica ai fotogrammi** li copia sulla selezione o sull'intero rullino ([§1](#fotogramma-o-rullino)).
+Due riquadri: **Ritaglio** stabilisce la parte dell'immagine che conservi, e **Raddrizza** la ruota e la livella. **Ritaglio** nella barra in alto li mostra al posto della colonna, con **Disegna** attivo. **Fatto**, la freccia indietro o un'altra scheda riportano indietro. Entrambi i riquadri contengono i valori propri di questo fotogramma. Il loro pulsante **Applica ai fotogrammi** li copia sulla selezione o sull'intero rullino ([§1](#fotogramma-o-rullino)).
 
-<!-- panel:autocrop src:3047f00d -->
+<!-- panel:autocrop src:7a721929 -->
 ### 4.1 Ritaglio
 
 Scegli la parte dell'immagine da conservare, a mano o con il Ritaglio automatico.
 
 *   **Disegna**: trascina un ritaglio sull'immagine. Trascina un angolo per ridimensionarlo, l'interno per spostarlo o fuori dal riquadro per ruotarlo. `Invio` o **Fatto** conserva il ritaglio, e `Esc` ripristina il ritaglio precedente. La **×** rimuove un ritaglio che hai disegnato. Disegnare disattiva il Ritaglio automatico.
-*   **Ritaglio automatico** (anche sulla barra della scheda Geometria): trova i bordi dell'immagine e ritaglia su di essi.
+*   **Ritaglio automatico** (anche sulla barra sopra i riquadri): trova i bordi dell'immagine e ritaglia su di essi.
 *   **Proporzioni**: la forma del ritaglio, come `3:2` o `1:1`, ruotata per adattarsi al fotogramma. **Libero** usa la forma che trova NegPy, e puoi trascinare un lato alla volta. **Rileva** sceglie la forma standard più vicina.
 *   **Guida**: linee di composizione, come i terzi, mentre disegni. Il pulsante di rotazione le ruota.
 *   **Modalità** (sezione Impostazioni del ritaglio automatico): **Solo immagine** ritaglia sull'immagine. **Bordo della pellicola** conserva l'intera pellicola con il suo bordo e le perforazioni.
@@ -284,14 +284,14 @@ Scegli la parte dell'immagine da conservare, a mano o con il Ritaglio automatico
 
 Il Ritaglio automatico richiede che la luce dello scanner o il supporto sia la parte più luminosa della scansione. Lascia stare un fotogramma quando l'immagine è luminosa quanto la luce, o quando il fotogramma successivo occupa gran parte di un lato. Ritaglia a mano un fotogramma del genere, oppure usa **Bordo della pellicola** e rifila verso l'interno.
 
-<!-- panel:geometry src:99cf02cf -->
+<!-- panel:geometry src:a9debe08 -->
 ### 4.2 Raddrizza
 
 Ruota l'immagine e mettila in bolla.
 
 *   **Ruota** e **Rifletti**: ruotano l'immagine di un quarto di giro o la specchiano. **Modifica barra degli strumenti…** mette gli stessi pulsanti sulla barra degli strumenti.
 *   **Livella**: traccia una linea lungo l'orizzonte o un bordo verticale, e l'immagine ruota per metterla in bolla.
-*   **Allinea alla pellicola** (anche sulla barra della scheda Geometria): allinea l'immagine ai bordi della pellicola. Ignora il contenuto dell'immagine, quindi una foto scattata inclinata resta inclinata.
+*   **Allinea alla pellicola** (anche sulla barra sopra i riquadri): allinea l'immagine ai bordi della pellicola. Ignora il contenuto dell'immagine, quindi una foto scattata inclinata resta inclinata.
 *   **Rotazione fine**: ruota l'immagine di piccole quantità. Positivo è in senso orario.
 *   **Basculaggio** e **Brandeggio** (sezione ripiegabile): raddrizzano un edificio ripreso dal basso (Basculaggio) o un muro ripreso di lato (Brandeggio). **Traccia linee** imposta entrambi da linee lungo i quattro bordi della pellicola.
 *   **Ritaglia gli angoli vuoti**: elimina gli angoli vuoti lasciati da rotazione, Basculaggio e Brandeggio.

@@ -716,6 +716,8 @@
   "Crop Offset ↑/↓": "자르기 오프셋 ↑/↓",
   "Crop Ratio": "자르기 비율",
   "Crop all frames together: clear frames help unclear ones, and crops that you drew stay.": "모든 프레임을 함께 자릅니다: 선명한 프레임이 불분명한 프레임을 돕고, 직접 그린 자르기는 그대로입니다.",
+  "Crop and Straighten": "자르기와 바로잡기",
+  "Crop and straighten the frame": "프레임을 자르고 바로잡습니다",
   "Crop is locked while Auto Crop runs": "자동 자르기가 실행되는 동안 자르기가 잠깁니다.",
   "Crop offset down": "자르기 오프셋 감소",
   "Crop offset up": "자르기 오프셋 증가",

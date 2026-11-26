@@ -90,13 +90,13 @@ Die Falte **Messwerte** enthält Zahlen zum Scan. Ein bernsteinfarbener Wert ist
 *   **Reparatur**: Anteil des Bildes, den die Staubentfernung neu geschrieben hat.
 *   **Gamut**: Anteil, den der Proof-Drucker nicht drucken kann, solange du einen Softproof nutzt.
 
-<!-- panel:autocrop src:3047f00d -->
+<!-- panel:autocrop src:7a721929 -->
 ### 4.1 Zuschnitt
 
 Wähle den Teil des Bildes, der bleibt, von Hand oder mit dem Auto-Zuschnitt.
 
 *   **Zeichnen**: Ziehe einen Zuschnitt auf das Bild. Ziehe an einer Ecke, um die Größe zu ändern, im Inneren, um ihn zu verschieben, oder außerhalb des Rahmens, um ihn zu drehen. `Enter` oder **Fertig** behält den Zuschnitt, `Esc` stellt den vorherigen Zuschnitt wieder her. Das **×** entfernt einen gezeichneten Zuschnitt. Beim Zeichnen wird der Auto-Zuschnitt ausgeschaltet.
-*   **Auto-Zuschnitt** (auch in der Leiste des Tabs Geometrie): findet die Ränder des Bildes und schneidet darauf zu.
+*   **Auto-Zuschnitt** (auch in der Leiste über den Karten): findet die Ränder des Bildes und schneidet darauf zu.
 *   **Verhältnis**: die Form des Zuschnitts, zum Beispiel `3:2` oder `1:1`, passend zum Bild gedreht. **Frei** nutzt die Form, die NegPy findet, und du kannst jeweils eine Seite ziehen. **Erkennen** wählt die nächste Standardform.
 *   **Hilfslinien**: Kompositionslinien, zum Beispiel Drittel, während du zeichnest. Die Dreh-Schaltfläche dreht sie.
 *   **Modus** (Falte Auto-Zuschnitt-Einstellungen): **Nur Bild** schneidet auf das Bild zu. **Filmrand** behält den ganzen Film mit Rand und Perforation.
@@ -106,14 +106,14 @@ Wähle den Teil des Bildes, der bleibt, von Hand oder mit dem Auto-Zuschnitt.
 
 Der Auto-Zuschnitt braucht die Scannerlichtquelle oder den Halter als hellsten Teil des Scans. Er lässt ein Bild unverändert, wenn das Bild so hell ist wie die Lichtquelle oder das nächste Bild einen großen Teil einer Seite füllt. Schneide ein solches Bild von Hand zu oder nutze **Filmrand** und schneide nach innen.
 
-<!-- panel:geometry src:99cf02cf -->
+<!-- panel:geometry src:a9debe08 -->
 ### 4.2 Geraderichten
 
 Drehe das Bild und richte es gerade aus.
 
 *   **Drehen** und **Spiegeln**: drehen das Bild um eine Vierteldrehung oder spiegeln es. **Werkzeugleiste bearbeiten…** legt dieselben Schaltflächen auf die Werkzeugleiste.
 *   **Ausrichten**: Zeichne eine Linie entlang des Horizonts oder einer senkrechten Kante. Das Bild dreht sich, bis die Linie gerade ist.
-*   **An Film ausrichten** (auch in der Leiste des Tabs Geometrie): richtet das Bild an den Kanten des Films aus. Der Bildinhalt zählt dabei nicht. Ein schief fotografiertes Bild bleibt also schief.
+*   **An Film ausrichten** (auch in der Leiste über den Karten): richtet das Bild an den Kanten des Films aus. Der Bildinhalt zählt dabei nicht. Ein schief fotografiertes Bild bleibt also schief.
 *   **Feindrehung**: dreht das Bild in kleinen Schritten. Positiv ist im Uhrzeigersinn.
 *   **Neigung** und **Schwenkung** (Falte): richten ein Gebäude aus, das von unten fotografiert wurde (Neigung), oder eine Wand, die von der Seite fotografiert wurde (Schwenkung). **Linien zeichnen** setzt beide aus Linien entlang der vier Filmkanten.
 *   **Leere Ecken zuschneiden**: schneidet die leeren Ecken ab, die Drehung, Neigung und Schwenkung hinterlassen.

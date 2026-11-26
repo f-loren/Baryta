@@ -1,4 +1,4 @@
-"""Baryta's top bar: the three phases of the work, the open file, the frame's Reset, and Export.
+"""Baryta's top bar: the three phases of the work, the open file, Crop, the frame's Reset, and Export.
 
 Every control drives a part of NegPy that already exists; the bar holds no state of its own.
 """
@@ -9,7 +9,8 @@ import qtawesome as qta
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QHBoxLayout, QWidget
 
-from negpy.desktop.view.styles.templates import TOP_ROW_HEIGHT, labeled_action
+from negpy.desktop.view.shortcut_registry import tooltip_with_shortcut
+from negpy.desktop.view.styles.templates import TOP_ROW_HEIGHT, labeled_action, labeled_toggle
 from negpy.desktop.view.styles.theme import THEME
 from negpy.desktop.view.widgets.elided_label import ElidedLabel
 from negpy.desktop.view.widgets.segmented_choice import SegmentedChoice
@@ -41,6 +42,12 @@ class BarytaTopBar(QWidget):
         self.file_label.setToolTip(tr("The open frame"))
         controller.image_updated.connect(self._show_file)
 
+        self.crop_btn = labeled_toggle(
+            "fa5s.crop-alt", tr("Crop"), False, tooltip_with_shortcut(tr("Crop and straighten the frame"), "manual_crop")
+        )
+        self.crop_btn.clicked.connect(self._toggle_crop)
+        right.crop_view.changed.connect(self.crop_btn.setChecked)
+
         self.reset_btn = labeled_action("fa5s.history", tr("Reset"), tr("Discard all edits and return this frame to its default look"))
         self.reset_btn.setObjectName("baryta_reset")
         self.reset_btn.setIcon(qta.icon("fa5s.history", color=THEME.mark_photo))
@@ -58,6 +65,7 @@ class BarytaTopBar(QWidget):
         row.setSpacing(THEME.space_sm)
         row.addWidget(self.phase)
         row.addWidget(self.file_label, 1)
+        row.addWidget(self.crop_btn)
         row.addWidget(self.reset_btn)
         row.addWidget(self.export_btn)
 
@@ -68,6 +76,11 @@ class BarytaTopBar(QWidget):
             self.phase.blockSignals(True)
             self.phase.setCurrentIndex(self.phase.findData(phase))
             self.phase.blockSignals(False)
+
+    def _toggle_crop(self) -> None:
+        crop = self._window.right_panel.crop_view
+        crop.toggle()
+        self.crop_btn.setChecked(crop.is_open)
 
     def _show_file(self) -> None:
         path = self._window.controller.state.current_file_path
