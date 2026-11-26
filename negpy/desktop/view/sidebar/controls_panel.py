@@ -25,6 +25,7 @@ from negpy.features.process.path import RenderPath, render_path
 from negpy.features.finish.models import FinishConfig
 from negpy.features.flatfield.models import FlatFieldConfig
 from negpy.kernel.system.config import DEFAULT_WORKSPACE_CONFIG
+from negpy.domain.models import WorkspaceConfig
 from negpy.services.assets.rolls import ROLL_DEFAULT_FIELDS
 from negpy.desktop.settings_catalog import (
     COLOR_FIELDS,
@@ -129,6 +130,7 @@ _DEFAULT_ALTPROC = AltProcessConfig()
 _DEFAULT_GEOMETRY = DEFAULT_WORKSPACE_CONFIG.geometry
 _DEFAULT_PROCESS = DEFAULT_WORKSPACE_CONFIG.process
 _DEFAULT_FINISH = FinishConfig()
+_DEFAULT_RETOUCH = DEFAULT_WORKSPACE_CONFIG.retouch
 _DEFAULT_FLATFIELD = FlatFieldConfig()
 _DEFAULT_CONFIG = DEFAULT_WORKSPACE_CONFIG
 
@@ -546,6 +548,15 @@ class ControlsPanel(QWidget):
         self.fade_section.reset_requested.connect(lambda: self._reset_process_fields(_FADE_FIELDS, ("fade",)))
         self.demosaic_section.reset_requested.connect(lambda: self._reset_process_fields(_DEMOSAIC_FIELDS, ("demosaic",)))
 
+        for key, section in self._compare_sections():
+            eye = section.add_compare_button(tr("Hold to see the frame without {title}", title=section._title_text))
+            eye.pressed.connect(
+                lambda k=key, s=section: self.controller.begin_card_compare(
+                    self._card_off_config(k), tr("WITHOUT {title}", title=s._title_text.upper())
+                )
+            )
+            eye.released.connect(self.controller.end_card_compare)
+
         self.controller.batch_started.connect(lambda *_: self._sync_crop_block())
         self.controller.batch_finished.connect(self._sync_crop_block)
 
@@ -570,7 +581,7 @@ class ControlsPanel(QWidget):
         copy = menu.addAction(tr("Copy Card Settings"))
         copy.setToolTip(tr("Copy this card alone; Paste then offers only its settings"))
         copy.setEnabled(bool(rows))
-        copy.triggered.connect(lambda: self.controller.session.copy_card_settings(rows))
+        copy.triggered.connect(lambda: self.controller.session.copy_card_settings(rows, whole_card=roll_card))
         undo = menu.addAction(label_with_shortcut(tr("Undo Change to Several Frames"), "undo_roll_push"))
         undo.setToolTip(tr("Put back every frame and roll value the last Apply, Paste, Reset or Roll push changed"))
         undo.setEnabled(self.controller.can_undo_batch())
@@ -1154,6 +1165,31 @@ class ControlsPanel(QWidget):
         self.color_histogram.update_data(buf)
         self.metering_histogram.update_data(buf)
 
+    def _compare_sections(self) -> list[tuple[str, CollapsibleSection]]:
+        """The creative cards a held eye turns off. The others change the framing or the scan reading."""
+        return [
+            ("color", self.color_section),
+            ("tone", self.tone_section),
+            ("paper", self.paper_section),
+            ("lab", self.lab_section),
+            ("altproc", self.altproc_section),
+            ("toning", self.toning_section),
+            ("local", self.local_section),
+            ("finish", self.finish_section),
+            ("retouch", self.retouch_section),
+        ]
+
+    def _card_off_config(self, key: str) -> WorkspaceConfig:
+        """The edit with card *key* at the defaults its Reset gives."""
+        from dataclasses import replace
+
+        cfg = self.controller.state.config
+        fields = {"color": COLOR_FIELDS, "tone": TONE_FIELDS, "paper": PAPER_FIELDS}.get(key)
+        if fields is not None:
+            mode = cfg.process.process_mode
+            return replace(cfg, exposure=replace(cfg.exposure, **{f: _default_exposure_field(f, mode) for f in fields}))
+        return replace(cfg, **{key: getattr(_DEFAULT_CONFIG, key)})
+
     def _reset_film_fields(self) -> None:
         """Film Mode and Positive both carry side effects their plain fields do not
         describe (a decode, the auto-meter defaults, the card's roll lock), so the reset
@@ -1250,6 +1286,11 @@ class ControlsPanel(QWidget):
         lab_count = sum(
             [
                 lab.saturation != _lab.saturation and not unused_in_mode("lab", "saturation", cfg),
+                # Skin Protection only steers a Chroma change, and Radius a sharpen.
+                lab.skin_protection != _lab.skin_protection
+                and lab.saturation != _lab.saturation
+                and not unused_in_mode("lab", "skin_protection", cfg),
+                lab.sharpen_radius != _lab.sharpen_radius and lab.sharpen > 0,
                 lab.clahe_strength != _lab.clahe_strength,
                 lab.sharpen != _lab.sharpen,
                 lab.chroma_denoise != _lab.chroma_denoise and not unused_in_mode("lab", "chroma_denoise", cfg),
@@ -1316,10 +1357,28 @@ class ControlsPanel(QWidget):
         )
 
         ret = cfg.retouch
-        # Heal-tool clicks and scratch polylines both commit into manual_heal_strokes, where
-        # manual_dust_spots is the legacy list, so count them or the Finish tab's edited dot
-        # never lights for healed images.
-        retouch_count = int(ret.dust_remove) + len(ret.manual_dust_spots) + len(ret.manual_heal_strokes)
+        _ret = _DEFAULT_RETOUCH
+        # Every repair that reaches the pixels, and each setting while it steers one. The Clone
+        # brush settings only set the next stroke, which keeps its own copy.
+        ir_on = ret.ir_dust_remove and self.controller.state.has_ir
+        retouch_count = sum(
+            [
+                ret.dust_remove,
+                ir_on,
+                len(ret.manual_dust_spots),
+                len(ret.manual_heal_strokes),
+                len(ret.scratch_lines),
+                len(ret.dust_exclusion_strokes),
+                len(ret.clone_strokes),
+                *(
+                    (getattr(ret, f) != getattr(_ret, f) for f in ("dust_threshold", "dust_hair_threshold", "dust_size"))
+                    if ret.dust_remove
+                    else ()
+                ),
+                ir_on and ret.ir_threshold != _ret.ir_threshold,
+                bool(ret.scratch_lines) and ret.scratch_threshold != _ret.scratch_threshold,
+            ]
+        )
 
         _fin = _DEFAULT_FINISH
         fin = cfg.finish

@@ -68,7 +68,7 @@ The app starts in **Base** mode, with the cards most rolls need. **Advanced** al
 
 ### Using the controls
 
-On a slider, click the value to type a number, drag the name to adjust (**Shift** for fine steps), and double-click to reset. A chevron hides fine-tune controls; a dot on a closed fold, a card or a tab marks a changed value. On a dropdown, **‹** and **›** step through the choices. Each card has a reset arrow and an **ⓘ** that opens its part of this guide.
+On a slider, click the value to type a number, drag the name to adjust (**Shift** for fine steps), and double-click to reset. Its arrows move one step (**Shift** for ten). A chevron hides fine-tune controls; a dot on a closed fold, a card or a tab marks a changed value. On a dropdown, **‹** and **›** step through the choices. Each card has a reset arrow and an **ⓘ** that opens its part of this guide. Hold a card's eye to see the frame without it.
 
 A tab with several cards has a bar such as **3 of 5 cards edited**, with reset, **Reset to Roll**, **Apply** and collapse for the whole tab. On the Roll and Metadata tabs, **Apply** gives the roll every card this frame changed. On a Frame tab, it copies the tab to other frames.
 
@@ -78,6 +78,7 @@ Each card on the **Roll** and **Metadata** tabs has **Frame** (amber) and **Roll
 
 *   The card follows the roll until you edit it on this frame. **Roll** gives the roll this frame's values; **Frame** keeps them on this frame only.
 *   **Reset to Roll** puts the roll's values back on the card.
+*   To make frames follow the roll again on a Roll tab card, copy it from a frame that follows the roll, then paste it onto them.
 *   A card on a **Frame** tab holds this frame's own values. Its copy button, **Apply to Frames**, copies them once to the selection or the whole roll.
 
 Right-click a card header for **Copy Card Settings** and **Undo Change to Several Frames**. After an Apply, Paste, Reset or Roll push to several frames, the message strip above the picture also offers **Undo**, which puts every frame back at once. It works until your next edit. A setting that changed again after the push keeps its new value. Frames that are not one roll show only **Frame** until you save them as a roll.
@@ -160,8 +161,8 @@ The **Library** tab (`Ctrl+L`) lists your **rolls**. A roll is a named group of 
 
 *   **+**: **Import Folder as a Roll…** makes one roll of a folder and opens it. **Import Subfolders as Rolls…** makes a roll of each subfolder that holds images. Dropping folders on the Library imports them too.
 *   **Double-click** a roll (or press Enter) to open it.
-*   **⋮** or right-click a roll: **Open**, **Unload All…** (the open roll), **Roll Analysis**, **Rename…**, **Locate Folder…**, **Remove Missing Frames…**, **Save to Folder Roll**, **Restore Removed Frames…**, **Reset Roll…** (with its frames) and **Delete…**. Restore Removed Frames brings back frames that Remove from Roll took out. Delete keeps the files and shared edits. It loses the roll's settings, baseline, film base, scenes, card locks and own edits, and Refresh does not add a deleted folder roll again.
-*   **Filter rolls…** and **Sort** help you find a roll. **⋮ → Refresh** finds new subfolders and recounts the frames. **⋮ → Discovery Filters…** lists folder names to skip (`export` at first).
+*   **⋮** or right-click a roll: **Open**, **Unload All…** (the open roll), **Roll Analysis**, **Rename…**, **Locate Folder…**, **Remove Missing Frames…**, **Save to Folder Roll**, **Restore Removed Frames…**, **Reset Roll…** (with its frames) and **Delete…**. Restore Removed Frames brings back frames that Remove from Roll took out. Delete keeps the files and shared edits and forgets the rest; Refresh does not add a deleted folder roll again.
+*   **Filter rolls…** and **Sort** help you find a roll. **⋮ → Refresh** finds new subfolders and recounts the frames. **⋮ → Discovery Filters…** lists folder names to skip (`export` at first). A filter hides a roll it skips, with its settings kept.
 
 A roll whose folder or frames moved outside NegPy shows **folder missing** or **files missing**. **Locate Folder…** finds the new folder. A folder name that matches your gear ("penf" for "Pen F") opens Roll Settings filled in.
 
@@ -809,7 +810,7 @@ Scan film straight into NegPy. The **Scanner** card picks the scanner; the tab t
 
 NegPy keeps macOS and Windows awake while it scans. On Linux, turn off automatic suspend before a long roll.
 
-**Plustek**: the OpticFilm 8200i SE, 8100 V2, 8300i SE, 7600i v1 and 7600i v2 work; for other models, try SANE. On Windows, set up the USB driver first ([PLUSTEK_WINDOWS.md](PLUSTEK_WINDOWS.md)). **Coolscan**: needs no SANE. On Linux, USB needs a udev rule for vendor `04b0`.
+**Plustek**: the OpticFilm 8200i SE, 8200i, 8100 V2, 8300i SE, 7600i v1 and 7600i v2 work; for other models, try SANE. On Windows, set up the USB driver first ([PLUSTEK_WINDOWS.md](PLUSTEK_WINDOWS.md)). **Coolscan**: needs no SANE. On Linux, USB needs a udev rule for vendor `04b0`.
 
 <!-- panel:scan_quality -->
 ### Film & Quality
@@ -817,7 +818,7 @@ NegPy keeps macOS and Windows awake while it scans. On Linux, turn off automatic
 *   **Film**: Color negative, B&W negative, Slide or Kodachrome. It sets frame detection, metering, and whether infrared is offered.
 *   **Film format**: the frame length (135, 66, 645 and others). **Auto** works where the holder sets it.
 *   **Resolution** and **Bit depth**: the scan's dpi and bits per channel.
-*   **Scan mode** (Plustek): **Multi-Pass** averages several scans for less noise; **Adaptive Multi-Exposure** combines a short and a long exposure for more range, with the long exposure set from each frame; **Fixed Multi-Exposure** uses the scanner's one long exposure on every frame, as SilverFast does (8200i SE, 8100 V2 and 8300i SE). The 7600i v2 offers Adaptive Multi-Exposure but not Multi-Pass.
+*   **Scan mode** (Plustek): **Multi-Pass** averages several scans for less noise; **Adaptive Multi-Exposure** combines a short and a long exposure for more range, with the long exposure set from each frame; **Fixed Multi-Exposure** uses the scanner's one long exposure on every frame, as SilverFast does (8200i SE, 8100 V2 and 8300i SE). The 7600i v2 and 8200i offer Adaptive Multi-Exposure but not Multi-Pass.
 *   **Samples** (Coolscan): reads each line several times, for less noise in the shadows. Slower.
 *   **Infrared**: **IR** scans an infrared channel, for dust removal on the Retouch card. **ICE** (Coolscan) removes the dust in the scanner instead. A scanner without ICE shows one **IR** toggle. Not for B&W or Kodachrome.
 *   **Superfine** (Coolscan): scans one line per pass. Slower.
@@ -911,6 +912,7 @@ Shows the whole strip, to place and pick the frames before the scan. **Apply Fra
 *   **GPU Acceleration**: renders on the graphics card. Off uses the slower CPU, with the same result. If the GPU fails at launch, an amber line here says so.
 *   **Search by Meaning**: find frames by description (§2).
 *   **Update Thumbnails Automatically**: renders out-of-date thumbnails again in the background, when a roll opens and after a change to many frames. Off (the default), the frames get an amber dot until you use **Update Thumbnails**.
+*   **Measure Roll Average Automatically**: measures the roll average in the background when a frame is new or its crop or Metering changes. On is the default. Off, the average changes only when you run **Roll Analysis**.
 *   **Preview size**: the canvas resolution. Higher is sharper and uses more memory.
 *   **Preview cache**, **Preview cache limit**, **HQ buffers** and **Rendered frames**: how much memory NegPy uses. Each row shows the recommendation for this computer. You can set a higher value, and the hint then turns amber.
 *   **GPU texture cap**: the largest image the GPU loads at once. At 0, an integrated GPU uses 6144 px and other GPUs have no limit. A value here replaces that limit. Lower it if exports run out of GPU memory.

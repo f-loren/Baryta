@@ -2,15 +2,15 @@
 
 NegPy gjør skanninger av filmnegativer og dias til ferdige bilder. Originalfilene dine endres aldri. NegPy lagrer redigeringene dine i en lokal database. Velg språk under Innstillinger → Grensesnitt → Språk, og start NegPy på nytt. Systemstandard følger systemspråket og bruker engelsk når NegPy ikke har det språket. Når et panel mangler oversettelse, viser NegPy den engelske teksten.
 
-<!-- panel:library src:401ca42f -->
+<!-- panel:library src:97062c46 -->
 ### Bibliotek
 
 Fanen **Bibliotek** (`Ctrl+L`) viser **rullene** dine. En rull er en navngitt gruppe bilder, vanligvis én film: en **mapperull** eller en **virtuell rull**. Importen husker mappen. NegPy flytter, gir nytt navn til eller sletter aldri filene dine.
 
 *   **+**: **Importer mappe som rull…** gjør en mappe til én rull og åpner den. **Importer undermapper som ruller…** gjør hver undermappe med bilder til en rull. Mapper du slipper på Biblioteket, importeres også.
 *   **Dobbeltklikk** en rull (eller trykk Enter) for å åpne den.
-*   **⋮** eller høyreklikk en rull: **Åpne**, **Last ut alle…** (den åpne rullen), **Rullanalyse**, **Gi nytt navn…**, **Finn mappe…**, **Fjern manglende bilder…**, **Lagre i mapperull**, **Gjenopprett fjernede bilder…**, **Tilbakestill rull…** (med bildene i den) og **Slett…**. Gjenopprett fjernede bilder henter tilbake bilder som Fjern fra rull tok ut. Slett beholder filene og de delte redigeringene deres. Rullens innstillinger, grunnlag, filmbase, scener, kortlåser og redigeringene som bare ble gjort i den rullen, går tapt. Oppdater legger ikke til en slettet mapperull igjen.
-*   **Filtrer ruller…** og **Sorter** hjelper deg å finne en rull. **⋮ → Oppdater** finner nye undermapper og teller bildene på nytt. **⋮ → Søkefiltre…** viser mappenavn som hoppes over (først `export`).
+*   **⋮** eller høyreklikk en rull: **Åpne**, **Last ut alle…** (den åpne rullen), **Rullanalyse**, **Gi nytt navn…**, **Finn mappe…**, **Fjern manglende bilder…**, **Lagre i mapperull**, **Gjenopprett fjernede bilder…**, **Tilbakestill rull…** (med bildene i den) og **Slett…**. Gjenopprett fjernede bilder henter tilbake bilder som Fjern fra rull tok ut. Slett beholder filene og de delte redigeringene deres og glemmer resten. Oppdater legger ikke til en slettet mapperull igjen.
+*   **Filtrer ruller…** og **Sorter** hjelper deg å finne en rull. **⋮ → Oppdater** finner nye undermapper og teller bildene på nytt. **⋮ → Søkefiltre…** viser mappenavn som hoppes over (først `export`). Et filter skjuler en rull det hopper over, og innstillingene beholdes.
 
 En rull der mappen eller bildene er flyttet utenfor NegPy, viser **mappen mangler** eller **filer mangler**. **Finn mappe…** finner den nye mappen. Et mappenavn som samsvarer med utstyret ditt ("penf" for "Pen F"), åpner Rullinnstillinger ferdig utfylt.
 
@@ -553,7 +553,7 @@ Fanen **Prøve** viser på skjermen hvordan bildet vil se ut når det skrives ut
 
 *   **Skanner**: **Filmskanner** for en egen filmskanner (kortene Enhet, Film og kvalitet og Innramming), eller **Kamera** for et kamera på et reprostativ (kortene Kamera og Forhåndsinnstilling).
 
-<!-- panel:scan_device src:a18b5f39 -->
+<!-- panel:scan_device src:a615f77c -->
 ### Enhet
 
 *   **Motor**: **SANE** (Linux og macOS), **Nikon Coolscan (nkscan)** eller **pyOpticfilm (Plustek)**. Kontrollene følger det skanneren rapporterer.
@@ -562,15 +562,15 @@ Fanen **Prøve** viser på skjermen hvordan bildet vil se ut når det skrives ut
 
 NegPy holder macOS og Windows våkne mens den skanner. På Linux slår du av automatisk hvilemodus før en lang rull.
 
-**Plustek**: OpticFilm 8200i SE, 8100 V2, 8300i SE, 7600i v1 og 7600i v2 virker; for andre modeller kan du prøve SANE. På Windows setter du først opp USB-driveren ([PLUSTEK_WINDOWS.md](PLUSTEK_WINDOWS.md)). **Coolscan**: trenger ikke SANE. På Linux krever USB en udev-regel for leverandøren `04b0`.
+**Plustek**: OpticFilm 8200i SE, 8200i, 8100 V2, 8300i SE, 7600i v1 og 7600i v2 virker; for andre modeller kan du prøve SANE. På Windows setter du først opp USB-driveren ([PLUSTEK_WINDOWS.md](PLUSTEK_WINDOWS.md)). **Coolscan**: trenger ikke SANE. På Linux krever USB en udev-regel for leverandøren `04b0`.
 
-<!-- panel:scan_quality src:1f841943 -->
+<!-- panel:scan_quality src:8a8dc1c2 -->
 ### Film og kvalitet
 
 *   **Film**: fargenegativ, S/H-negativ, dias eller Kodachrome. Den styrer bildeoppdaging, lysmåling, og om infrarødt tilbys.
 *   **Filmformat**: bildelengden (135, 66, 645 og andre). **Auto** virker der holderen bestemmer den.
 *   **Oppløsning** og **Bitdybde**: skanningens dpi og bit per kanal.
-*   **Skannemodus** (Plustek): **Flerpassering** tar gjennomsnittet av flere skanninger for mindre støy; **Adaptiv multieksponering** kombinerer en kort og en lang eksponering for større omfang, med den lange eksponeringen angitt ut fra hvert bilde; **Fast multieksponering** bruker skannerens ene lange eksponering på hvert bilde, slik SilverFast gjør (8200i SE, 8100 V2 og 8300i SE). 7600i v2 tilbyr adaptiv multieksponering, men ikke flerpassering.
+*   **Skannemodus** (Plustek): **Flerpassering** tar gjennomsnittet av flere skanninger for mindre støy; **Adaptiv multieksponering** kombinerer en kort og en lang eksponering for større omfang, med den lange eksponeringen angitt ut fra hvert bilde; **Fast multieksponering** bruker skannerens ene lange eksponering på hvert bilde, slik SilverFast gjør (8200i SE, 8100 V2 og 8300i SE). 7600i v2 og 8200i tilbyr adaptiv multieksponering, men ikke flerpassering.
 *   **Prøver** (Coolscan): leser hver linje flere ganger, for mindre støy i skyggene. Tregere.
 *   **Infrarød**: **IR** skanner en infrarød kanal, for støvfjerning på kortet Retusj. **ICE** (Coolscan) fjerner i stedet støvet i skanneren. En skanner uten ICE viser én **IR**-bryter. Ikke for S/H eller Kodachrome.
 *   **Superfin** (Coolscan): skanner én linje per passering. Tregere.
