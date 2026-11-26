@@ -31,6 +31,7 @@ from negpy.desktop.sticky import (
     sticky_snapshot,
 )
 from negpy.desktop.view.canvas.crop_guides import CropGuide
+from negpy.desktop.view.styles.theme import THEME
 from negpy.domain.models import PROOF_INTENT_LABELS, ExportPreset, ProofIntent, WorkspaceConfig
 from negpy.features.exposure.models import apply_targets
 from negpy.features.process.capture_color import is_source_profile
@@ -1106,8 +1107,7 @@ class DesktopSessionManager(QObject):
             self.state.hq_preview = APP_CONFIG.force_hq_preview
 
         saved_bg = self.repo.get_global_setting("canvas_bg_index")
-        if saved_bg is not None:
-            self.state.canvas_bg_index = int(saved_bg)
+        self.state.canvas_bg_index = THEME.canvas_bg_default if saved_bg is None else int(saved_bg)
         self.state.auto_thumbnail_refresh = bool(self.repo.get_global_setting("auto_thumbnail_refresh", False))
         self.state.auto_roll_average = bool(self.repo.get_global_setting("auto_roll_average", True))
         self.state.color_vision = str(self.repo.get_global_setting("color_vision", "standard") or "standard")

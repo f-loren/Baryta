@@ -1,4 +1,4 @@
-"""Baryta's top bar: the three phases of the work, the open file, and the frame's Reset and Export.
+"""Baryta's top bar: the three phases of the work, the open file, the frame's Reset, and Export.
 
 Every control drives a part of NegPy that already exists; the bar holds no state of its own.
 """
@@ -46,9 +46,12 @@ class BarytaTopBar(QWidget):
         self.reset_btn.setIcon(qta.icon("fa5s.history", color=THEME.mark_photo))
         self.reset_btn.clicked.connect(controller.session.reset_settings)
         self.export_btn = labeled_action(
-            "fa5s.file-export", tr("Export"), tr("Export this frame with the settings on the Export tab"), primary=True
+            "fa5s.file-export",
+            tr("Export"),
+            tr("Open the export settings and the metadata, with the button that exports this frame"),
+            primary=True,
         )
-        self.export_btn.clicked.connect(controller.request_export)
+        self.export_btn.clicked.connect(lambda: right.show_tab_by_key("export"))
 
         row = QHBoxLayout(self)
         row.setContentsMargins(0, 0, 0, THEME.space_sm)

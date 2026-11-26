@@ -40,6 +40,7 @@ from negpy.desktop.view.update_notice import UpdateNotice
 from negpy.desktop.view.styles.templates import choice_label, hint_label, labeled_action
 from negpy.desktop.view.styles.theme import THEME
 from negpy.desktop.view.widgets.baryta_top_bar import BarytaTopBar
+from negpy.desktop.view.sidebar.baryta_column import apply_column_layout
 from negpy.desktop.view.widgets.collapsible import fit_pane
 from negpy.desktop.view.widgets.command_palette import CommandPalette, FindField
 from negpy.desktop.view.widgets.loading_overlay import LoadingOverlay
@@ -147,7 +148,7 @@ class _EmptyStateOverlay(QWidget):
 
 
 # (canvas, Film Strip) heights until the splitter is first dragged; Qt scales them to the window.
-_STRIP_DEFAULT_SPLIT = (700, 300)
+_STRIP_DEFAULT_SPLIT = (840, 160)
 _CANVAS_MIN_HEIGHT = 120
 _LOADING_MESSAGE = tr("Processing…")
 # The Film Strip section's key, so a strip folded before keeps its fold.
@@ -433,6 +434,7 @@ class MainWindow(QMainWindow):
         self.file_browser.setVisible(expanded)
         self.toolbar.set_strip_expanded(expanded)
         self._apply_strip_constraints(expanded)
+        apply_column_layout(self.right_panel)
         # Above the canvas and the docked panel alike, so it spans the window.
         self.setMenuWidget(BarytaTopBar(self))
 

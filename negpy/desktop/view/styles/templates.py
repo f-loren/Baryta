@@ -752,5 +752,5 @@ def slider_value_qss(color: str = THEME.text_primary) -> str:
 
 
 def slider_handle_qss(color: str) -> str:
-    """Recolors the handle's ring only; geometry cascades from the app-wide QSlider style."""
-    return f"QSlider::handle:horizontal {{border-color: {color};}}"
+    """Recolors the handle's knob only; geometry cascades from the app-wide QSlider style."""
+    return f"QSlider::handle:horizontal {{background: {color};}}"
