@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.71.0
+
+- New: **Slider step arrows and card compare** — arrows beside a slider's value step it by one (Shift by ten), and a held eye on the edited Exposure, Look and Finish cards shows the frame without that card's edits.
+- Change: **Plustek** — pyopticfilm 1.3.11; the OpticFilm 8200i is supported for scanning, with infrared and Adaptive Multi-Exposure. @jboneng
+- Fix: **Large rolls** — a frame step or an edit no longer freezes the window on a long roll. A new Preferences toggle, Measure Roll Average Automatically, turns the background roll average off.
+- Fix: **Rolls** — a deleted open roll closes first, Discovery Filters hide a roll instead of deleting it, so its settings come back with the roll, and an apply of a Roll tab card releases locked frames that already match the roll. @thetalkingdrum
+- Fix: **Edited marks** — a slider resets to NegPy's default, as its card does, a carried value shows the edited dot, and the tab header's tooltip names the edited cards. @kurtwindisch
+- Fix: **Auto bounds** — an odd-sized frame meters the same after a flip or a turn. @thetalkingdrum
+- Fix: **Trichrome** — a burst of frames that look alike groups by capture time. @thetalkingdrum
+- Fix: **File loading** — a large uncompressed LinearRaw DNG written as one strip now loads. @thetalkingdrum
+
 ## 0.70.0
 
 - New: **Digital (Nikon Scan) print stock** — the tone curve and colors of Nikon Scan 4 fitted as 3D LUT.

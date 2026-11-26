@@ -3,6 +3,7 @@ from typing import Optional
 
 from PyQt6.QtWidgets import (
     QApplication,
+    QPushButton,
     QWidget,
     QHBoxLayout,
     QSlider,
@@ -15,10 +16,18 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
 )
 from PyQt6.QtGui import QPainter, QColor, QPen
-from PyQt6.QtCore import Qt, pyqtSignal, QTimer, QPointF, QRectF, QEvent, QLocale
+from PyQt6.QtCore import Qt, pyqtSignal, QTimer, QPointF, QRectF, QEvent, QLocale, QSize
 from negpy.desktop.view.styles.theme import THEME
 from negpy.kernel.system.i18n import tr
-from negpy.desktop.view.styles.templates import EditedDot, FieldLabel, slider_handle_qss, slider_label_qss, slider_value_qss, wrap_tooltip
+from negpy.desktop.view.styles.templates import (
+    EditedDot,
+    FieldLabel,
+    slider_handle_qss,
+    slider_label_qss,
+    slider_value_qss,
+    step_arrow,
+    wrap_tooltip,
+)
 
 
 # text_muted is too dim to read on the tooltip background.
@@ -133,6 +142,20 @@ class _NoScrollSpinBox(QDoubleSpinBox):
 
     def valueFromText(self, text: str) -> float:
         return super().valueFromText(text.replace(",", "."))
+
+    # The inner line edit's text margins, both sides.
+    _TEXT_PAD = 4
+
+    def sizeHint(self) -> QSize:
+        """As wide as the widest value the range allows, every digit at the font's widest digit."""
+        fm = self.fontMetrics()
+        digit = max("0123456789", key=fm.horizontalAdvance)
+        texts = (self.prefix() + self.textFromValue(v) + self.suffix() for v in (self.minimum(), self.maximum()))
+        width = max(fm.horizontalAdvance("".join(digit if c.isdigit() else c for c in t)) for t in texts)
+        return QSize(width + self._TEXT_PAD, super().sizeHint().height())
+
+    def minimumSizeHint(self) -> QSize:
+        return self.sizeHint()
 
 
 class BaseSlider(QWidget):
@@ -389,8 +412,10 @@ class CompactSlider(BaseSlider):
         has_neutral: bool = False,
         unit: str = "",
         inverted: bool = False,
+        value: float | None = None,
         parent=None,
     ):
+        """*default_val* is the reset value; *value*, when given, is the starting value."""
         super().__init__(min_val, max_val, default_val, precision=precision, has_neutral=has_neutral, inverted=inverted, parent=parent)
 
         self._label_color = color if color else THEME.text_secondary
@@ -443,11 +468,62 @@ class CompactSlider(BaseSlider):
         top.addWidget(self._edited_dot)
         top.addStretch(1)
         top.addWidget(self.spin)
+        top.addWidget(self._make_step_arrows())
         body = QVBoxLayout()
         body.setSpacing(0)
         body.addLayout(top)
         body.addWidget(self.slider)
         layout.addLayout(body, 1)
+        if value is not None:
+            self.setValue(value)
+
+    def _make_step_arrows(self) -> QWidget:
+        """Up and down chevrons after the value, shown while the pointer is on the row. A step
+        lands on press and repeats while held; the release commits it, as a drag's does."""
+        self._step_arrows = QWidget()
+        column = QVBoxLayout(self._step_arrows)
+        column.setContentsMargins(0, 0, 0, 0)
+        column.setSpacing(0)
+        for direction, tip in (
+            (1, tr("Increase by one step, or by ten with Shift held")),
+            (-1, tr("Decrease by one step, or by ten with Shift held")),
+        ):
+            btn = step_arrow(direction > 0, tip)
+            # A held button repeats released/clicked/pressed while still down; only the real release is up.
+            btn.pressed.connect(lambda d=direction: self.step(d))
+            btn.released.connect(lambda b=btn: None if b.isDown() else self._on_step_released())
+            column.addWidget(btn)
+        policy = self._step_arrows.sizePolicy()
+        policy.setRetainSizeWhenHidden(True)
+        self._step_arrows.setSizePolicy(policy)
+        self._step_arrows.setVisible(False)
+        return self._step_arrows
+
+    def _on_step_released(self) -> None:
+        self._on_committed()
+        if not self.underMouse():
+            self._step_arrows.setVisible(False)
+
+    def step(self, direction: int) -> None:
+        """Move one step up (1) or down (-1), ten with Shift held, without committing."""
+        if self.spin.hasFocus():
+            self.spin.clearFocus()  # setValue skips a focused field; its typed value commits first
+        count = 10 if QApplication.keyboardModifiers() & Qt.KeyboardModifier.ShiftModifier else 1
+        # A step finer than the shown decimals would round back onto the same value.
+        step = max(self.spin.singleStep(), 10.0 ** -self.spin.decimals())
+        target = self.value() + direction * count * step
+        self.setValue(round(min(self._max, max(self._min, target)), self.spin.decimals()), _rebase_commit=False)
+        self._schedule_emit()
+
+    def enterEvent(self, event) -> None:
+        self._step_arrows.setVisible(self.isEnabled())
+        super().enterEvent(event)
+
+    def leaveEvent(self, event) -> None:
+        # A held arrow keeps repeating; hidden, it would lose its release.
+        if not any(b.isDown() for b in self._step_arrows.findChildren(QPushButton)):
+            self._step_arrows.setVisible(False)
+        super().leaveEvent(event)
 
     def setToolTip(self, text: str) -> None:
         """Mirror onto the label: a child with its own tooltip shadows the parent's, and
@@ -626,6 +702,12 @@ class LogSlider(CompactSlider):
             return self._min
         return self._log_floor * math.exp((i - 1) / (self._LOG_STEPS - 1) * self._log_span)
 
+    def step(self, direction: int) -> None:
+        """A step into the gap between off and the floor lands on the floor going up, off going down."""
+        super().step(direction)
+        if 0.0 < self.value() < self._log_floor:
+            self.setValue(self._log_floor if direction > 0 else self._min, _rebase_commit=False)
+
     def _on_spin_changed(self, value: float) -> None:
         if 0.0 < value < self._log_floor:  # typed under the floor: the floor, since off is 0 alone
             value = self._log_floor
@@ -641,9 +723,9 @@ class HueSlider(CompactSlider):
     The label color and slider handle track the current hue.
     """
 
-    def __init__(self, label: str, default_val: float = 0.0, parent=None):
-        super().__init__(label, 0.0, 360.0, default_val, step=1.0, precision=1, unit="°", parent=parent)
-        self._apply_hue(default_val)
+    def __init__(self, label: str, default_val: float = 0.0, value: float | None = None, parent=None):
+        super().__init__(label, 0.0, 360.0, default_val, step=1.0, precision=1, unit="°", value=value, parent=parent)
+        self._apply_hue(self.value())
 
     def _apply_hue(self, hue_deg: float) -> None:
         """Tint the slider handle to the current hue."""

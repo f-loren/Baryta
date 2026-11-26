@@ -133,10 +133,16 @@ jobs:
           else
             reason="The merge is on the branch sync/negpy-$TAG, but the tests or the push to main failed."
           fi
-          gh issue create --repo "$GITHUB_REPOSITORY" \
+          echo "::error::NegPy $TAG needs a manual merge. $reason"
+          echo "NegPy $TAG needs a manual merge. $reason" >> "$GITHUB_STEP_SUMMARY"
+          if ! gh issue create --repo "$GITHUB_REPOSITORY" \
             --title "NegPy $TAG needs a manual merge" \
             --body "$reason
 
           Run: $RUN
 
-          Delete the branch sync/negpy-$TAG after the fix, so the next release syncs again."
+          Delete the branch sync/negpy-$TAG after the fix, so the next release syncs again."; then
+            # No issue means no person knows: drop the branch so the next run tries again and fails again.
+            gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/sync/negpy-$TAG"
+            exit 1
+          fi
