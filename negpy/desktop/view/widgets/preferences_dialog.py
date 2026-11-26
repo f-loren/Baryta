@@ -20,6 +20,7 @@ from negpy.desktop.controller import AppController
 from negpy.desktop.view.styles.color_vision import PALETTES
 from negpy.desktop.view.styles.templates import field_label, hint_label, labeled_action, labeled_toggle, pin_dialog_default, set_hint_kind
 from negpy.desktop.view.styles.theme import APPEARANCES, THEME
+from negpy.desktop.view.sidebar.baryta_combined import CARD_LAYOUT_SETTING, CARD_LAYOUTS
 from negpy.desktop.view.widgets.segmented_choice import SegmentedChoice
 from negpy.desktop.view.widgets.collapsible import CollapsibleSection
 from negpy.desktop.view.widgets.dialog_geometry import remember_dialog_geometry
@@ -265,6 +266,19 @@ class PreferencesDialog(QDialog):
         self.appearance_choice.currentChanged.connect(self._on_appearance_changed)
         grid.addWidget(field_label(tr("Appearance")), row, 0)
         grid.addWidget(self.appearance_choice, row, 1)
+        row += 1
+
+        self.card_layout_choice = SegmentedChoice(
+            (("fa5s.th-list", tr("Classic")), ("fa5s.object-group", tr("Combined"))),
+            tr("How the edit cards group their controls, applied when NegPy starts again."),
+            data=CARD_LAYOUTS,
+        )
+        self.card_layout_choice.setCurrentIndex(
+            max(0, self.card_layout_choice.findData(self.repo.get_global_setting(CARD_LAYOUT_SETTING, "classic")))
+        )
+        self.card_layout_choice.currentChanged.connect(self._on_card_layout_changed)
+        grid.addWidget(field_label(tr("Card layout")), row, 0)
+        grid.addWidget(self.card_layout_choice, row, 1)
         row += 1
 
         grid.addWidget(field_label(tr("UI scale")), row, 0)
@@ -550,6 +564,10 @@ class PreferencesDialog(QDialog):
 
     def _on_appearance_changed(self, index: int) -> None:
         self.repo.save_global_setting("ui_appearance", self.appearance_choice.currentData())
+        self._mark_restart()
+
+    def _on_card_layout_changed(self, index: int) -> None:
+        self.repo.save_global_setting(CARD_LAYOUT_SETTING, self.card_layout_choice.currentData())
         self._mark_restart()
 
     def _on_language_changed(self, index: int) -> None:

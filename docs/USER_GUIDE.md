@@ -898,6 +898,7 @@ Shows the whole strip, to place and pick the frames before the scan. **Apply Fra
 
 *   **Language**: English, Simplified Chinese, Japanese, Korean, German, Vietnamese, Norwegian Bokmål or Italian, after a restart.
 *   **Appearance**: **Night**, a dark ground, or **Day**, a cream ground with an orange accent, after a restart.
+*   **Card layout**: **Classic** keeps each control on its own card. **Combined** puts Chroma on the Color card and the Alternative Processes under Paper Response, after a restart.
 *   **UI scale**: 80% to 120%, after a restart.
 *   **Canvas background**: from black to white. Mid gray is best for judging a print.
 *   **Sticky Zoom**: keeps the zoom when you change frames. **Reverse Scroll Zoom**: scroll up zooms out.
