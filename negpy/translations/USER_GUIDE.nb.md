@@ -132,7 +132,7 @@ Korrigerer fargen i kopien, slik fargefiltrene i et forstørrelsesapparat i mør
 *   **Fjerning av fargestikk**: fjerner et fargestikk som er ulikt i de mørke og lyse delene av bildet. Den starter på 0,5 (halvparten) for fargenegativer og på 0 for dias. Blader, himmel og vann regnes ikke som grått, så de beholder fargen.
 *   **Filter**: et farget filter, som på kameraobjektivet for svart-hvitt-film. Det vises bare for et fargenegativ eller fargedias i S/H, og erstatter kontrollene ovenfor. Hvert filter gjør fargene motsatt av sin egen mørkere. Gul #8, Dyp gul #15, Oransje #21 og Rød #25 gjør en blå himmel mørkere, trinn for trinn. Rød gjør også blader mørke og hud blek. Gulgrønn #11 og Grønn #58 gjør blader lysere og hud mørkere. Ingen gir utseendet til en vanlig svart-hvitt-film.
 
-<!-- panel:tone src:ea6fcb40 -->
+<!-- panel:tone src:9ed8d90b -->
 ### 5.2 Tone: lyshet og kontrast
 
 Hvor lys eller mørk kopien er, og hvor mye kontrast den har.
@@ -144,34 +144,34 @@ Hvor lys eller mørk kopien er, og hvor mye kontrast den har.
     *   **Bak inn autotetthet/-gradering**: beholder de automatiske verdiene for dette bildet og slår av Auto for det.
     *   **Hold svart**: når du gjør skyggene lysere, forblir de dypeste svarttonene svarte.
 *   **Prøvestripe** (`Shift+T`): et rutenett av versjoner med ulik lyshet og kontrast. Klikk den du liker. `Esc` lukker den.
-*   **Skyggetetthet** / **Høylystetthet** (folden under Kopitetthet): gjør bare skyggene eller høylysene mørkere eller lysere.
-*   **Skyggegradering** / **Høylysgradering** (folden under ISO-R-gradering): kontrast bare i skyggene eller høylysene.
+*   **Skyggetetthet** / **Høylystetthet**: gjør bare skyggene eller høylysene mørkere eller lysere.
 *   **Kopieringshjelpemidler** (fold):
+    *   **Global / R / G / B**: R, G eller B bruker graderingene på bare én farge, for et fargestikk som er ulikt i skygger og høylys. Når du lukker folden, går valget tilbake til Global.
+    *   **Skyggegradering** / **Høylysgradering**: kontrast bare i skyggene eller høylysene.
     *   **Forbelysning**: henter tilbake detaljer i de lyseste områdene.
     *   **Diffusjon**: en myk glød; mørke områder sprer seg inn i lyse.
     *   **Kontrastmaske**: åpner store mørke områder og holder tilbake store lyse, og beholder fine detaljer. I mørkerommet får en kopist dette med en myk, uskarp maske lagt på negativet. I digital kopiering får Fujifilm Frontier-skannere en lignende virkning med HyperTone. Områder langt fra mellomgrå endres mest, så et bilde med lav kontrast endres lite.
-*   **Global / R / G / B**: R, G eller B bruker graderingene på bare én farge, for et fargestikk som er ulikt i skygger og høylys.
 
 **Hvitpunkt** og **Svartpunkt** er på kortet **Lysmåling**, inne i kortet **Rull** ([§10.3](#103-metering-negative--positive)).
 
-<!-- panel:paper src:eb1bce00 -->
-### 5.3 Papirrespons: papiret
+<!-- panel:paper src:4e38a3e2 -->
+### 6.1 Papirrespons: papiret
 
 Papiret bildet kopieres på, og hvordan det gjør lys om til toner fra svart til hvitt.
 
 *   **Kopipapir**: papiret. Et ekte papir angir kontrastkurven og fargene ut fra produsentens data. **Digital (Adobe RGB)**, standarden, er et ideelt papir. **Digital (Pakon)** har fargene til en Pakon-laboratorieskanner. **Digital (Frontier)** har fargene og kontrastkurven til en laboratorieskanning fra Fujifilm Frontier. **Digital (Nikon Scan)** har dem fra Nikon Scan, programvaren til Nikon Coolscan-filmskannerne.
 *   **Prøvestripe for papir** (den stripete knappen): kopierer bildet på hvert papir. Klikk et papir for å se det stort, bla med piltastene, og trykk **Behold** for å bruke det.
 *   **Fargestoffseparasjon**: fargestyrke i kopien. 1 er uendret. **Separasjonsdemping** legger mer av endringen på matte farger og mindre på sterke. **Kroma** i fanen Etterarbeid endrer i stedet alle farger likt.
-*   **Papirhvitt**: viser hvitfargen til ekte papir, litt mørkere enn rent hvitt.
-*   **Papirsvart**: viser svarttonen til ekte papir, litt lysere enn rent svart.
 *   **Kurveform** (fold):
+    *   **Global / R / G / B**: R, G eller B bruker kurvekontrollene på ett fargelag. Når du lukker folden, går valget tilbake til Global.
+    *   **Papirhvitt**: viser hvitfargen til ekte papir, litt mørkere enn rent hvitt.
+    *   **Papirsvart**: viser svarttonen til ekte papir, litt lysere enn rent svart.
     *   **Snap**: mellomtonekontrast. Svart og hvitt flytter seg ikke.
     *   **Tå**: former hvordan skyggene går over i svart. Positiv gjør overgangen mykere og åpner skyggene, negativ gjør den hardere. Svart flytter seg ikke.
     *   **Skulder**: former hvordan høylysene går over i hvitt. Positiv gjør overgangen mykere, negativ gjør den hardere og kan miste detaljer. Hvitt flytter seg ikke.
-*   **Global / R / G / B**: R, G eller B bruker kurvekontrollene på ett fargelag.
 
 <!-- panel:lab src:e8e4a89c -->
-### 6.1 Lab: farge og detaljer
+### 6.2 Lab: farge og detaljer
 
 Justeringene en laboratorieskanner gjør etter kopien.
 
@@ -185,7 +185,7 @@ Justeringene en laboratorieskanner gjør etter kopien.
 *   **Halasjon** (folden Effekter): en rød glød rundt lyse områder, slik noen filmer gir.
 
 <!-- panel:toning src:8aa1a282 -->
-### 6.2 Toning
+### 6.3 Toning
 
 Tonere er kjemiske bad som endrer fargen på en S/H-kopi. Delt toning legger farge til enhver kopi.
 
@@ -203,7 +203,7 @@ På en lith-kopi virker bare Selen og Gull. På en cyanotypi virker ingen toner.
 **Delt toning** (alle kopier): **Skyggestyrke** og **Høylysstyrke** legger farge til skyggene og høylysene. **Skyggetone** og **Høylystone** velger fargen, og vises når styrken er over 0.
 
 <!-- panel:finish src:0e98fdde -->
-### 6.3 Etterbehandling: vignett, negativholder, kant
+### 6.4 Etterbehandling: vignett, negativholder, kant
 
 Hvordan kopien presenteres. De andre glidebryterne for hver effekt vises når den første glidebryteren ikke er 0.
 
@@ -212,7 +212,7 @@ Hvordan kopien presenteres. De andre glidebryterne for hver effekt vises når de
 *   **Kant**: **Bredde** legger et passepartout rundt kopien. **Vekt nederst** gjør den nedre kanten bredere, som på et passepartout til innramming. **Farge**: **Papirhvitt** tilpasser seg papiret, **Egendefinert** bruker en farge du velger.
 
 <!-- panel:altproc src:1b810792 -->
-### 6.4 Alternative prosesser
+### 6.5 Alternative prosesser
 
 Historiske kopieringsprosesser for S/H-negativer. Velg **Ingen**, **Lith**, **Cyanotypi** eller **Sabattier**, så vises bare kontrollene for den prosessen.
 

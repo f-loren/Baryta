@@ -75,7 +75,7 @@ def has_guide(key: str) -> bool:
 
 
 def guide_markdown(key: str) -> str:
-    return brand(_guides().get(key, ""))
+    return brand(_guides().get(key, ""), _localized_guides("en").get(key, ""))
 
 
 class SectionHelpDialog(QDialog):
