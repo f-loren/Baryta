@@ -1,5 +1,5 @@
 from negpy.kernel.system.i18n import configure, install_qt_translations, tr
-from negpy.kernel.system.brand import APP_NAME
+from negpy.kernel.system.brand import APP_NAME, use_plain_names
 import html
 import os
 import re
@@ -286,7 +286,7 @@ def main() -> None:
         # can be applied through QT_SCALE_FACTOR, which Qt reads only at startup.
         repo = StorageRepository(APP_CONFIG.edits_db_path, APP_CONFIG.settings_db_path)
         repo.initialize()
-        configure(str(repo.get_global_setting("ui_language", "system") or "system"))
+        use_plain_names(configure(str(repo.get_global_setting("ui_language", "system") or "system")))
         from negpy.desktop.view.styles.theme import apply_appearance
 
         apply_appearance(str(repo.get_global_setting("ui_appearance", "night") or "night"))

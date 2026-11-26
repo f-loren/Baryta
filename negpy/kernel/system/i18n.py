@@ -86,7 +86,7 @@ def language() -> str:
 
 def tr(source: str, /, **values: Any) -> str:
     """Translate the template first; insert file names, paths and user text as values."""
-    text = brand(_messages.get(source, source))
+    text = brand(_messages.get(source, source), source)
     return text.format(**values) if values else text
 
 

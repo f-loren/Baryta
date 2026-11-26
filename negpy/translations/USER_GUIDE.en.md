@@ -48,8 +48,8 @@ For the math behind each step, read [PIPELINE.md](PIPELINE.md).
 | **Develop › Roll** | Roll Analysis · Metering · Fade Restoration · Frame Assembly · Scanner Setup (Raw Decode · Optics · Calibration) |
 | **Crop** (top bar) | Crop · Straighten |
 | **Develop › Color** | Filtration |
-| **Develop › Tone** | Tone · Paper Response |
-| **Develop › Finish** | Lab · Toning · Finishing · Alternative Processes |
+| **Develop › Tone** | Tone |
+| **Develop › Finish** | Paper Response · Alternative Processes · Lab · Toning · Finishing |
 | **Develop › Retouch** | Retouch · Dodge & Burn |
 | **Develop › Favorites** (star) | Your chosen sliders |
 | **Develop › History** (clock) | Work prints · Edit history |
@@ -65,7 +65,7 @@ Under **Setup**, **Convert Roll** measures every frame so that the whole roll pr
 
 ### Base and Advanced
 
-The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Paper Response, Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit. **Show Advanced**, under the Develop column, switches between the two.
+The app starts in **Base** mode, with the cards most rolls need. **Advanced** also shows Toning, Alternative Processes, Metering, Fade Restoration, Frame Assembly and Scanner Setup. A card that holds a setting always shows, so Base never hides an edit. **Show Advanced**, under the Develop column, switches between the two.
 
 ### Using the controls
 
@@ -303,7 +303,7 @@ Crop before a large Tilt or Swing, or the film border can come into view and dar
 
 ## 5. Color and Tone tabs
 
-The **Color** tab holds Filtration. The **Tone** tab holds Tone and Paper Response. Together they set the brightness, contrast and color of the print.
+The **Color** tab holds Filtration and the **Tone** tab holds Tone. Together they set the brightness, contrast and color of the print.
 
 <!-- panel:color -->
 ### 5.1 Filtration: color balance
@@ -329,38 +329,38 @@ How light or dark the print is, and how much contrast it has.
     *   **Bake Auto Density/Grade**: keeps this frame's automatic values and turns Auto off for it.
     *   **Hold Black**: when you lighten the shadows, the deepest blacks stay black.
 *   **Test Strip** (`Shift+T`): a grid of versions at different brightness and contrast. Click the one you like. `Esc` closes it.
-*   **Shadows Density** / **Highlights Density** (fold under Print Density): darken or lighten only the shadows or the highlights.
-*   **Shadows Grade** / **Highlights Grade** (fold under ISO-R Grade): contrast in the shadows or the highlights only.
+*   **Shadows Density** / **Highlights Density**: darken or lighten only the shadows or the highlights.
 *   **Printing Aids** (fold):
+    *   **Global / R / G / B**: R, G or B applies the grades to one color only, for a cast that differs between shadows and highlights. Closing the fold goes back to Global.
+    *   **Shadows Grade** / **Highlights Grade**: contrast in the shadows or the highlights only.
     *   **Preflash**: brings back detail in the brightest areas.
     *   **Diffusion**: a soft glow; dark areas spread into bright ones.
     *   **Contrast Mask**: opens up large dark areas and holds back large bright ones, and keeps fine detail. In the darkroom, a printer gets this with a soft, blurred mask placed on the negative. In digital printing, Fujifilm Frontier scanners get a similar effect with HyperTone. Areas far from mid-gray change most, so a low-contrast frame changes little.
-*   **Global / R / G / B**: R, G or B applies the grades to one color only, for a cast that differs between shadows and highlights.
 
 **White Point** and **Black Point** are on the **Metering** card, inside the **Roll** card ([§10.3](#103-metering-negative--positive)).
-
-<!-- panel:paper -->
-### 5.3 Paper Response: the paper
-
-The paper the picture prints on, and how it turns light into tones from black to white.
-
-*   **Print stock**: the paper. A real paper sets the contrast curve and the colors from its maker's data. **Digital (Adobe RGB)**, the default, is an ideal paper. **Digital (Pakon)** has the colors of a Pakon lab scanner. **Digital (Frontier)** has the colors and the contrast curve of a Fujifilm Frontier lab scan. **Digital (Nikon Scan)** has those of Nikon Scan, the software of the Nikon Coolscan film scanners.
-*   **Paper Test Strip** (the striped button): prints the frame on every paper. Click a paper to see it large, step with the arrow keys, and press **Keep** to use it.
-*   **Dye Separation**: color strength in the print. 1 is unchanged. **Separation Damping** puts more of the change on dull colors and less on strong ones. **Chroma** on the Finish tab changes all colors evenly instead.
-*   **Paper White**: shows the white of real paper, a little darker than pure white.
-*   **Paper Black**: shows the black of real paper, a little lighter than pure black.
-*   **Curve Shape** (fold):
-    *   **Snap**: midtone contrast. Black and white do not move.
-    *   **Toe**: shapes how the shadows reach black. Positive makes the change softer and opens the shadows, negative makes it harder. Black does not move.
-    *   **Shoulder**: shapes how the highlights reach white. Positive makes the change softer, negative makes it harder and can lose detail. White does not move.
-*   **Global / R / G / B**: R, G or B applies the curve controls to one color layer.
 
 ---
 
 ## 6. Finish tab
 
+<!-- panel:paper -->
+### 6.1 Paper Response: the paper
+
+The paper the picture prints on, and how it turns light into tones from black to white.
+
+*   **Print stock**: the paper. A real paper sets the contrast curve and the colors from its maker's data. **Digital (Adobe RGB)**, the default, is an ideal paper. **Digital (Pakon)** has the colors of a Pakon lab scanner. **Digital (Frontier)** has the colors and the contrast curve of a Fujifilm Frontier lab scan. **Digital (Nikon Scan)** has those of Nikon Scan, the software of the Nikon Coolscan film scanners.
+*   **Paper Test Strip** (the striped button): prints the frame on every paper. Click a paper to see it large, step with the arrow keys, and press **Keep** to use it.
+*   **Dye Separation**: color strength in the print. 1 is unchanged. **Separation Damping** puts more of the change on dull colors and less on strong ones. **Chroma** on the Lab card changes all colors evenly instead.
+*   **Curve Shape** (fold):
+    *   **Global / R / G / B**: R, G or B applies the curve controls to one color layer. Closing the fold goes back to Global.
+    *   **Paper White**: shows the white of real paper, a little darker than pure white.
+    *   **Paper Black**: shows the black of real paper, a little lighter than pure black.
+    *   **Snap**: midtone contrast. Black and white do not move.
+    *   **Toe**: shapes how the shadows reach black. Positive makes the change softer and opens the shadows, negative makes it harder. Black does not move.
+    *   **Shoulder**: shapes how the highlights reach white. Positive makes the change softer, negative makes it harder and can lose detail. White does not move.
+
 <!-- panel:lab -->
-### 6.1 Lab: color and detail
+### 6.2 Lab: color and detail
 
 The adjustments a lab scanner makes after the print.
 
@@ -374,7 +374,7 @@ The adjustments a lab scanner makes after the print.
 *   **Halation** (Effects fold): a red glow around bright areas, as some films give.
 
 <!-- panel:toning -->
-### 6.2 Toning
+### 6.3 Toning
 
 Toners are chemical baths that change the color of a B&W print. Split Toning adds color to any print.
 
@@ -392,7 +392,7 @@ On a lith print only Selenium and Gold work. On a cyanotype no toner works.
 **Split Toning** (all prints): **Shadow Strength** and **Highlight Strength** add color to the shadows and the highlights. **Shadow Hue** and **Highlight Hue** pick the color, and show once the strength is above 0.
 
 <!-- panel:finish -->
-### 6.3 Finishing: vignette, carrier, border
+### 6.4 Finishing: vignette, carrier, border
 
 How the print is presented. The other sliders of each effect show once its first slider is not 0.
 
@@ -401,7 +401,7 @@ How the print is presented. The other sliders of each effect show once its first
 *   **Border**: **Width** puts a mat around the print. **Bottom Weight** makes the bottom wider, as on a framing mat. **Color**: **Paper White** matches the paper, **Custom** uses a color you pick.
 
 <!-- panel:altproc -->
-### 6.4 Alternative Processes
+### 6.5 Alternative Processes
 
 Historic print processes for B&W negatives. Pick **None**, **Lith**, **Cyanotype** or **Sabattier**, and only that process's controls show.
 

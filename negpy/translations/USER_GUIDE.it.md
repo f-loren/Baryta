@@ -48,8 +48,8 @@ Per la matematica dietro ogni passaggio, leggi [PIPELINE.md](PIPELINE.md).
 | **Sviluppa › Rullino** | Analisi del rullino · Misurazione · Ripristino dello sbiadimento · Composizione del fotogramma · Impostazione dello scanner (Decodifica RAW · Ottica · Calibrazione) |
 | **Ritaglio** (barra in alto) | Ritaglio · Raddrizza |
 | **Sviluppa › Colore** | Filtratura |
-| **Sviluppa › Tono** | Tono · Risposta della carta |
-| **Sviluppa › Finitura** | Lab · Viraggio · Rifinitura · Processi alternativi |
+| **Sviluppa › Tono** | Tono |
+| **Sviluppa › Finitura** | Risposta della carta · Processi alternativi · Lab · Viraggio · Rifinitura |
 | **Sviluppa › Ritocco** | Ritocco · Schermatura e bruciatura |
 | **Sviluppa › Preferiti** (stella) | I cursori che hai scelto |
 | **Sviluppa › Cronologia** (orologio) | Stampe di lavoro · Cronologia delle modifiche |
@@ -65,7 +65,7 @@ Sotto **Configurazione**, **Converti rullino** misura ogni fotogramma perché tu
 
 ### Base e Avanzata
 
-L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Risposta della carta, Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica. **Mostra avanzate**, sotto la colonna Sviluppa, passa da una modalità all'altra.
+L'app parte in modalità **Base**, con i riquadri che servono alla maggior parte dei rullini. **Avanzata** mostra anche Viraggio, Processi alternativi, Misurazione, Ripristino dello sbiadimento, Composizione del fotogramma e Impostazione dello scanner. Un riquadro che contiene un'impostazione resta sempre visibile, così Base non nasconde mai una modifica. **Mostra avanzate**, sotto la colonna Sviluppa, passa da una modalità all'altra.
 
 ### Usare i controlli
 
@@ -302,7 +302,7 @@ Ritaglia prima di un Basculaggio o Brandeggio ampio, altrimenti il bordo della p
 
 ## 5. Schede Colore e Tono
 
-La scheda **Colore** contiene la Filtratura. La scheda **Tono** contiene Tono e Risposta della carta. Insieme impostano luminosità, contrasto e colore della stampa.
+La scheda **Colore** contiene la Filtratura e la scheda **Tono** contiene Tono. Insieme impostano luminosità, contrasto e colore della stampa.
 
 <!-- panel:color src:23d03265 -->
 ### 5.1 Filtratura: bilanciamento del colore
@@ -316,7 +316,7 @@ Corregge il colore della stampa, come fanno i filtri colorati di un ingranditore
 *   **Rimozione della dominante**: rimuove una dominante di colore diversa tra le parti scure e chiare dell'immagine. Parte da 0,5 (metà) sui negativi a colori e da 0 sulle diapositive. Foglie, cielo e acqua non contano come grigio, quindi mantengono il loro colore.
 *   **Filtro**: un filtro colorato, come sull'obiettivo della fotocamera per la pellicola in bianco e nero. Compare solo su un negativo a colori o una diapositiva a colori in B/N, e sostituisce i controlli precedenti. Ogni filtro scurisce i colori opposti al proprio. Giallo n. 8, Giallo intenso n. 15, Arancione n. 21 e Rosso n. 25 scuriscono un cielo blu, passo dopo passo. Il rosso rende anche scure le foglie e pallida la pelle. Giallo-verde n. 11 e Verde n. 58 schiariscono le foglie e scuriscono la pelle. Nessuno dà l'aspetto di una normale pellicola in bianco e nero.
 
-<!-- panel:tone src:ea6fcb40 -->
+<!-- panel:tone src:9ed8d90b -->
 ### 5.2 Tono: luminosità e contrasto
 
 Quanto è chiara o scura la stampa, e quanto contrasto ha.
@@ -328,38 +328,38 @@ Quanto è chiara o scura la stampa, e quanto contrasto ha.
     *   **Fissa densità/gradazione automatiche**: mantiene i valori automatici di questo fotogramma e disattiva Auto per esso.
     *   **Mantieni il nero**: quando schiarisci le ombre, i neri più profondi restano neri.
 *   **Striscia di prova** (`Maiusc+T`): una griglia di versioni a diverse luminosità e contrasti. Fai clic su quella che preferisci. `Esc` la chiude.
-*   **Densità delle ombre** / **Densità delle alte luci** (sezione sotto Densità di stampa): scuriscono o schiariscono solo le ombre o le alte luci.
-*   **Gradazione delle ombre** / **Gradazione delle alte luci** (sezione sotto Gradazione ISO-R): contrasto solo nelle ombre o solo nelle alte luci.
+*   **Densità delle ombre** / **Densità delle alte luci**: scuriscono o schiariscono solo le ombre o le alte luci.
 *   **Aiuti alla stampa** (sezione ripiegabile):
+    *   **Globale / R / G / B**: R, G o B applica le gradazioni a un solo colore, per una dominante diversa tra ombre e alte luci. Chiudendo la sezione si torna a Globale.
+    *   **Gradazione delle ombre** / **Gradazione delle alte luci**: contrasto solo nelle ombre o solo nelle alte luci.
     *   **Prelampeggiatura**: recupera il dettaglio nelle zone più luminose.
     *   **Diffusione**: un alone morbido; le zone scure si espandono in quelle chiare.
     *   **Maschera di contrasto**: apre le grandi zone scure e trattiene quelle grandi e chiare, conservando il dettaglio fine. In camera oscura, uno stampatore ottiene questo effetto con una maschera morbida e sfocata posta sul negativo. Nella stampa digitale, gli scanner Fujifilm Frontier ottengono un effetto simile con HyperTone. Le zone lontane dal grigio medio cambiano di più, quindi un fotogramma a basso contrasto cambia poco.
-*   **Globale / R / G / B**: R, G o B applica le gradazioni a un solo colore, per una dominante diversa tra ombre e alte luci.
 
 **Punto del bianco** e **Punto del nero** si trovano nel riquadro **Misurazione**, dentro il riquadro **Rullino** ([§10.3](#103-misurazione-negativo--positivo)).
-
-<!-- panel:paper src:eb1bce00 -->
-### 5.3 Risposta della carta: la carta
-
-La carta su cui viene stampata l'immagine, e il modo in cui trasforma la luce in toni dal nero al bianco.
-
-*   **Supporto di stampa**: la carta. Una carta reale stabilisce la curva di contrasto e i colori in base ai dati del produttore. **Digitale (Adobe RGB)**, quella predefinita, è una carta ideale. **Digitale (Pakon)** ha i colori di uno scanner da laboratorio Pakon. **Digitale (Frontier)** ha i colori e la curva di contrasto di una scansione da laboratorio Fujifilm Frontier. **Digitale (Nikon Scan)** ha quelli di Nikon Scan, il software degli scanner per pellicola Nikon Coolscan.
-*   **Striscia di prova della carta** (il pulsante a righe): stampa il fotogramma su ogni carta. Fai clic su una carta per vederla in grande, scorri con i tasti freccia e premi **Tieni** per usarla.
-*   **Separazione dei coloranti**: intensità del colore nella stampa. 1 è invariato. **Smorzamento della separazione** applica più modifica ai colori spenti e meno a quelli intensi. **Croma** nella scheda Finitura cambia invece tutti i colori in modo uniforme.
-*   **Bianco carta**: mostra il bianco di una carta reale, un po' più scuro del bianco puro.
-*   **Nero carta**: mostra il nero di una carta reale, un po' più chiaro del nero puro.
-*   **Forma della curva** (sezione ripiegabile):
-    *   **Incisività**: contrasto dei mezzitoni. Il nero e il bianco non si spostano.
-    *   **Piede**: modella il passaggio delle ombre al nero. Positivo lo ammorbidisce e apre le ombre, negativo lo rende più duro. Il nero non si sposta.
-    *   **Spalla**: modella il passaggio delle alte luci al bianco. Positivo lo ammorbidisce, negativo lo rende più duro e può perdere dettaglio. Il bianco non si sposta.
-*   **Globale / R / G / B**: R, G o B applica i controlli della curva a un solo strato di colore.
 
 ---
 
 ## 6. Scheda Finitura
 
+<!-- panel:paper src:4e38a3e2 -->
+### 6.1 Risposta della carta: la carta
+
+La carta su cui viene stampata l'immagine, e il modo in cui trasforma la luce in toni dal nero al bianco.
+
+*   **Supporto di stampa**: la carta. Una carta reale stabilisce la curva di contrasto e i colori in base ai dati del produttore. **Digitale (Adobe RGB)**, quella predefinita, è una carta ideale. **Digitale (Pakon)** ha i colori di uno scanner da laboratorio Pakon. **Digitale (Frontier)** ha i colori e la curva di contrasto di una scansione da laboratorio Fujifilm Frontier. **Digitale (Nikon Scan)** ha quelli di Nikon Scan, il software degli scanner per pellicola Nikon Coolscan.
+*   **Striscia di prova della carta** (il pulsante a righe): stampa il fotogramma su ogni carta. Fai clic su una carta per vederla in grande, scorri con i tasti freccia e premi **Tieni** per usarla.
+*   **Separazione dei coloranti**: intensità del colore nella stampa. 1 è invariato. **Smorzamento della separazione** applica più modifica ai colori spenti e meno a quelli intensi. **Croma** nel riquadro Lab cambia invece tutti i colori in modo uniforme.
+*   **Forma della curva** (sezione ripiegabile):
+    *   **Globale / R / G / B**: R, G o B applica i controlli della curva a un solo strato di colore. Chiudendo la sezione si torna a Globale.
+    *   **Bianco carta**: mostra il bianco di una carta reale, un po' più scuro del bianco puro.
+    *   **Nero carta**: mostra il nero di una carta reale, un po' più chiaro del nero puro.
+    *   **Incisività**: contrasto dei mezzitoni. Il nero e il bianco non si spostano.
+    *   **Piede**: modella il passaggio delle ombre al nero. Positivo lo ammorbidisce e apre le ombre, negativo lo rende più duro. Il nero non si sposta.
+    *   **Spalla**: modella il passaggio delle alte luci al bianco. Positivo lo ammorbidisce, negativo lo rende più duro e può perdere dettaglio. Il bianco non si sposta.
+
 <!-- panel:lab src:e8e4a89c -->
-### 6.1 Lab: colore e dettaglio
+### 6.2 Lab: colore e dettaglio
 
 Le regolazioni che uno scanner da laboratorio fa dopo la stampa.
 
@@ -373,7 +373,7 @@ Le regolazioni che uno scanner da laboratorio fa dopo la stampa.
 *   **Alonatura** (sezione Effetti): un alone rosso attorno alle zone luminose, come danno alcune pellicole.
 
 <!-- panel:toning src:8aa1a282 -->
-### 6.2 Viraggio
+### 6.3 Viraggio
 
 I viraggi sono bagni chimici che cambiano il colore di una stampa B/N. Il Viraggio diviso aggiunge colore a qualsiasi stampa.
 
@@ -391,7 +391,7 @@ Su una stampa lith funzionano solo Selenio e Oro. Su una cianotipia non funziona
 **Viraggio diviso** (tutte le stampe): **Intensità delle ombre** e **Intensità delle alte luci** aggiungono colore alle ombre e alle alte luci. **Tinta delle ombre** e **Tinta delle alte luci** scelgono il colore, e compaiono quando l'intensità è sopra 0.
 
 <!-- panel:finish src:0e98fdde -->
-### 6.3 Rifinitura: vignettatura, portanegativi, bordo
+### 6.4 Rifinitura: vignettatura, portanegativi, bordo
 
 Come viene presentata la stampa. Gli altri cursori di ogni effetto compaiono quando il suo primo cursore non è a 0.
 
@@ -400,7 +400,7 @@ Come viene presentata la stampa. Gli altri cursori di ogni effetto compaiono qua
 *   **Bordo**: **Larghezza** mette un passe-partout attorno alla stampa. **Peso inferiore** rende più largo il lato inferiore, come in un passe-partout da cornice. **Colore**: **Bianco carta** si adegua alla carta, **Personalizzato** usa un colore che scegli.
 
 <!-- panel:altproc src:1b810792 -->
-### 6.4 Processi alternativi
+### 6.5 Processi alternativi
 
 Processi di stampa storici per i negativi B/N. Scegli **Nessuno**, **Lith**, **Cianotipia** o **Sabattier**, e compaiono solo i controlli di quel processo.
 

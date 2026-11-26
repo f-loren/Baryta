@@ -43,7 +43,7 @@ from negpy.desktop.view.widgets.tab_header import TabHeader
 
 # Sidebar Components
 from negpy.desktop.view.sidebar.presets import PresetsSidebar
-from negpy.desktop.view.sidebar.baryta_layout import frame_tabs, install_mode_gate
+from negpy.desktop.view.sidebar.baryta_layout import HEADED_TABS, arrange_cards, frame_tabs, install_mode_gate
 from negpy.desktop.view.sidebar.flatfield import FlatFieldSidebar
 from negpy.desktop.view.sidebar.process import ProcessSidebar
 from negpy.desktop.view.sidebar.roll import RollAnalysisSidebar
@@ -170,6 +170,7 @@ class ControlsPanel(QWidget):
         self._init_ui()
         self._connect_signals()
         install_mode_gate(self)
+        arrange_cards(self)
 
     def _init_ui(self) -> None:
         self.presets_sidebar = PresetsSidebar(self.controller)
@@ -412,7 +413,9 @@ class ControlsPanel(QWidget):
             page_layout.setSpacing(THEME.space_lg)
             # A one-card tab has no header: that card's own is already the whole tab's.
             header = (
-                self._make_tab_header(title, sections, [a.removesuffix("_section") for a in section_attrs]) if len(sections) > 1 else None
+                self._make_tab_header(title, sections, [a.removesuffix("_section") for a in section_attrs])
+                if len(sections) > 1 or key in HEADED_TABS
+                else None
             )
             if header is not None:
                 page_layout.addWidget(header)

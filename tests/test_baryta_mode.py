@@ -5,12 +5,12 @@ from conftest import FakeController, FakeRepo
 
 def test_base_mode_hides_an_unedited_advanced_card_and_keeps_an_edited_one(qapp) -> None:
     panel = ControlsPanel(FakeController(FakeRepo(**{ADVANCED_SETTING: False})))
-    paper, toning = panel.paper_section, panel.toning_section
-    assert paper.isHidden() and toning.isHidden()
+    altproc, toning = panel.altproc_section, panel.toning_section
+    assert altproc.isHidden() and toning.isHidden()
 
-    paper.set_modified(1)
+    altproc.set_modified(1)
     panel.modified_synced.emit()
-    assert not paper.isHidden() and toning.isHidden()
+    assert not altproc.isHidden() and toning.isHidden()
 
     set_advanced_mode(panel, True)
     assert not toning.isHidden()

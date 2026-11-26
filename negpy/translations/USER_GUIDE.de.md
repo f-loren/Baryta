@@ -132,7 +132,7 @@ Korrigiert die Farbe des Abzugs, wie die Farbfilter eines Vergrößerers in der 
 *   **Farbstichentfernung**: entfernt einen Farbstich, der in den dunklen und hellen Teilen des Bildes unterschiedlich ist. Der Start liegt bei 0,5 (halb) bei Farbnegativen und bei 0 bei Dias. Blätter, Himmel und Wasser gelten nicht als grau und behalten ihre Farbe.
 *   **Filter**: ein Farbfilter, wie er bei Schwarzweißfilm vor dem Kameraobjektiv sitzt. Er erscheint nur bei einem Farbnegativ oder Farbdia in S/W, und ersetzt die Regler darüber. Jeder Filter dunkelt die Farben ab, die seiner eigenen gegenüberliegen. Gelb #8, Tiefgelb #15, Orange #21 und Rot #25 machen einen blauen Himmel Schritt für Schritt dunkler. Rot macht außerdem Blätter dunkel und Haut blass. Gelbgrün #11 und Grün #58 machen Blätter heller und Haut dunkler. Keiner gibt den Look eines normalen Schwarzweißfilms.
 
-<!-- panel:tone src:ea6fcb40 -->
+<!-- panel:tone src:9ed8d90b -->
 ### 5.2 Tonwerte: Helligkeit und Kontrast
 
 Wie hell oder dunkel der Abzug ist und wie viel Kontrast er hat.
@@ -144,34 +144,34 @@ Wie hell oder dunkel der Abzug ist und wie viel Kontrast er hat.
     *   **Auto-Dichte/Gradation fixieren**: behält die automatischen Werte dieses Bildes und schaltet Auto dafür aus.
     *   **Schwarz halten**: Wenn du die Schatten aufhellst, bleiben die tiefsten Schwarztöne schwarz.
 *   **Probestreifen** (`Shift+T`): ein Raster von Versionen mit unterschiedlicher Helligkeit und unterschiedlichem Kontrast. Klicke auf die, die dir gefällt. `Esc` schließt es.
-*   **Schattendichte** / **Lichterdichte** (Falte unter Abzugsdichte): dunkeln nur die Schatten oder nur die Lichter ab oder hellen sie auf.
-*   **Schattengradation** / **Lichtergradation** (Falte unter ISO-R-Gradation): Kontrast nur in den Schatten oder nur in den Lichtern.
+*   **Schattendichte** / **Lichterdichte**: dunkeln nur die Schatten oder nur die Lichter ab oder hellen sie auf.
 *   **Druckhilfen** (Falte):
+    *   **Global / R / G / B**: R, G oder B wendet die Gradationen nur auf eine Farbe an, für einen Farbstich, der in Schatten und Lichtern unterschiedlich ist. Beim Schließen der Falte springt die Auswahl auf Global zurück.
+    *   **Schattengradation** / **Lichtergradation**: Kontrast nur in den Schatten oder nur in den Lichtern.
     *   **Vorbelichtung**: bringt Details in den hellsten Bereichen zurück.
     *   **Diffusion**: ein weiches Glühen. Dunkle Bereiche breiten sich in helle aus.
     *   **Kontrastmaske**: öffnet große dunkle Bereiche, hält große helle zurück und erhält feine Details. In der Dunkelkammer entsteht dieser Effekt mit einer weichen, unscharfen Maske auf dem Negativ. Beim digitalen Abzug erreichen Fujifilm-Frontier-Scanner mit HyperTone einen ähnlichen Effekt. Bereiche weit vom mittleren Grau ändern sich am meisten, daher ändert sich ein kontrastarmes Bild wenig.
-*   **Global / R / G / B**: R, G oder B wendet die Gradationen nur auf eine Farbe an, für einen Farbstich, der in Schatten und Lichtern unterschiedlich ist.
 
 **Weißpunkt** und **Schwarzpunkt** findest du auf der Karte **Messung**, in der Karte **Rolle** ([§10.3](#103-metering-negative--positive)).
 
-<!-- panel:paper src:eb1bce00 -->
-### 5.3 Papierverhalten: das Papier
+<!-- panel:paper src:4e38a3e2 -->
+### 6.1 Papierverhalten: das Papier
 
 Das Papier, auf das das Bild abgezogen wird, und wie es Licht in Tonwerte von Schwarz bis Weiß umsetzt.
 
 *   **Papier**: das Abzugspapier. Ein echtes Papier legt Kontrastkurve und Farben nach den Daten seines Herstellers fest. **Digital (Adobe RGB)**, der Standard, ist ein ideales Papier. **Digital (Pakon)** hat die Farben eines Pakon-Laborscanners. **Digital (Frontier)** hat die Farben und die Kontrastkurve eines Fujifilm-Frontier-Laborscans. **Digital (Nikon Scan)** hat die von Nikon Scan, der Software der Nikon-Coolscan-Filmscanner.
 *   **Papier-Probestreifen** (die gestreifte Schaltfläche): zieht das Bild auf jedem Papier ab. Klicke auf ein Papier für die große Ansicht, wechsle mit den Pfeiltasten und drücke **Behalten**, um es zu nutzen.
-*   **Farbstofftrennung**: Farbstärke im Abzug. 1 ist unverändert. **Trennungsdämpfung** legt mehr von der Änderung auf matte Farben und weniger auf kräftige. **Chroma** im Tab Finish ändert stattdessen alle Farben gleichmäßig.
-*   **Papierweiß**: zeigt das Weiß von echtem Papier, etwas dunkler als reines Weiß.
-*   **Papierschwarz**: zeigt das Schwarz von echtem Papier, etwas heller als reines Schwarz.
+*   **Farbstofftrennung**: Farbstärke im Abzug. 1 ist unverändert. **Trennungsdämpfung** legt mehr von der Änderung auf matte Farben und weniger auf kräftige. **Chroma** auf der Karte Lab ändert stattdessen alle Farben gleichmäßig.
 *   **Kurvenform** (Falte):
+    *   **Global / R / G / B**: R, G oder B wendet die Kurvenregler auf eine Farbschicht an. Beim Schließen der Falte springt die Auswahl auf Global zurück.
+    *   **Papierweiß**: zeigt das Weiß von echtem Papier, etwas dunkler als reines Weiß.
+    *   **Papierschwarz**: zeigt das Schwarz von echtem Papier, etwas heller als reines Schwarz.
     *   **Snap**: Kontrast der Mitteltöne. Schwarz und Weiß bewegen sich nicht.
     *   **Fuß**: formt, wie die Schatten ins Schwarz übergehen. Positiv macht den Übergang weicher und öffnet die Schatten, negativ macht ihn härter. Schwarz bleibt, wo es ist.
     *   **Schulter**: formt, wie die Lichter ins Weiß übergehen. Positiv macht den Übergang weicher, negativ macht ihn härter, wobei Details verloren gehen können. Weiß bleibt, wo es ist.
-*   **Global / R / G / B**: R, G oder B wendet die Kurvenregler auf eine Farbschicht an.
 
 <!-- panel:lab src:e8e4a89c -->
-### 6.1 Lab: Farbe und Detail
+### 6.2 Lab: Farbe und Detail
 
 Die Anpassungen, die ein Lab-Scanner nach dem Abzug vornimmt.
 
@@ -185,7 +185,7 @@ Die Anpassungen, die ein Lab-Scanner nach dem Abzug vornimmt.
 *   **Lichthof** (Falte Effekte): ein rotes Glühen um helle Bereiche, wie es manche Filme zeigen.
 
 <!-- panel:toning src:8aa1a282 -->
-### 6.2 Tonung
+### 6.3 Tonung
 
 Toner sind chemische Bäder, die die Farbe eines S/W-Abzugs ändern. Die Splittonung gibt jedem Abzug Farbe.
 
@@ -203,7 +203,7 @@ Auf einem Lith-Abzug wirken nur Selen und Gold. Auf einer Cyanotypie wirkt kein 
 **Splittonung** (alle Abzüge): **Schattenstärke** und **Lichterstärke** geben den Schatten und den Lichtern Farbe. **Schattenfarbton** und **Lichterfarbton** wählen die Farbe und erscheinen, sobald die Stärke über 0 liegt.
 
 <!-- panel:finish src:0e98fdde -->
-### 6.3 Finish: Vignette, Bildbühne, Rand
+### 6.4 Finish: Vignette, Bildbühne, Rand
 
 Wie der Abzug präsentiert wird. Die übrigen Regler jedes Effekts erscheinen, sobald sein erster Regler nicht 0 ist.
 
@@ -212,7 +212,7 @@ Wie der Abzug präsentiert wird. Die übrigen Regler jedes Effekts erscheinen, s
 *   **Rand**: **Breite** legt ein Passepartout um den Abzug. **Unteres Gewicht** macht den unteren Rand breiter, wie bei einem Bilderrahmen. **Farbe**: **Papierweiß** passt zum Papier, **Benutzerdefiniert** nutzt eine Farbe, die du wählst.
 
 <!-- panel:altproc src:1b810792 -->
-### 6.4 Alternative Verfahren
+### 6.5 Alternative Verfahren
 
 Historische Abzugsverfahren für S/W-Negative. Wähle **Ohne**, **Lith**, **Cyanotypie** oder **Sabattier-Effekt**. Es erscheinen nur die Regler dieses Verfahrens.
 
