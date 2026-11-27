@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.71.1
+
+- Bump nkscan to 0.21.0 which fixes some bugs for Nikon Coolscan users.
+
 ## 0.71.0
 
 - New: **Slider step arrows and card compare** — arrows beside a slider's value step it by one (Shift by ten), and a held eye on the edited Exposure, Look and Finish cards shows the frame without that card's edits.
