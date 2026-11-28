@@ -897,6 +897,7 @@ Menu **⋯** → **Preferenze…** (`Ctrl+,`). Le modifiche si applicano subito;
 
 *   **Lingua**: inglese, cinese semplificato, giapponese, coreano, tedesco, vietnamita, norvegese bokmål o italiano, dopo un riavvio.
 *   **Aspetto**: **Notte**, fondo scuro, o **Giorno**, fondo crema con accento arancione, dopo un riavvio.
+*   **Disposizione dei riquadri**: **Classica** tiene ogni controllo nel suo riquadro. **Combinata** mette la Croma nel riquadro Colore e i Processi alternativi sotto Risposta della carta, dopo un riavvio.
 *   **Scala dell'interfaccia**: dall'80% al 120%, dopo un riavvio.
 *   **Sfondo dell'area di lavoro**: dal nero al bianco. Il grigio medio è il migliore per valutare una stampa.
 *   **Zoom persistente**: mantiene lo zoom quando cambi fotogramma. **Zoom con rotellina invertito**: la rotellina in su riduce lo zoom.

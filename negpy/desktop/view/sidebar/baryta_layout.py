@@ -142,6 +142,10 @@ def arrange_cards(panel) -> None:
     _arrange_tone(panel.tone_sidebar)
     _arrange_paper(panel.paper_sidebar, panel.controller.session.repo)
     _quiet_lab(panel.lab_sidebar)
+    from negpy.desktop.view.sidebar.baryta_combined import combine_cards, is_combined  # imports this module
+
+    if is_combined(panel.controller.session.repo):
+        combine_cards(panel)
 
 
 def _arrange_tone(tone) -> None:
